@@ -6,10 +6,4 @@ import static org.junit.Assert.*;
 
 public class BibliotecaAppTest {
 
-    @Test
-    public void abc() {
-
-        assertEquals(true, true);
-    }
-
 }
