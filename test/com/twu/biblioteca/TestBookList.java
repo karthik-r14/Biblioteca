@@ -24,7 +24,7 @@ public class TestBookList {
     }
 
     @Test
-    public void shouldListofBookInTheLibrary() {
+    public void shouldListBooksInTheLibrary() {
         BookList books = new BookList();
 
         books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
