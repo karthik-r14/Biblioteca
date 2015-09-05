@@ -14,20 +14,22 @@ public class TestWelcomeMessage {
     private final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
 
     @Before
-            public void setUpStreams() {
-                System.setOut(new PrintStream(outputContent));
-            }
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outputContent));
+    }
+
     @After
-         public void CleanUpStreams() {
-             System.setOut(System.out);
-         }
+    public void CleanUpStreams() {
+
+        System.setOut(System.out);
+    }
+
     @Test
-        public void shouldDisplayWelcomeMessage()
-        {
-            WelcomeMessage welcomeMessage = new WelcomeMessage("Welcome to Biblioteca");
+    public void shouldDisplayWelcomeMessage() {
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
 
-            welcomeMessage.display();
+        welcomeMessage.display();
 
-            assertEquals("Welcome to Biblioteca\n", outputContent.toString());
-        }
+        assertEquals("WELCOME TO BIBLIOTECA\n", outputContent.toString());
+    }
 }

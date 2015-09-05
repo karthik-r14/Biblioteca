@@ -1,3 +1,4 @@
+//A book has a name, author name and the year it is published which can be displayed.
 package com.twu.biblioteca;
 
 public class Book {
@@ -12,8 +13,7 @@ public class Book {
         this.yearOfPublish = yearOfPublish;
     }
 
-    @Override
-    public String toString() {
-       return bookName+"  "+authorName+"  "+yearOfPublish;
+    public void  displayBook() {
+        System.out.println(bookName+"  "+authorName+"  "+yearOfPublish);
     }
 }
