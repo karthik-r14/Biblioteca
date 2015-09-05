@@ -1,7 +1,7 @@
-<project name="com.tw.mathematics.Calculator2" default="runTest" basedir=".">
+<project name="TWU_Biblioteca-master" default="runTest" basedir=".">
 
-    <property name="project.name" value="biblioteca"></property>
-    <property name="package.name" value="com.tw.biblioteca"/>
+    <property name="project.name" value="TWU_Biblioteca-master"></property>
+    <property name="package.name" value="com.twu.biblioteca"/>
 
     <target name = "init">
         <mkdir dir="out" />
