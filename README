@@ -1,29 +1,42 @@
-Instructions to push your code to code.google.com
-=================================================
-1. Sign into GitHub and create a new repository
-        Repository name: twu-biblioteca-yourname
-        Privacy level: Public
-        Don't check "Initialize this repository with a README"
-        Add .gitignore: None
-        Add a license: Apache License 2.0
+##Description
+Library Management Application that supports the following features:
+* Welcome Message
+* Book Listing
+* Book Checkout and Checkin
 
-2. Run 'git init' in the folder that was extracted from the downloaded .zip file, in order to
- initialize local repository.
+##Dependencies
+* JDK(1.6 or higher)
+* Apache Ant
+* JUnit(included under lib)
+- Hamcrest(included under lib)
 
-3. Make a local commit.
-    $ git add -A
-    $ git commit -m “Initial commit”
+##Downloading and installing dependencies
+- ####For Mac OS X
+    - #####if homebrew is installed
+        - Open terminal
+        - Install ant by running the Methods
+> brew update
+>
+> brew install ant
 
-(Dont forget to add the hidden .idea folder, as it will make opening your project in Intellij easier.)
+    - #####if homebrew is not installed
+        - Open terminal
+        - Install homebrew by running the Method
+        > ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        - Then install ant using the Method
+        > brew install ant
 
-4. After you are done with the local commit, you can share your code with "The World" by pushing it to your
- GitHub repository.
-    $ git remote add origin https://github.com/<YOUR-GITHUB-USERNAME>/twu-biblioteca-<YOURNAME>
-    $ git push origin master
+- ####For Linux OS
+    - Open terminal
+    - Install ant by running the Method
+    > sudo apt-get install ant
 
-Instructions to open your code in Intellij
-==========================================
-1. Go to File -> Open (or Open Project)
-2. Select the directory containing the code
-DONE !
+- ####For Windows OS
+    - Follow the instructions in the link
+    > http://www.mkyong.com/ant/how-to-install-apache-ant-on-windows/
 
+##Steps to Build:
+
+1. Set present working directory to Project directory.
+2. Run the following Method
+> ant

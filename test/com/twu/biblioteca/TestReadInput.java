@@ -10,10 +10,13 @@ public class TestReadInput {
 
     @Test
     public void shouldReturnChoiceInputByTheUser() {
-        ReadInput senseinput = new ReadInput();
+        ReadInput senseInput = new ReadInput();
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("1".getBytes());
 
-         senseinput.read();
+        System.setIn(inputStream);
+        String input= senseInput.read();
+        System.setIn(System.in);
 
-        assertEquals("1", senseinput.toString());
+        assertEquals("1", input);
     }
 }

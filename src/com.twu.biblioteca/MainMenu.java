@@ -5,12 +5,19 @@ import java.util.ArrayList;
 
 public class MainMenu {
 
-    private ArrayList<String> menu= new ArrayList<String>();
+    private ArrayList<String> menu;
+    private ReadInput input;
+    private ExecuteMenuItem item;
+
+    MainMenu() {
+        menu = new ArrayList<>();
+        input = new ReadInput();
+        item = new ExecuteMenuItem();
+    }
 
     public void addOptions(String option) {
         menu.add(option);
     }
-
 
     public void displayMenu() {
         int id = 1;
@@ -18,5 +25,13 @@ public class MainMenu {
             System.out.println(id + "." + option);
             id++;
         }
+    }
+
+    public String takeUserInput() {
+        return input.read();
+    }
+
+    public void executeOption(String choice, Object object) {
+        item.execute(choice, object);
     }
 }
