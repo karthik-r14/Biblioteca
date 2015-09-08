@@ -20,10 +20,8 @@ public class MainMenu {
     }
 
     public void displayMenu() {
-        int id = 1;
         for (String option : menu) {
-            System.out.println(id + "." + option);
-            id++;
+            System.out.println(option);
         }
     }
 

@@ -7,8 +7,8 @@ public class ExecuteMenuItem {
 
         switch (choice) {
             case "1":
-                BookList tempBooks;
-                tempBooks = (BookList) object;
+                Library tempBooks;
+                tempBooks = (Library) object;
                 tempBooks.displayBooks();
                 break;
 

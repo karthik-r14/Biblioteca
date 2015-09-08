@@ -1,3 +1,4 @@
+//WelcomeMessage has a message which can be displayed.
 package com.twu.biblioteca;
 
 

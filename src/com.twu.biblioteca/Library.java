@@ -1,9 +1,9 @@
-//A BookList comprises of books which can be displayed and a funtionality for adding a book to the list.
+//A Library comprises of books which can be displayed and a funtionality for adding a book to the list.
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
 
-public class BookList {
+public class Library {
 
     private ArrayList<Book> ListOfBooks = new ArrayList<Book>();
 

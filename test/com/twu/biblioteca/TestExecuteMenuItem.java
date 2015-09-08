@@ -29,7 +29,7 @@ public class TestExecuteMenuItem {
     @Test
     public void shouldDisplayAllBooksWhenUserInputsNumericOne() {
         ExecuteMenuItem executeMenu = new ExecuteMenuItem();
-        BookList books = new BookList();
+        Library books = new Library();
 
         books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
@@ -42,7 +42,7 @@ public class TestExecuteMenuItem {
     @Test
     public void shouldNotifyWhenInvalidOptionIsChosen() {
         ExecuteMenuItem executeMenu = new ExecuteMenuItem();
-        BookList books = new BookList();
+        Library books = new Library();
 
         books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
@@ -59,7 +59,7 @@ public class TestExecuteMenuItem {
     public void shouldValidateQuit() {
         MainMenu menu = new MainMenu();
         ExecuteMenuItem executeMenu = new ExecuteMenuItem();
-        BookList books = new BookList();
+        Library books = new Library();
 
         books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));

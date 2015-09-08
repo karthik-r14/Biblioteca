@@ -9,7 +9,7 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestBookList {
+public class TestLibrary {
 
     private final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
 
@@ -25,7 +25,7 @@ public class TestBookList {
 
     @Test
     public void shouldListBooksInTheLibrary() {
-        BookList books = new BookList();
+        Library books = new Library();
 
         books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
