@@ -34,4 +34,15 @@ public class TestLibrary {
 
         assertEquals("FIVE POINT SOMEONE  CHETAN BHAGAT  2004\nONE NIGHT AT THE CALL CENTER  CHETAN BHAGAT  2005\nREVOLUTION 2020  CHETAN BHAGAT  2011\n", outputContent.toString());
     }
+
+    @Test
+    public void shouldCheckOutABookFromTheLibrary() {
+        Library books = new Library();
+
+        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+
+        assertEquals("Thank you! Enjoy the book", books.checkoutABook("Five Point Someone"));
+    }
 }

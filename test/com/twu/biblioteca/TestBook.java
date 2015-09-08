@@ -31,4 +31,13 @@ public class TestBook {
 
         assertEquals("THE 3 MISTAKES OF MY LIFE  CHETAN BHAGAT  2008\n", outputContent.toString());
     }
+
+    @Test
+    public void shouldReturnTrueWhenBookNameMatches() {
+        Book book = new Book("The 3 mistakes of my Life", "Chetan Bhagat", 2008);
+
+        book.compareWithBookName("The 3 mistakes of my Life");
+
+        assertEquals(true, book.compareWithBookName("The 3 mistakes of my Life"));
+    }
 }

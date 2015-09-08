@@ -25,7 +25,7 @@ public class MainMenu {
     }
 
     public String takeUserInput() {
-        return input.read();
+        return input.read("Enter choice :");
     }
 
     public void executeOption(String choice, Object object) {

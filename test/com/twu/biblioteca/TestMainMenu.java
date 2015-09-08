@@ -89,9 +89,30 @@ public class TestMainMenu {
         books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
         menu.addOptions("List Books");
+        menu.addOptions("Checkout a Book");
         menu.addOptions("Quit");
 
         exit.expectSystemExit();
+        menu.executeOption("3", books);
+    }
+
+    @Test
+    public void shouldValidateCheckOutABook() {
+        String bookChoice = "One Night At the Call Center";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(bookChoice.getBytes());
+        System.setIn(inContent);
+
+        MainMenu menu = new MainMenu();
+        Library books = new Library();
+
+        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+        menu.addOptions("List Books");
+        menu.addOptions("Checkout a Book");
+        menu.addOptions("Quit");
+
         menu.executeOption("2", books);
+        assertEquals("ENTER BOOKNAME:\nThank you! Enjoy the book\n", outputContent.toString());
     }
 }

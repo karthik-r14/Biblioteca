@@ -13,7 +13,11 @@ public class Book {
         this.yearOfPublish = yearOfPublish;
     }
 
-    public void  displayBook() {
-        System.out.println(bookName+"  "+authorName+"  "+yearOfPublish);
+    public void displayBook() {
+        System.out.println(bookName + "  " + authorName + "  " + yearOfPublish);
+    }
+
+    public boolean compareWithBookName(String thatbookName) {
+        return bookName.equals(thatbookName.toUpperCase());
     }
 }

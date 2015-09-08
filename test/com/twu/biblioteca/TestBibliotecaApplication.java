@@ -69,7 +69,6 @@ public class TestBibliotecaApplication {
 
     @Test
     public void shouldDisplayAMessageWhenUserEntersNonIntegerInputs() {
-
         String userChoice = "list";
         final ByteArrayInputStream inContent = new ByteArrayInputStream(userChoice.getBytes());
         System.setIn(inContent);
@@ -94,14 +93,14 @@ public class TestBibliotecaApplication {
 
     @Test
     public void shouldExitTheApplicationWhenUserSelectsExitOption() {
-
-        String userChoice = "2";
+        String userChoice = "3";
         final ByteArrayInputStream inContent = new ByteArrayInputStream(userChoice.getBytes());
         System.setIn(inContent);
 
         MainMenu menu = new MainMenu();
         menu.addOptions("1.List Book");
-        menu.addOptions("2.Exit");
+        menu.addOptions("2.Checkout a Book");
+        menu.addOptions("3.Exit");
 
         Library library = new Library();
         library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
@@ -111,7 +110,6 @@ public class TestBibliotecaApplication {
 
         exit.expectSystemExitWithStatus(0);
         biblioteca.run(true);
-        assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Exit\nEnter choice :\n", outputContent.toString());
     }
 }
 

@@ -7,10 +7,14 @@ public class ReadInput {
 
     String userInput;
 
-    public String read() {
+    public String read(String message) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter choice :");
+        display(message);
         userInput = scanner.nextLine();
         return userInput;
+    }
+
+    public void display(String message) {
+        System.out.println(message);
     }
 }

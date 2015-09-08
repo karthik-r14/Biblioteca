@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
@@ -57,17 +58,30 @@ public class TestExecuteMenuItem {
 
     @Test
     public void shouldValidateQuit() {
-        MainMenu menu = new MainMenu();
-        ExecuteMenuItem executeMenu = new ExecuteMenuItem("2");
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("3");
         Library books = new Library();
 
         books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
-        menu.addOptions("List Books");
-        menu.addOptions("Quit");
 
         exit.expectSystemExit();
         executeMenu.execute(books);
+    }
+
+    @Test
+    public void shouldValidateCheckoutBooks() {
+        String bookName = "Revolution 2020";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
+        System.setIn(inContent);
+
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("2");
+        Library books = new Library();
+        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+
+        executeMenu.execute(books);
+        assertEquals("ENTER BOOKNAME:\nThank you! Enjoy the book\n", outputContent.toString() );
     }
 }
