@@ -28,27 +28,27 @@ public class TestExecuteMenuItem {
 
     @Test
     public void shouldDisplayAllBooksWhenUserInputsNumericOne() {
-        ExecuteMenuItem executeMenu = new ExecuteMenuItem();
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("1");
         Library books = new Library();
 
         books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
-        executeMenu.execute("1", books);
+        executeMenu.execute(books);
 
         assertEquals("FIVE POINT SOMEONE  CHETAN BHAGAT  2004\nONE NIGHT AT THE CALL CENTER  CHETAN BHAGAT  2005\nREVOLUTION 2020  CHETAN BHAGAT  2011\n", outputContent.toString());
     }
 
     @Test
     public void shouldNotifyWhenInvalidOptionIsChosen() {
-        ExecuteMenuItem executeMenu = new ExecuteMenuItem();
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("-1");
         Library books = new Library();
 
         books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        executeMenu.execute("-1", books);
+        executeMenu.execute(books);
         assertEquals("SELECT A VALID OPTION\n", outputContent.toString());
     }
 
@@ -58,7 +58,7 @@ public class TestExecuteMenuItem {
     @Test
     public void shouldValidateQuit() {
         MainMenu menu = new MainMenu();
-        ExecuteMenuItem executeMenu = new ExecuteMenuItem();
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("2");
         Library books = new Library();
 
         books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
@@ -68,6 +68,6 @@ public class TestExecuteMenuItem {
         menu.addOptions("Quit");
 
         exit.expectSystemExit();
-        executeMenu.execute("2", books);
+        executeMenu.execute(books);
     }
 }

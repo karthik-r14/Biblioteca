@@ -1,10 +1,11 @@
+//BibliotecaDemo is a demonstratoin of Biblioteca Application
 package com.twu.biblioteca;
 
 public class BibliotecaDemo {
 
     public static void main(String[] args) {
 
-        boolean flag =true;
+        boolean welcomeFlag =true;
 
         MainMenu menu = new MainMenu();
         menu.addOptions("1.List Books");
@@ -21,8 +22,8 @@ public class BibliotecaDemo {
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(menu ,library);
 
         while (true) {
-            bibliotecaApplication.start(flag);
-            flag =false;
+            bibliotecaApplication.run(welcomeFlag);
+            welcomeFlag =false;
         }
     }
 }

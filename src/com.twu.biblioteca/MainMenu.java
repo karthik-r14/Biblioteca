@@ -12,7 +12,6 @@ public class MainMenu {
     MainMenu() {
         menu = new ArrayList<>();
         input = new ReadInput();
-        item = new ExecuteMenuItem();
     }
 
     public void addOptions(String option) {
@@ -30,6 +29,7 @@ public class MainMenu {
     }
 
     public void executeOption(String choice, Object object) {
-        item.execute(choice, object);
+        item = new ExecuteMenuItem(choice);
+        item.execute(object);
     }
 }

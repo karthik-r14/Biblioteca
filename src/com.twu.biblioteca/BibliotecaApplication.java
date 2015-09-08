@@ -12,8 +12,8 @@ public class BibliotecaApplication {
         this.library = library;
     }
 
-    public void start(boolean flag) {
-        if(flag) {
+    public void run(boolean welcomeFlag) {
+        if(welcomeFlag) {
             welcomeMessage.display();
         }
         menu.displayMenu();

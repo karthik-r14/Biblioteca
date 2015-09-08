@@ -1,9 +1,14 @@
-//ExecuteMenuItem executes the desired menu item
+//ExecuteMenuItem executes the desired menu item based on choice
 package com.twu.biblioteca;
 
 public class ExecuteMenuItem {
 
-    public void execute(String choice, Object object) {
+    private String choice;
+    public ExecuteMenuItem(String choice) {
+        this.choice =choice;
+    }
+
+    public void execute(Object object) {
 
         switch (choice) {
             case "1":

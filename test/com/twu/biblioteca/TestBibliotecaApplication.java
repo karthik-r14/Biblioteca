@@ -41,7 +41,7 @@ public class TestBibliotecaApplication {
         library.addABook(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(menu, library);
-        biblioteca.start(true);
+        biblioteca.run(true);
 
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Exit\nEnter choice :\nDA VINCI CODE  DAN BROWN  2003\nADVENTURES OF SHERLOCK HOLMES  ARTHUR CONAN DOYLE  1892\n", outputContent.toString());
     }
@@ -62,7 +62,7 @@ public class TestBibliotecaApplication {
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(menu, library);
 
-        biblioteca.start(true);
+        biblioteca.run(true);
 
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Exit\nEnter choice :\nSELECT A VALID OPTION\n", outputContent.toString());
     }
@@ -84,7 +84,7 @@ public class TestBibliotecaApplication {
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(menu, library);
 
-        biblioteca.start(true);
+        biblioteca.run(true);
 
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Exit\nEnter choice :\nSELECT A VALID OPTION\n", outputContent.toString());
     }
@@ -110,7 +110,7 @@ public class TestBibliotecaApplication {
         BibliotecaApplication biblioteca = new BibliotecaApplication(menu, library);
 
         exit.expectSystemExitWithStatus(0);
-        biblioteca.start(true);
+        biblioteca.run(true);
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Exit\nEnter choice :\n", outputContent.toString());
     }
 }

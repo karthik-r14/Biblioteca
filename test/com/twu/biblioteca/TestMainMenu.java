@@ -31,7 +31,7 @@ public class TestMainMenu {
     public void shouldDisplayListBooksInMainMenu() {
         MainMenu menu = new MainMenu();
 
-        menu.addOptions("List Books");
+        menu.addOptions("1.List Books");
         menu.displayMenu();
 
         assertEquals("1.List Books\n", outputContent.toString());
