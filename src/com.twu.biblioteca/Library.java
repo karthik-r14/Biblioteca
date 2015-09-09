@@ -12,7 +12,6 @@ public class Library {
     public Library(ArrayList<Book> listOfBooks) {
         this.listOfBooks = listOfBooks;
         checkedOutBooks = new ArrayList<>();
-        //listOfBooks = new ArrayList<>();
     }
 
     public String checkoutABook(String bookName) {
@@ -31,5 +30,16 @@ public class Library {
         for (Book book : listOfBooks) {
             book.displayBook();
         }
+    }
+
+    public String returnABook(String bookName) {
+        for(Book book : checkedOutBooks) {
+            if(book.compareWithBookName(bookName)) {
+                listOfBooks.add(book);
+                checkedOutBooks.remove(book);
+                return "Thank you for returning the book";
+            }
+        }
+        return " ";
     }
 }

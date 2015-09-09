@@ -60,4 +60,18 @@ public class LibraryTest {
 
         assertEquals("That book is not available", library.checkoutABook("2 States"));
     }
+
+    @Test
+    public void shouldReturnABookBackToTheLibrary() {
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+
+        Library library = new Library(books);
+        library.checkoutABook("Five Point Someone");
+
+        assertEquals("Thank you for returning the book", library.returnABook("Five Point Someone"));
+    }
+
 }
