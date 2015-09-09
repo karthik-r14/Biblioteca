@@ -9,7 +9,7 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.*;
 
-public class TestWelcomeMessage {
+public class WelcomeMessageTest {
 
     private final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
 

@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
 import java.io.ByteArrayInputStream;
@@ -13,8 +14,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-
-public class TestMainMenu {
+public class ExecuteMenuItemTest {
 
     private final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
 
@@ -29,61 +29,30 @@ public class TestMainMenu {
     }
 
     @Test
-    public void shouldDisplayListBooksInMainMenu() {
-        ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input);
-        mainMenu.addOptions("1.List Books");
-        mainMenu.displayMenu();
-
-        assertEquals("1.List Books\n", outputContent.toString());
-    }
-
-    @Test
-    public void shouldReadInputFromUser() {
-        ArrayList<String> menu = new ArrayList<>();
-        ReadInput input1 = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input1);
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("1".getBytes());
-
-        System.setIn(inputStream);
-        String input2 = mainMenu.takeUserInput();
-        System.setIn(System.in);
-
-        assertEquals("1", input2);
-    }
-
-    @Test
-    public void shouldDisplayAllBooksInLibraryWhenUserInputsNumericOne() {
-        ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input);
-
+    public void shouldDisplayAllBooksWhenUserInputsNumericOne() {
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("1");
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books);
-        mainMenu.executeOption("1", library);
+        executeMenu.execute(library);
 
         assertEquals("FIVE POINT SOMEONE  CHETAN BHAGAT  2004\nONE NIGHT AT THE CALL CENTER  CHETAN BHAGAT  2005\nREVOLUTION 2020  CHETAN BHAGAT  2011\n", outputContent.toString());
     }
 
     @Test
     public void shouldNotifyWhenInvalidOptionIsChosen() {
-        ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input);
-
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("-1");
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-
         Library library = new Library(books);
-        mainMenu.executeOption("-1", library);
+        executeMenu.execute(library);
+
         assertEquals("SELECT A VALID OPTION\n", outputContent.toString());
     }
 
@@ -92,43 +61,51 @@ public class TestMainMenu {
 
     @Test
     public void shouldValidateQuit() {
-        ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input);
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("3");
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books);
-        mainMenu.addOptions("List Books");
-        mainMenu.addOptions("Checkout a Book");
-        mainMenu.addOptions("Quit");
+
         exit.expectSystemExit();
-        mainMenu.executeOption("3", library);
+        executeMenu.execute(library);
     }
 
     @Test
-    public void shouldValidateCheckOutABook() {
-        String bookChoice = "One Night At the Call Center";
-        final ByteArrayInputStream inContent = new ByteArrayInputStream(bookChoice.getBytes());
+    public void shouldValidateCheckoutBooks() {
+        String bookName = "Revolution 2020";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
         System.setIn(inContent);
 
-        ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu,input);
-
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("2");
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books);
-        mainMenu.addOptions("List Books");
-        mainMenu.addOptions("Checkout a Book");
-        mainMenu.addOptions("Quit");
-        mainMenu.executeOption("2", library);
+        executeMenu.execute(library);
 
         assertEquals("ENTER BOOKNAME:\nThank you! Enjoy the book\n", outputContent.toString());
+    }
+
+    @Test
+    public void shouldNotifyWhenBookIsNotAvailable() {
+        String bookName = "2 states";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
+        System.setIn(inContent);
+
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("2");
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+
+        Library library = new Library(books);
+        executeMenu.execute(library);
+
+        assertEquals("ENTER BOOKNAME:\nThat book is not available\n", outputContent.toString());
     }
 }
