@@ -58,12 +58,14 @@ public class TestMainMenu {
         ArrayList<String> menu = new ArrayList<>();
         ReadInput input = new ReadInput();
         MainMenu mainMenu = new MainMenu(menu, input);
-        Library books = new Library();
 
-        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
-        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
-        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
-        mainMenu.executeOption("1", books);
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+
+        Library library = new Library(books);
+        mainMenu.executeOption("1", library);
 
         assertEquals("FIVE POINT SOMEONE  CHETAN BHAGAT  2004\nONE NIGHT AT THE CALL CENTER  CHETAN BHAGAT  2005\nREVOLUTION 2020  CHETAN BHAGAT  2011\n", outputContent.toString());
     }
@@ -73,13 +75,15 @@ public class TestMainMenu {
         ArrayList<String> menu = new ArrayList<>();
         ReadInput input = new ReadInput();
         MainMenu mainMenu = new MainMenu(menu, input);
-        Library books = new Library();
 
-        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
-        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
-        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        mainMenu.executeOption("-1", books);
+
+        Library library = new Library(books);
+        mainMenu.executeOption("-1", library);
         assertEquals("SELECT A VALID OPTION\n", outputContent.toString());
     }
 
@@ -91,17 +95,17 @@ public class TestMainMenu {
         ArrayList<String> menu = new ArrayList<>();
         ReadInput input = new ReadInput();
         MainMenu mainMenu = new MainMenu(menu, input);
-        Library books = new Library();
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
-        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
-        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+        Library library = new Library(books);
         mainMenu.addOptions("List Books");
         mainMenu.addOptions("Checkout a Book");
         mainMenu.addOptions("Quit");
-
         exit.expectSystemExit();
-        mainMenu.executeOption("3", books);
+        mainMenu.executeOption("3", library);
     }
 
     @Test
@@ -113,16 +117,18 @@ public class TestMainMenu {
         ArrayList<String> menu = new ArrayList<>();
         ReadInput input = new ReadInput();
         MainMenu mainMenu = new MainMenu(menu,input);
-        Library books = new Library();
 
-        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
-        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
-        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+
+        Library library = new Library(books);
         mainMenu.addOptions("List Books");
         mainMenu.addOptions("Checkout a Book");
         mainMenu.addOptions("Quit");
+        mainMenu.executeOption("2", library);
 
-        mainMenu.executeOption("2", books);
         assertEquals("ENTER BOOKNAME:\nThank you! Enjoy the book\n", outputContent.toString());
     }
 }

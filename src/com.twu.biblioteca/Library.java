@@ -2,19 +2,17 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.zip.CheckedInputStream;
 
 public class Library {
 
     private ArrayList<Book> listOfBooks;
     private ArrayList<Book> checkedOutBooks;
 
-    public Library() {
-        listOfBooks = new ArrayList<>();
+    public Library(ArrayList<Book> listOfBooks) {
+        this.listOfBooks = listOfBooks;
         checkedOutBooks = new ArrayList<>();
-    }
-
-    public void addABook(Book book) {
-        listOfBooks.add(book);
+        //listOfBooks = new ArrayList<>();
     }
 
     public String checkoutABook(String bookName) {

@@ -41,13 +41,13 @@ public class TestBibliotecaApplication {
         mainMenu.addOptions("1.List Book");
         mainMenu.addOptions("2.Exit");
 
-        Library library = new Library();
-        library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
-        library.addABook(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Da Vinci code", "DAN BROWN", 2003));
+        books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
+        Library library = new Library(books);
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
-
         biblioteca.start();
         biblioteca.run();
 
@@ -62,13 +62,15 @@ public class TestBibliotecaApplication {
         mainMenu.addOptions("1.List Book");
         mainMenu.addOptions("2.Exit");
 
-        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library();
-        library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
-        library.addABook(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Da Vinci code", "DAN BROWN", 2003));
+        books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
+        Library library = new Library(books);
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
         biblioteca.start();
+
         assertEquals("WELCOME TO BIBLIOTECA\n", outputContent.toString());
 
     }
@@ -85,13 +87,13 @@ public class TestBibliotecaApplication {
         mainMenu.addOptions("1.List Book");
         mainMenu.addOptions("2.Exit");
 
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Da Vinci code", "DAN BROWN", 2003));
+        books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
+
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library();
-        library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
-        library.addABook(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
-
+        Library library = new Library(books);
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
-
         biblioteca.start();
         biblioteca.run();
 
@@ -110,13 +112,13 @@ public class TestBibliotecaApplication {
         mainMenu.addOptions("1.List Book");
         mainMenu.addOptions("2.Exit");
 
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Da Vinci code", "DAN BROWN", 2003));
+        books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
+
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library();
-        library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
-        library.addABook(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
-
+        Library library = new Library(books);
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
-
         biblioteca.start();
         biblioteca.run();
 
@@ -139,10 +141,12 @@ public class TestBibliotecaApplication {
         mainMenu.addOptions("2.Checkout a Book");
         mainMenu.addOptions("3.Exit");
 
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Da Vinci code", "DAN BROWN", 2003));
+        books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
+
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library();
-        library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
-        library.addABook(new Book("Adventures of Sherlock Holmes", "Sir Arthur Conan Doyle", 1892));
+        Library library = new Library(books);
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
 
@@ -166,10 +170,12 @@ public class TestBibliotecaApplication {
         mainMenu.addOptions("2.Checkout a Book");
         mainMenu.addOptions("3.Exit");
 
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Da Vinci code", "DAN BROWN", 2003));
+        books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
+
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library();
-        library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
-        library.addABook(new Book("Adventures of Sherlock Holmes", "Sir Arthur Conan Doyle", 1892));
+        Library library = new Library(books);
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
         biblioteca.start();
@@ -193,10 +199,12 @@ public class TestBibliotecaApplication {
         mainMenu.addOptions("2.Checkout a Book");
         mainMenu.addOptions("3.Exit");
 
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Da Vinci code", "DAN BROWN", 2003));
+        books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
+
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library();
-        library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
-        library.addABook(new Book("Adventures of Sherlock Holmes", "Sir Arthur Conan Doyle", 1892));
+        Library library = new Library(books);
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
         biblioteca.start();

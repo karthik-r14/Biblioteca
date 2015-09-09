@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,35 +26,38 @@ public class TestLibrary {
 
     @Test
     public void shouldListBooksInTheLibrary() {
-        Library books = new Library();
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
-        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
-        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
-        books.displayBooks();
+        Library library = new Library(books);
+        library.displayBooks();
 
         assertEquals("FIVE POINT SOMEONE  CHETAN BHAGAT  2004\nONE NIGHT AT THE CALL CENTER  CHETAN BHAGAT  2005\nREVOLUTION 2020  CHETAN BHAGAT  2011\n", outputContent.toString());
     }
 
     @Test
     public void shouldCheckOutABookFromTheLibrary() {
-        Library books = new Library();
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
-        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
-        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+        Library library = new Library(books);
 
-        assertEquals("Thank you! Enjoy the book", books.checkoutABook("Five Point Someone"));
+        assertEquals("Thank you! Enjoy the book", library.checkoutABook("Five Point Someone"));
     }
 
     @Test
     public void shouldNotifyWhenABookIsNotAvailableInTheLibrary() {
-        Library books = new Library();
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
-        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
-        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+        Library library = new Library(books);
 
-        assertEquals("That book is not available", books.checkoutABook("2 States"));
+        assertEquals("That book is not available", library.checkoutABook("2 States"));
     }
 }

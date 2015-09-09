@@ -12,8 +12,6 @@ public class MainMenu {
     MainMenu(ArrayList<String> menu, ReadInput input) {
         this.menu = menu;
         this.input = input;
-        //menu = new ArrayList<>();
-        //input = new ReadInput();
     }
 
     public void addOptions(String option) {

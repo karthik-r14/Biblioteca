@@ -10,6 +10,7 @@ import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -30,12 +31,13 @@ public class TestExecuteMenuItem {
     @Test
     public void shouldDisplayAllBooksWhenUserInputsNumericOne() {
         ExecuteMenuItem executeMenu = new ExecuteMenuItem("1");
-        Library books = new Library();
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
-        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
-        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
-        executeMenu.execute(books);
+        Library library = new Library(books);
+        executeMenu.execute(library);
 
         assertEquals("FIVE POINT SOMEONE  CHETAN BHAGAT  2004\nONE NIGHT AT THE CALL CENTER  CHETAN BHAGAT  2005\nREVOLUTION 2020  CHETAN BHAGAT  2011\n", outputContent.toString());
     }
@@ -43,13 +45,14 @@ public class TestExecuteMenuItem {
     @Test
     public void shouldNotifyWhenInvalidOptionIsChosen() {
         ExecuteMenuItem executeMenu = new ExecuteMenuItem("-1");
-        Library books = new Library();
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
-        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
-        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+        Library library = new Library(books);
+        executeMenu.execute(library);
 
-        executeMenu.execute(books);
         assertEquals("SELECT A VALID OPTION\n", outputContent.toString());
     }
 
@@ -59,14 +62,15 @@ public class TestExecuteMenuItem {
     @Test
     public void shouldValidateQuit() {
         ExecuteMenuItem executeMenu = new ExecuteMenuItem("3");
-        Library books = new Library();
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
-        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
-        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+        Library library = new Library(books);
 
         exit.expectSystemExit();
-        executeMenu.execute(books);
+        executeMenu.execute(library);
     }
 
     @Test
@@ -76,12 +80,14 @@ public class TestExecuteMenuItem {
         System.setIn(inContent);
 
         ExecuteMenuItem executeMenu = new ExecuteMenuItem("2");
-        Library books = new Library();
-        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
-        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
-        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        executeMenu.execute(books);
+        Library library = new Library(books);
+        executeMenu.execute(library);
+
         assertEquals("ENTER BOOKNAME:\nThank you! Enjoy the book\n", outputContent.toString());
     }
 
@@ -92,12 +98,14 @@ public class TestExecuteMenuItem {
         System.setIn(inContent);
 
         ExecuteMenuItem executeMenu = new ExecuteMenuItem("2");
-        Library books = new Library();
-        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
-        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
-        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        executeMenu.execute(books);
+        Library library = new Library(books);
+        executeMenu.execute(library);
+
         assertEquals("ENTER BOOKNAME:\nThat book is not available\n", outputContent.toString());
     }
 }
