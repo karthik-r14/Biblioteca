@@ -20,7 +20,6 @@ public class TestWelcomeMessage {
 
     @After
     public void CleanUpStreams() {
-
         System.setOut(System.out);
     }
 

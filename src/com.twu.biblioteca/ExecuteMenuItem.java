@@ -9,19 +9,16 @@ public class ExecuteMenuItem {
         this.choice = choice;
     }
 
-    public void execute(Object object) {
-
-        Library tempBooks;
-        tempBooks = (Library) object;
+    public void execute(Library books) {
 
         switch (choice) {
             case "1":
-                tempBooks.displayBooks();
+                books.displayBooks();
                 break;
 
             case "2":
                 ReadInput input = new ReadInput();
-                display(tempBooks.checkoutABook(input.read("ENTER BOOKNAME:")));
+                display(books.checkoutABook(input.read("ENTER BOOKNAME:")));
                 break;
 
             case "3":

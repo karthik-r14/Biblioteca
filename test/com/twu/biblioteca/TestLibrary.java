@@ -45,4 +45,15 @@ public class TestLibrary {
 
         assertEquals("Thank you! Enjoy the book", books.checkoutABook("Five Point Someone"));
     }
+
+    @Test
+    public void shouldNotifyWhenABookIsNotAvailableInTheLibrary() {
+        Library books = new Library();
+
+        books.addABook(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.addABook(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.addABook(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+
+        assertEquals("That book is not available", books.checkoutABook("2 States"));
+    }
 }

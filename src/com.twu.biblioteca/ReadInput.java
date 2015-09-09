@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class ReadInput {
 
-    String userInput;
+    private String userInput;
 
     public String read(String message) {
         Scanner scanner = new Scanner(System.in);

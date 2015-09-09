@@ -30,7 +30,7 @@ public class TestReadInput {
 
         senseInput.display("Enter choice :");
 
-        assertEquals("Enter choice :\n", outputContent.toString() );
+        assertEquals("Enter choice :\n", outputContent.toString());
     }
 
     @Test
@@ -39,7 +39,7 @@ public class TestReadInput {
         ByteArrayInputStream inputStream = new ByteArrayInputStream("1".getBytes());
 
         System.setIn(inputStream);
-        String input= senseInput.read("Enter Choice:");
+        String input = senseInput.read("Enter Choice:");
         System.setIn(System.in);
 
         assertEquals("1", input);

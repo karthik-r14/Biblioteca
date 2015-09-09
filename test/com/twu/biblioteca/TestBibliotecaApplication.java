@@ -9,8 +9,11 @@ import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class TestBibliotecaApplication {
 
@@ -32,37 +35,64 @@ public class TestBibliotecaApplication {
         final ByteArrayInputStream inContent = new ByteArrayInputStream(userChoice.getBytes());
         System.setIn(inContent);
 
-        MainMenu menu = new MainMenu();
-        menu.addOptions("1.List Book");
-        menu.addOptions("2.Exit");
+        ArrayList<String> menu = new ArrayList<>();
+        ReadInput input = new ReadInput();
+        MainMenu mainMenu = new MainMenu(menu, input);
+        mainMenu.addOptions("1.List Book");
+        mainMenu.addOptions("2.Exit");
 
         Library library = new Library();
         library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
         library.addABook(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
-        BibliotecaApplication biblioteca = new BibliotecaApplication(menu, library);
-        biblioteca.run(true);
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
+
+        biblioteca.start();
+        biblioteca.run();
 
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Exit\nEnter choice :\nDA VINCI CODE  DAN BROWN  2003\nADVENTURES OF SHERLOCK HOLMES  ARTHUR CONAN DOYLE  1892\n", outputContent.toString());
     }
 
+    @Test
+    public void shouldDisplayWelcomeMessageOnStart() {
+        ArrayList<String> menu = new ArrayList<>();
+        ReadInput input = new ReadInput();
+        MainMenu mainMenu = new MainMenu(menu, input);
+        mainMenu.addOptions("1.List Book");
+        mainMenu.addOptions("2.Exit");
+
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
+        Library library = new Library();
+        library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
+        library.addABook(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
+
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
+        biblioteca.start();
+        assertEquals("WELCOME TO BIBLIOTECA\n", outputContent.toString());
+
+    }
     @Test
     public void shouldDisplayAMessageWhenUserEntersInvalidOption() {
         String userChoice = "8";
         final ByteArrayInputStream inContent = new ByteArrayInputStream(userChoice.getBytes());
         System.setIn(inContent);
 
-        MainMenu menu = new MainMenu();
-        menu.addOptions("1.List Book");
-        menu.addOptions("2.Exit");
+        ArrayList<String> menu = new ArrayList<>();
+        ReadInput input = new ReadInput();
+        MainMenu mainMenu = new MainMenu(menu, input);
+        mainMenu.addOptions("1.List Book");
+        mainMenu.addOptions("2.Exit");
 
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library();
         library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
         library.addABook(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
-        BibliotecaApplication biblioteca = new BibliotecaApplication(menu, library);
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
 
-        biblioteca.run(true);
+        biblioteca.start();
+        biblioteca.run();
 
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Exit\nEnter choice :\nSELECT A VALID OPTION\n", outputContent.toString());
     }
@@ -73,17 +103,21 @@ public class TestBibliotecaApplication {
         final ByteArrayInputStream inContent = new ByteArrayInputStream(userChoice.getBytes());
         System.setIn(inContent);
 
-        MainMenu menu = new MainMenu();
-        menu.addOptions("1.List Book");
-        menu.addOptions("2.Exit");
+        ArrayList<String> menu = new ArrayList<>();
+        ReadInput input = new ReadInput();
+        MainMenu mainMenu = new MainMenu(menu, input);
+        mainMenu.addOptions("1.List Book");
+        mainMenu.addOptions("2.Exit");
 
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library();
         library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
         library.addABook(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
-        BibliotecaApplication biblioteca = new BibliotecaApplication(menu, library);
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
 
-        biblioteca.run(true);
+        biblioteca.start();
+        biblioteca.run();
 
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Exit\nEnter choice :\nSELECT A VALID OPTION\n", outputContent.toString());
     }
@@ -97,19 +131,49 @@ public class TestBibliotecaApplication {
         final ByteArrayInputStream inContent = new ByteArrayInputStream(userChoice.getBytes());
         System.setIn(inContent);
 
-        MainMenu menu = new MainMenu();
-        menu.addOptions("1.List Book");
-        menu.addOptions("2.Checkout a Book");
-        menu.addOptions("3.Exit");
+        ArrayList<String> menu = new ArrayList<>();
+        ReadInput input = new ReadInput();
+        MainMenu mainMenu = new MainMenu(menu, input);
+        mainMenu.addOptions("1.List Book");
+        mainMenu.addOptions("2.Checkout a Book");
+        mainMenu.addOptions("3.Exit");
 
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library();
         library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
         library.addABook(new Book("Adventures of Sherlock Holmes", "Sir Arthur Conan Doyle", 1892));
 
-        BibliotecaApplication biblioteca = new BibliotecaApplication(menu, library);
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
 
         exit.expectSystemExitWithStatus(0);
-        biblioteca.run(true);
+        biblioteca.start();
+        biblioteca.run();
+    }
+
+    @Test
+    public void shouldCheckoutABook() {
+        String BookChoice = "Da Vinci code";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(BookChoice.getBytes());
+        System.setIn(inContent);
+
+        ArrayList<String> menu = new ArrayList<>();
+        ReadInput input = mock(ReadInput.class);
+        when(input.read("Enter choice :")).thenReturn("2");
+
+        MainMenu mainMenu = new MainMenu(menu, input);
+        mainMenu.addOptions("1.List Book");
+        mainMenu.addOptions("2.Checkout a Book");
+        mainMenu.addOptions("3.Exit");
+
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
+        Library library = new Library();
+        library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
+        library.addABook(new Book("Adventures of Sherlock Holmes", "Sir Arthur Conan Doyle", 1892));
+
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
+        biblioteca.start();
+        biblioteca.run();
+
+        assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Checkout a Book\n3.Exit\nENTER BOOKNAME:\nThank you! Enjoy the book\n", outputContent.toString());
     }
 }
-

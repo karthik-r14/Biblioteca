@@ -1,3 +1,4 @@
+//Biblioteca application launches the application
 package com.twu.biblioteca;
 
 public class BibliotecaApplication {
@@ -6,17 +7,18 @@ public class BibliotecaApplication {
     private MainMenu menu;
     private Library library;
 
-    public BibliotecaApplication(MainMenu menu, Library library) {
-        welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
+    public BibliotecaApplication(MainMenu menu, Library library, WelcomeMessage welcomeMessage) {
+        this.welcomeMessage = welcomeMessage;
         this.menu = menu;
         this.library = library;
     }
 
-    public void run(boolean welcomeFlag) {
-        if(welcomeFlag) {
-            welcomeMessage.display();
-        }
+    public void run() {
         menu.displayMenu();
         menu.executeOption(menu.takeUserInput(), library);
+    }
+
+    public void start() {
+        welcomeMessage.display();
     }
 }

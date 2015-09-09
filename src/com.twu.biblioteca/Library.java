@@ -26,7 +26,7 @@ public class Library {
                 return "Thank you! Enjoy the book";
             }
         }
-        return " ";
+        return "That book is not available";
     }
 
     public void displayBooks() {
@@ -34,6 +34,4 @@ public class Library {
             book.displayBook();
         }
     }
-
-
 }
