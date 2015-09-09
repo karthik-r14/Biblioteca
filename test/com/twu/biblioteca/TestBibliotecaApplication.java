@@ -72,6 +72,7 @@ public class TestBibliotecaApplication {
         assertEquals("WELCOME TO BIBLIOTECA\n", outputContent.toString());
 
     }
+
     @Test
     public void shouldDisplayAMessageWhenUserEntersInvalidOption() {
         String userChoice = "8";
@@ -175,5 +176,32 @@ public class TestBibliotecaApplication {
         biblioteca.run();
 
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Checkout a Book\n3.Exit\nENTER BOOKNAME:\nThank you! Enjoy the book\n", outputContent.toString());
+    }
+
+    @Test
+    public void shouldNotifyWhenBookIsNotAvailable() {
+        String BookChoice = "Revolution 2020";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(BookChoice.getBytes());
+        System.setIn(inContent);
+
+        ArrayList<String> menu = new ArrayList<>();
+        ReadInput input = mock(ReadInput.class);
+        when(input.read("Enter choice :")).thenReturn("2");
+
+        MainMenu mainMenu = new MainMenu(menu, input);
+        mainMenu.addOptions("1.List Book");
+        mainMenu.addOptions("2.Checkout a Book");
+        mainMenu.addOptions("3.Exit");
+
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
+        Library library = new Library();
+        library.addABook(new Book("Da Vinci code", "DAN BROWN", 2003));
+        library.addABook(new Book("Adventures of Sherlock Holmes", "Sir Arthur Conan Doyle", 1892));
+
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
+        biblioteca.start();
+        biblioteca.run();
+
+        assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Checkout a Book\n3.Exit\nENTER BOOKNAME:\nThat book is not available\n", outputContent.toString());
     }
 }
