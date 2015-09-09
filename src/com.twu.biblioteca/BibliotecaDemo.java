@@ -10,7 +10,8 @@ public class BibliotecaDemo {
         MainMenu menu = new MainMenu(new ArrayList<String>(), new ReadInput());
         menu.addOptions("1.List Books");
         menu.addOptions("2.Checkout a Book");
-        menu.addOptions("3.Exit");
+        menu.addOptions("3.Return a Book");
+        menu.addOptions("4.Exit");
 
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("The Bicentennial Man", "Issac Asimov", 1976));

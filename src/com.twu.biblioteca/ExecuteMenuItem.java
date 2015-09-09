@@ -9,19 +9,23 @@ public class ExecuteMenuItem {
         this.choice = choice;
     }
 
-    public void execute(Library books) {
+    public void execute(Library library) {
+        ReadInput input = new ReadInput();
 
         switch (choice) {
             case "1":
-                books.displayBooks();
+                library.displayBooks();
                 break;
 
             case "2":
-                ReadInput input = new ReadInput();
-                display(books.checkoutABook(input.read("ENTER BOOKNAME:")));
+                display(library.checkoutABook(input.read("ENTER BOOKNAME:")));
                 break;
 
             case "3":
+                display(library.returnABook(input.read("ENTER BOOK TO BE RETURNED:")));
+                break;
+
+            case "4":
                 System.exit(0);
 
             default:
