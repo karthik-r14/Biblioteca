@@ -33,13 +33,12 @@ public class ExecuteMenuItemTest {
         ExecuteMenuItem executeMenu = new ExecuteMenuItem("1");
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
-        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books);
         executeMenu.execute(library);
 
-        assertEquals("FIVE POINT SOMEONE  CHETAN BHAGAT  2004\nONE NIGHT AT THE CALL CENTER  CHETAN BHAGAT  2005\nREVOLUTION 2020  CHETAN BHAGAT  2011\n", outputContent.toString());
+        assertEquals("------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "FIVE POINT SOMEONE", "CHETAN BHAGAT", 2004) + "\n" + String.format("%-40S%-40S%-40S", "REVOLUTION 2020", "CHETAN BHAGAT", 2011) + "\n", outputContent.toString());
     }
 
     @Test
@@ -146,6 +145,6 @@ public class ExecuteMenuItemTest {
         library.checkoutABook("Five Point Someone");
         executeMenu.execute(library);
 
-        assertEquals("ENTER BOOK TO BE RETURNED:\nThat is not a valid book to return\n", outputContent.toString() );
+        assertEquals("ENTER BOOK TO BE RETURNED:\nThat is not a valid book to return\n", outputContent.toString());
     }
 }

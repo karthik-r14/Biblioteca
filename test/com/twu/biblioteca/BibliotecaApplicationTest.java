@@ -52,7 +52,7 @@ public class BibliotecaApplicationTest {
         biblioteca.start();
         biblioteca.run();
 
-        assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Exit\nEnter choice :\nDA VINCI CODE  DAN BROWN  2003\nADVENTURES OF SHERLOCK HOLMES  ARTHUR CONAN DOYLE  1892\n", outputContent.toString());
+        assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Exit\nEnter choice :\n" + "------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "TITLE", "AUTHOR", "YEAR") +  "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "DA VINCI CODE", "DAN BROWN", 2003) + "\n"+String.format("%-40S%-40S%-40S", "ADVENTURES OF SHERLOCK HOLMES", "ARTHUR CONAN DOYLE", 1892) + "\n", outputContent.toString());
     }
 
     @Test
@@ -246,17 +246,17 @@ public class BibliotecaApplicationTest {
     }
 
     @Test
-    public void shouldPrintMessageWhenDisplayIsInvoked( ) {
+    public void shouldPrintMessageWhenDisplayIsInvoked() {
 
         ArrayList<String> menu = new ArrayList<>();
         MainMenu mainMenu = new MainMenu(menu);
         ArrayList<Book> books = new ArrayList<>();
         Library library = new Library(books);
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(mainMenu, library , welcomeMessage, new ReadInput(new Scanner(System.in)));
+        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(mainMenu, library, welcomeMessage, new ReadInput(new Scanner(System.in)));
 
         bibliotecaApplication.display("Enter choice :");
 
-        assertEquals("Enter choice :\n", outputContent.toString() );
+        assertEquals("Enter choice :\n", outputContent.toString());
     }
 }

@@ -16,6 +16,9 @@ public class ExecuteMenuItem {
 
         switch (choice) {
             case "1":
+                display("------------------------------------------------------------------------------------");
+                display(String.format("%-40S%-40S%-40S", "TITLE", "AUTHOR", "YEAR"));
+                display("------------------------------------------------------------------------------------");
                 library.displayBooks();
                 break;
 

@@ -31,8 +31,8 @@ public class Library {
     }
 
     public String returnABook(String bookName) {
-        for(Book book : checkedOutBooks) {
-            if(book.compareWithBookName(bookName)) {
+        for (Book book : checkedOutBooks) {
+            if (book.compareWithBookName(bookName)) {
                 listOfBooks.add(book);
                 checkedOutBooks.remove(book);
                 return "Thank you for returning the book";

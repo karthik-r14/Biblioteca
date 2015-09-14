@@ -14,7 +14,7 @@ public class Book {
     }
 
     public void displayBook() {
-        System.out.println(bookName + "  " + authorName + "  " + yearOfPublish);
+        System.out.println(String.format("%-40S%-40S%-40d", bookName, authorName, yearOfPublish));
     }
 
     public boolean compareWithBookName(String thatbookName) {

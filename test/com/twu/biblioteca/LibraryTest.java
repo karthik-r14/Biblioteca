@@ -28,13 +28,13 @@ public class LibraryTest {
     public void shouldListBooksInTheLibrary() {
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
-        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books);
         library.displayBooks();
 
-        assertEquals("FIVE POINT SOMEONE  CHETAN BHAGAT  2004\nONE NIGHT AT THE CALL CENTER  CHETAN BHAGAT  2005\nREVOLUTION 2020  CHETAN BHAGAT  2011\n", outputContent.toString());
+        assertEquals(String.format("%-40S%-40S%-40S", "FIVE POINT SOMEONE", "CHETAN BHAGAT", 2004) + "\n" + String.format("%-40S%-40S%-40S", "Revolution 2020", "CHETAN BHAGAT", 2011) + "\n", outputContent.toString());
+
     }
 
     @Test
