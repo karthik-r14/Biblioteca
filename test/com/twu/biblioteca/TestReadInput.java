@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 
-public class ReadInputTest {
+public class TestReadInput {
 
     @Test
     public void shouldReturnChoiceInputByTheUser() {

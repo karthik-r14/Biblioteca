@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-public class LibraryTest {
+public class TestLibrary {
 
     private final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
 

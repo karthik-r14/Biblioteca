@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 
 
-public class MainMenuTest {
+public class TestMainMenu {
 
     private final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
 
