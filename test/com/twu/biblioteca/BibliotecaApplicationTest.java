@@ -10,6 +10,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -36,8 +37,8 @@ public class BibliotecaApplicationTest {
         System.setIn(inContent);
 
         ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input);
+        ReadInput input = new ReadInput(new Scanner(System.in));
+        MainMenu mainMenu = new MainMenu(menu);
         mainMenu.addOptions("1.List Book");
         mainMenu.addOptions("2.Exit");
 
@@ -47,7 +48,7 @@ public class BibliotecaApplicationTest {
 
         Library library = new Library(books);
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
         biblioteca.run();
 
@@ -57,8 +58,8 @@ public class BibliotecaApplicationTest {
     @Test
     public void shouldDisplayWelcomeMessageOnStart() {
         ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input);
+        ReadInput input = new ReadInput(new Scanner(System.in));
+        MainMenu mainMenu = new MainMenu(menu);
         mainMenu.addOptions("1.List Book");
         mainMenu.addOptions("2.Exit");
 
@@ -68,7 +69,7 @@ public class BibliotecaApplicationTest {
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library(books);
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
 
         assertEquals("WELCOME TO BIBLIOTECA\n", outputContent.toString());
@@ -82,8 +83,8 @@ public class BibliotecaApplicationTest {
         System.setIn(inContent);
 
         ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input);
+        ReadInput input = new ReadInput(new Scanner(System.in));
+        MainMenu mainMenu = new MainMenu(menu);
         mainMenu.addOptions("1.List Book");
         mainMenu.addOptions("2.Exit");
 
@@ -93,7 +94,7 @@ public class BibliotecaApplicationTest {
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library(books);
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
         biblioteca.run();
 
@@ -107,8 +108,8 @@ public class BibliotecaApplicationTest {
         System.setIn(inContent);
 
         ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input);
+        ReadInput input = new ReadInput(new Scanner(System.in));
+        MainMenu mainMenu = new MainMenu(menu);
         mainMenu.addOptions("1.List Book");
         mainMenu.addOptions("2.Exit");
 
@@ -118,7 +119,7 @@ public class BibliotecaApplicationTest {
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library(books);
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
         biblioteca.run();
 
@@ -135,8 +136,8 @@ public class BibliotecaApplicationTest {
         System.setIn(inContent);
 
         ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input);
+        ReadInput input = new ReadInput(new Scanner(System.in));
+        MainMenu mainMenu = new MainMenu(menu);
         mainMenu.addOptions("1.List Book");
         mainMenu.addOptions("2.Checkout a Book");
         mainMenu.addOptions("3.Exit");
@@ -148,7 +149,7 @@ public class BibliotecaApplicationTest {
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library(books);
 
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
 
         exit.expectSystemExitWithStatus(0);
         biblioteca.start();
@@ -162,10 +163,8 @@ public class BibliotecaApplicationTest {
         System.setIn(inContent);
 
         ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = mock(ReadInput.class);
-        when(input.read("Enter choice :")).thenReturn("2");
 
-        MainMenu mainMenu = new MainMenu(menu, input);
+        MainMenu mainMenu = new MainMenu(menu);
         mainMenu.addOptions("1.List Book");
         mainMenu.addOptions("2.Checkout a Book");
         mainMenu.addOptions("3.Exit");
@@ -176,12 +175,14 @@ public class BibliotecaApplicationTest {
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library(books);
+        ReadInput input = mock(ReadInput.class);
+        when(input.read()).thenReturn("2");
 
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
         biblioteca.run();
 
-        assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Checkout a Book\n3.Exit\nENTER BOOKNAME:\nThank you! Enjoy the book\n", outputContent.toString());
+        assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Checkout a Book\n3.Exit\nEnter choice :\nENTER BOOKNAME:\nThank you! Enjoy the book\n", outputContent.toString());
     }
 
     @Test
@@ -192,9 +193,9 @@ public class BibliotecaApplicationTest {
 
         ArrayList<String> menu = new ArrayList<>();
         ReadInput input = mock(ReadInput.class);
-        when(input.read("Enter choice :")).thenReturn("2");
+        when(input.read()).thenReturn("2");
 
-        MainMenu mainMenu = new MainMenu(menu, input);
+        MainMenu mainMenu = new MainMenu(menu);
         mainMenu.addOptions("1.List Book");
         mainMenu.addOptions("2.Checkout a Book");
         mainMenu.addOptions("3.Exit");
@@ -206,11 +207,11 @@ public class BibliotecaApplicationTest {
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library(books);
 
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
         biblioteca.run();
 
-        assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Checkout a Book\n3.Exit\nENTER BOOKNAME:\nThat book is not available\n", outputContent.toString());
+        assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Checkout a Book\n3.Exit\nEnter choice :\nENTER BOOKNAME:\nThat book is not available\n", outputContent.toString());
     }
 
     @Test
@@ -220,10 +221,7 @@ public class BibliotecaApplicationTest {
         System.setIn(inContent);
 
         ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = mock(ReadInput.class);
-        when(input.read("Enter choice :")).thenReturn("3");
-
-        MainMenu mainMenu = new MainMenu(menu,input);
+        MainMenu mainMenu = new MainMenu(menu);
         mainMenu.addOptions("1.List Books");
         mainMenu.addOptions("2.Checkout a Book");
         mainMenu.addOptions("3.Return a Book");
@@ -237,11 +235,28 @@ public class BibliotecaApplicationTest {
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library(books);
         library.checkoutABook("Five Point Someone");
+        ReadInput input = mock(ReadInput.class);
+        when(input.read()).thenReturn("3");
 
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage);
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
         biblioteca.run();
 
-        assertEquals("WELCOME TO BIBLIOTECA\n1.List Books\n2.Checkout a Book\n3.Return a Book\n4.Quit\nENTER BOOK TO BE RETURNED:\nThank you for returning the book\n", outputContent.toString());
+        assertEquals("WELCOME TO BIBLIOTECA\n1.List Books\n2.Checkout a Book\n3.Return a Book\n4.Quit\nEnter choice :\nENTER BOOK TO BE RETURNED:\nThank you for returning the book\n", outputContent.toString());
+    }
+
+    @Test
+    public void shouldPrintMessageWhenDisplayIsInvoked( ) {
+
+        ArrayList<String> menu = new ArrayList<>();
+        MainMenu mainMenu = new MainMenu(menu);
+        ArrayList<Book> books = new ArrayList<>();
+        Library library = new Library(books);
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
+        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(mainMenu, library , welcomeMessage, new ReadInput(new Scanner(System.in)));
+
+        bibliotecaApplication.display("Enter choice :");
+
+        assertEquals("Enter choice :\n", outputContent.toString() );
     }
 }

@@ -31,8 +31,7 @@ public class MainMenuTest {
     @Test
     public void shouldDisplayListBooksInMainMenu() {
         ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input);
+        MainMenu mainMenu = new MainMenu(menu);
         mainMenu.addOptions("1.List Books");
         mainMenu.displayMenu();
 
@@ -40,24 +39,9 @@ public class MainMenuTest {
     }
 
     @Test
-    public void shouldReadInputFromUser() {
-        ArrayList<String> menu = new ArrayList<>();
-        ReadInput input1 = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input1);
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("1".getBytes());
-
-        System.setIn(inputStream);
-        String input2 = mainMenu.takeUserInput();
-        System.setIn(System.in);
-
-        assertEquals("1", input2);
-    }
-
-    @Test
     public void shouldDisplayAllBooksInLibraryWhenUserInputsNumericOne() {
         ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input);
+        MainMenu mainMenu = new MainMenu(menu);
 
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
@@ -73,14 +57,12 @@ public class MainMenuTest {
     @Test
     public void shouldNotifyWhenInvalidOptionIsChosen() {
         ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input);
+        MainMenu mainMenu = new MainMenu(menu);
 
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
-
 
         Library library = new Library(books);
         mainMenu.executeOption("-1", library);
@@ -93,8 +75,7 @@ public class MainMenuTest {
     @Test
     public void shouldValidateQuit() {
         ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu, input);
+        MainMenu mainMenu = new MainMenu(menu);
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
@@ -115,8 +96,7 @@ public class MainMenuTest {
         System.setIn(inContent);
 
         ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu,input);
+        MainMenu mainMenu = new MainMenu(menu);
 
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
@@ -139,8 +119,7 @@ public class MainMenuTest {
         System.setIn(inContent);
 
         ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu,input);
+        MainMenu mainMenu = new MainMenu(menu);
 
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
@@ -165,8 +144,7 @@ public class MainMenuTest {
         System.setIn(inContent);
 
         ArrayList<String> menu = new ArrayList<>();
-        ReadInput input = new ReadInput();
-        MainMenu mainMenu = new MainMenu(menu,input);
+        MainMenu mainMenu = new MainMenu(menu);
 
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));

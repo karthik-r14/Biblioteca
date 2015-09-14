@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,21 +26,12 @@ public class ReadInputTest {
     }
 
     @Test
-    public void shouldDisplayMessage() {
-        ReadInput senseInput = new ReadInput();
-
-        senseInput.display("Enter choice :");
-
-        assertEquals("Enter choice :\n", outputContent.toString());
-    }
-
-    @Test
     public void shouldReturnChoiceInputByTheUser() {
-        ReadInput senseInput = new ReadInput();
+        ReadInput senseInput = new ReadInput(new Scanner(System.in));
         ByteArrayInputStream inputStream = new ByteArrayInputStream("1".getBytes());
 
         System.setIn(inputStream);
-        String input = senseInput.read("Enter Choice:");
+        String input = senseInput.read();
         System.setIn(System.in);
 
         assertEquals("1", input);

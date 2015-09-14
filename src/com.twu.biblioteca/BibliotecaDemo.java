@@ -2,12 +2,13 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class BibliotecaDemo {
 
     public static void main(String[] args) {
 
-        MainMenu menu = new MainMenu(new ArrayList<String>(), new ReadInput());
+        MainMenu menu = new MainMenu(new ArrayList<String>());
         menu.addOptions("1.List Books");
         menu.addOptions("2.Checkout a Book");
         menu.addOptions("3.Return a Book");
@@ -23,7 +24,8 @@ public class BibliotecaDemo {
 
         Library library = new Library(books);
 
-        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(menu, library, new WelcomeMessage("WELCOME TO BIBLIOTECA"));
+
+        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(menu, library, new WelcomeMessage("WELCOME TO BIBLIOTECA"), new ReadInput(new Scanner(System.in)));
 
         bibliotecaApplication.start();
         while (true) {

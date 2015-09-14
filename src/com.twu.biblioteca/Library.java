@@ -1,8 +1,7 @@
-//A Library comprises of books which can be displayed and a funtionality for adding a book to the list.
+//A Library comprises of books which can be displayed, checkedout.Also a checkedout book can be returned
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
-import java.util.zip.CheckedInputStream;
 
 public class Library {
 
@@ -15,7 +14,6 @@ public class Library {
     }
 
     public String checkoutABook(String bookName) {
-
         for (Book book : listOfBooks) {
             if (book.compareWithBookName(bookName)) {
                 checkedOutBooks.add(book);

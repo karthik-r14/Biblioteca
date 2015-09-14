@@ -1,6 +1,8 @@
 //ExecuteMenuItem executes the desired menu item based on choice
 package com.twu.biblioteca;
 
+import java.util.Scanner;
+
 public class ExecuteMenuItem {
 
     private String choice;
@@ -10,7 +12,7 @@ public class ExecuteMenuItem {
     }
 
     public void execute(Library library) {
-        ReadInput input = new ReadInput();
+        ReadInput input = new ReadInput(new Scanner(System.in));
 
         switch (choice) {
             case "1":
@@ -18,11 +20,13 @@ public class ExecuteMenuItem {
                 break;
 
             case "2":
-                display(library.checkoutABook(input.read("ENTER BOOKNAME:")));
+                display("ENTER BOOKNAME:");
+                display(library.checkoutABook(input.read()));
                 break;
 
             case "3":
-                display(library.returnABook(input.read("ENTER BOOK TO BE RETURNED:")));
+                display("ENTER BOOK TO BE RETURNED:");
+                display(library.returnABook(input.read()));
                 break;
 
             case "4":

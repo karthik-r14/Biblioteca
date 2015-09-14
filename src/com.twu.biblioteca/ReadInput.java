@@ -5,16 +5,15 @@ import java.util.Scanner;
 
 public class ReadInput {
 
-    private String userInput;
+    private Scanner scanner;
 
-    public String read(String message) {
-        Scanner scanner = new Scanner(System.in);
-        display(message);
-        userInput = scanner.nextLine();
-        return userInput;
+    ReadInput(Scanner scanner) {
+        this.scanner = scanner;
     }
 
-    public void display(String message) {
-        System.out.println(message);
+    public String read() {
+        scanner = new Scanner(System.in);
+        return scanner.nextLine();
+
     }
 }

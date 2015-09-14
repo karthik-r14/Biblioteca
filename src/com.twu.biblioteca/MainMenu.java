@@ -9,9 +9,8 @@ public class MainMenu {
     private ReadInput input;
     private ExecuteMenuItem item;
 
-    MainMenu(ArrayList<String> menu, ReadInput input) {
+    MainMenu(ArrayList<String> menu) {
         this.menu = menu;
-        this.input = input;
     }
 
     public void addOptions(String option) {
@@ -24,12 +23,8 @@ public class MainMenu {
         }
     }
 
-    public String takeUserInput() {
-        return input.read("Enter choice :");
-    }
-
-    public void executeOption(String choice, Library books) {
+    public void executeOption(String choice, Library library) {
         item = new ExecuteMenuItem(choice);
-        item.execute(books);
+        item.execute(library);
     }
 }

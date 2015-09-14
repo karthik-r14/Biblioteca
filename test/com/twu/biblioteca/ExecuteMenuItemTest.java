@@ -127,7 +127,6 @@ public class ExecuteMenuItemTest {
         executeMenu.execute(library);
 
         assertEquals("ENTER BOOK TO BE RETURNED:\nThank you for returning the book\n", outputContent.toString());
-
     }
 
     @Test
