@@ -12,8 +12,6 @@ public class ReadInput {
     }
 
     public String read() {
-        scanner = new Scanner(System.in);
         return scanner.nextLine();
-
     }
 }

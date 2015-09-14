@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class MainMenu {
 
     private ArrayList<String> menu;
-    private ReadInput input;
     private ExecuteMenuItem item;
 
     MainMenu(ArrayList<String> menu) {
