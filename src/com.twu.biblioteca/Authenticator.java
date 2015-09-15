@@ -1,3 +1,4 @@
+//An authenticator takes in credentials and validates it.
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class Authenticator {
         password = input.read();
     }
 
-    private void display(String message) {
+    void display(String message) {
         System.out.println(message);
     }
 

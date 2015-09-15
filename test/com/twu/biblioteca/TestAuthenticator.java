@@ -1,15 +1,40 @@
 package com.twu.biblioteca;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class TestAuthenticator {
+
+    private final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
+
+    @Before
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outputContent));
+    }
+
+    @After
+    public void CleanUpStreams() {
+        System.setOut(System.out);
+    }
+
+    @Test
+    public void shouldDisplayMessage() {
+
+        Authenticator authenticator = new Authenticator(new ReadInput(new Scanner(System.in)), new ArrayList<UserAccount>());
+
+        authenticator.display("Enter user id:");
+        assertEquals("Enter user id:\n", outputContent.toString());
+    }
 
     @Test
     public void shouldValidateUserCredentials() {
@@ -25,4 +50,5 @@ public class TestAuthenticator {
 
         assertEquals(true, authenticator.validate());
     }
+
 }
