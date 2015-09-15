@@ -13,6 +13,7 @@ public class BibliotecaDemo {
         menu.addOptions("2.Checkout a Book");
         menu.addOptions("3.Return a Book");
         menu.addOptions("4.Exit");
+        menu.addOptions("5.List Movies");
 
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("The Bicentennial Man", "Issac Asimov", 1976));
@@ -24,6 +25,7 @@ public class BibliotecaDemo {
 
         ArrayList<Movie> movie = new ArrayList<>();
         movie.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+        movie.add(new Movie("V for Vendatta", "James Mcteigue", 2006, 8.2f));
         Library library = new Library(books, movie);
 
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(menu, library, new WelcomeMessage("WELCOME TO BIBLIOTECA"), new ReadInput(new Scanner(System.in)));

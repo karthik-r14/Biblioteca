@@ -8,8 +8,8 @@ public class Movie {
     private float movieRating;
 
     public Movie(String movieName, String directorName, int movieYear, float movieRating) {
-        this.movieName = movieName;
-        this.directorName = directorName;
+        this.movieName = movieName.toUpperCase();
+        this.directorName = directorName.toUpperCase();
         this.movieYear = movieYear;
         this.movieRating = movieRating;
     }

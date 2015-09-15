@@ -46,7 +46,7 @@ public class TestBibliotecaApplication {
         books.add(new Book("Da Vinci code", "DAN BROWN", 2003));
         books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
-        Library library = new Library(books,new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>());
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
@@ -259,4 +259,29 @@ public class TestBibliotecaApplication {
 
         assertEquals("Enter choice :\n", outputContent.toString());
     }
+
+    @Test
+    public void shouldDisplayTheListOfMoviesWhenUserInputsFive() {
+        String userChoice = "5";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(userChoice.getBytes());
+        System.setIn(inContent);
+
+        ArrayList<String> menu = new ArrayList<>();
+        ReadInput input = new ReadInput(new Scanner(System.in));
+        MainMenu mainMenu = new MainMenu(menu);
+        mainMenu.addOptions("1.List Book");
+        mainMenu.addOptions("2.List Movies");
+
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+
+        Library library = new Library(new ArrayList<Book>(), movies);
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
+        biblioteca.start();
+        biblioteca.run();
+
+        assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.List Movies\nEnter choice :\n" + "------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n------------------------------------------------------------------------------------" + "\n" + String.format("%-40S%-25S%-25S%-25S", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
+    }
+
 }

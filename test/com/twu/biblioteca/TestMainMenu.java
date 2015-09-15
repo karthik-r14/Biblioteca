@@ -172,6 +172,6 @@ public class TestMainMenu {
         Library library = new Library(books, movies);
 
         mainMenu.executeOption("5", library);
-        assertEquals("------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40s%-25s%-25s%-25s", "The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8) + "\n", outputContent.toString());
+        assertEquals("------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40s%-25s%-25s%-25s", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
     }
 }
