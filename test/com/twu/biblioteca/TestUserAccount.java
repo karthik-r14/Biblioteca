@@ -1,3 +1,5 @@
+package com.twu.biblioteca;
+
 import com.twu.biblioteca.UserAccount;
 import org.junit.After;
 import org.junit.Before;
@@ -25,9 +27,23 @@ public class TestUserAccount {
     @Test
     public void shouldDisplayUserInfo() {
 
-        UserAccount user = new UserAccount("karthik_r14", "Karthik R", "abc-defg", "karthikr@thoughtworks.com ", "9880443410 ");
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg");
         user.displayInfo();
 
-        assertEquals("USER NAME :"+"karthik_r14"+"\n"+"NAME :"+"KARTHIK R"+"\n"+"EMAIL ID :"+"karthikr@thoughtworks.com "+"\n"+"PHONE NUMBER :"+"9880443410 "+"\n", outputContent.toString());
+        assertEquals("USER NAME :" + "karthik_r14\n", outputContent.toString());
+    }
+
+    @Test
+    public void shouldReturnTrueOnSameCredentials() {
+
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg");
+        assertEquals(true, user.compareUser("karthik_r14", "abc-defg"));
+    }
+
+    @Test
+    public void shouldReturnFalseOnDifferentCredentials() {
+
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg");
+        assertEquals(false, user.compareUser("karthik1408", "cdefgk"));
     }
 }

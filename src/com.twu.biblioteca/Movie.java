@@ -1,3 +1,4 @@
+//A movie has a name,director,year,rating.Also,details of the movie can be displayed.
 package com.twu.biblioteca;
 
 public class Movie {

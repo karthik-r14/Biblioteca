@@ -314,7 +314,7 @@ public class TestBibliotecaApplication {
 
     @Test
     public void shouldNotifyWhenMovieIsNotAvailable() {
-        String BookChoice = "V for Vendatta";
+        String BookChoice = "V for Vendetta";
         final ByteArrayInputStream inContent = new ByteArrayInputStream(BookChoice.getBytes());
         System.setIn(inContent);
 
