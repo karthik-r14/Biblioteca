@@ -7,9 +7,11 @@ public class Library {
 
     private ArrayList<Book> listOfBooks;
     private ArrayList<Book> checkedOutBooks;
+    private ArrayList<Movie> listOfMovies;
 
-    public Library(ArrayList<Book> listOfBooks) {
+    public Library(ArrayList<Book> listOfBooks, ArrayList<Movie> listOfMovies) {
         this.listOfBooks = listOfBooks;
+        this.listOfMovies = listOfMovies;
         checkedOutBooks = new ArrayList<>();
     }
 
@@ -27,6 +29,12 @@ public class Library {
     public void displayBooks() {
         for (Book book : listOfBooks) {
             book.displayBook();
+        }
+    }
+
+    public void displayMovie() {
+        for (Movie movie : listOfMovies) {
+            movie.displayMovie();
         }
     }
 

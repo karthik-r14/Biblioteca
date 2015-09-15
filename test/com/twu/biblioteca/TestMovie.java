@@ -1,3 +1,5 @@
+package com.twu.biblioteca;
+
 import com.twu.biblioteca.Movie;
 import org.junit.After;
 import org.junit.Before;

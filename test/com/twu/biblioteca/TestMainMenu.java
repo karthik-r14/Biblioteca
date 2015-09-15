@@ -46,7 +46,7 @@ public class TestMainMenu {
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
 
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         mainMenu.executeOption("1", library);
 
         assertEquals("------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "FIVE POINT SOMEONE", "CHETAN BHAGAT", 2004) + "\n", outputContent.toString());
@@ -62,7 +62,7 @@ public class TestMainMenu {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         mainMenu.executeOption("-1", library);
         assertEquals("SELECT A VALID OPTION\n", outputContent.toString());
     }
@@ -79,7 +79,7 @@ public class TestMainMenu {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         mainMenu.addOptions("List Books");
         mainMenu.addOptions("Checkout a Book");
         mainMenu.addOptions("Quit");
@@ -101,7 +101,7 @@ public class TestMainMenu {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         mainMenu.addOptions("List Books");
         mainMenu.addOptions("Checkout a Book");
         mainMenu.addOptions("Quit");
@@ -124,7 +124,7 @@ public class TestMainMenu {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         library.checkoutABook("Five Point Someone");
         mainMenu.addOptions("List Books");
         mainMenu.addOptions("Checkout a Book");
@@ -149,7 +149,7 @@ public class TestMainMenu {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         library.checkoutABook("Five Point Someone");
         mainMenu.addOptions("List Books");
         mainMenu.addOptions("Checkout a Book");

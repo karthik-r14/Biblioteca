@@ -22,8 +22,9 @@ public class BibliotecaDemo {
         books.add(new Book("Da Vinci code", "DAN BROWN", 2003));
         books.add(new Book("Adventures of Sherlock Holmes", "Sir Arthur Conan Doyle", 1892));
 
-        Library library = new Library(books);
-
+        ArrayList<Movie> movie = new ArrayList<>();
+        movie.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+        Library library = new Library(books, movie);
 
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(menu, library, new WelcomeMessage("WELCOME TO BIBLIOTECA"), new ReadInput(new Scanner(System.in)));
 

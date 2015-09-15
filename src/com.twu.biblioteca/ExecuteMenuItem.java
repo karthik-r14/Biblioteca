@@ -35,6 +35,13 @@ public class ExecuteMenuItem {
             case "4":
                 System.exit(0);
 
+            case "5":
+                display("------------------------------------------------------------------------------------");
+                display(String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING"));
+                display("------------------------------------------------------------------------------------");
+                library.displayMovie();
+                break;
+
             default:
                 display("SELECT A VALID OPTION");
         }

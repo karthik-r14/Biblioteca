@@ -46,7 +46,7 @@ public class TestBibliotecaApplication {
         books.add(new Book("Da Vinci code", "DAN BROWN", 2003));
         books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
-        Library library = new Library(books);
+        Library library = new Library(books,new ArrayList<Movie>());
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
@@ -68,7 +68,7 @@ public class TestBibliotecaApplication {
         books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
 
@@ -93,7 +93,7 @@ public class TestBibliotecaApplication {
         books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
         biblioteca.run();
@@ -118,7 +118,7 @@ public class TestBibliotecaApplication {
         books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
         biblioteca.run();
@@ -147,7 +147,7 @@ public class TestBibliotecaApplication {
         books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
 
@@ -174,7 +174,7 @@ public class TestBibliotecaApplication {
         books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         ReadInput input = mock(ReadInput.class);
         when(input.read()).thenReturn("2");
 
@@ -205,7 +205,7 @@ public class TestBibliotecaApplication {
         books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
@@ -233,7 +233,7 @@ public class TestBibliotecaApplication {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         library.checkoutABook("Five Point Someone");
         ReadInput input = mock(ReadInput.class);
         when(input.read()).thenReturn("3");
@@ -251,7 +251,7 @@ public class TestBibliotecaApplication {
         ArrayList<String> menu = new ArrayList<>();
         MainMenu mainMenu = new MainMenu(menu);
         ArrayList<Book> books = new ArrayList<>();
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(mainMenu, library, welcomeMessage, new ReadInput(new Scanner(System.in)));
 

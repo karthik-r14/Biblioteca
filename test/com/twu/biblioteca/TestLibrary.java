@@ -30,7 +30,7 @@ public class TestLibrary {
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         library.displayBooks();
 
         assertEquals(String.format("%-40S%-40S%-40S", "FIVE POINT SOMEONE", "CHETAN BHAGAT", 2004) + "\n" + String.format("%-40S%-40S%-40S", "Revolution 2020", "CHETAN BHAGAT", 2011) + "\n", outputContent.toString());
@@ -44,7 +44,7 @@ public class TestLibrary {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
 
         assertEquals("Thank you! Enjoy the book", library.checkoutABook("Five Point Someone"));
     }
@@ -56,7 +56,7 @@ public class TestLibrary {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
 
         assertEquals("That book is not available", library.checkoutABook("2 States"));
     }
@@ -68,7 +68,7 @@ public class TestLibrary {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         library.checkoutABook("Five Point Someone");
 
         assertEquals("Thank you for returning the book", library.returnABook("Five Point Someone"));
@@ -81,7 +81,7 @@ public class TestLibrary {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books);
+        Library library = new Library(books, new ArrayList<Movie>());
         library.checkoutABook("Five Point Someone");
 
         assertEquals("That is not a valid book to return", library.returnABook("2 states"));
