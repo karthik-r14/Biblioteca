@@ -18,4 +18,8 @@ public class Movie {
 
         System.out.println(String.format("%-40s%-25s%-25s%-25s", movieName, directorName, movieYear, movieRating));
     }
+
+    public boolean compareWithBookName(String thatMovieName) {
+        return movieName.equals(thatMovieName.toUpperCase());
+    }
 }

@@ -26,6 +26,16 @@ public class Library {
         return "That book is not available";
     }
 
+    public String checkoutAMovie(String movieName) {
+        for (Movie movie : listOfMovies) {
+            if (movie.compareWithBookName(movieName)) {
+                listOfMovies.remove(movie);
+                return "Thank you! Enjoy the movie";
+            }
+        }
+        return "That movie is not available";
+    }
+
     public void displayBooks() {
         for (Book book : listOfBooks) {
             book.displayBook();

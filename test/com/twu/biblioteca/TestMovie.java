@@ -29,6 +29,20 @@ public class TestMovie {
         Movie movie = new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f);
         movie.displayMovie();
 
-        assertEquals(String.format("%-40s%-25s%-25s%-25s", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8)+"\n", outputContent.toString());
+        assertEquals(String.format("%-40s%-25s%-25s%-25s", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
+    }
+
+    @Test
+    public void shouldReturnTrueWhenMovieNameMatches() {
+        Movie movie = new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f);
+
+        assertEquals(true, movie.compareWithBookName("The boy in the striped pyjamas"));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenMovieNameDontMatch() {
+        Movie movie = new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f);
+
+        assertEquals(false, movie.compareWithBookName("V For Vendatta"));
     }
 }

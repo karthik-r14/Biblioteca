@@ -29,7 +29,7 @@ public class TestBook {
 
         book.displayBook();
 
-        assertEquals(String.format("%-40S%-40S%-40S", "THE 3 MISTAKES OF MY LIFE", "CHETAN BHAGAT", "2008")+"\n", outputContent.toString());
+        assertEquals(String.format("%-40S%-40S%-40S", "THE 3 MISTAKES OF MY LIFE", "CHETAN BHAGAT", "2008") + "\n", outputContent.toString());
     }
 
     @Test

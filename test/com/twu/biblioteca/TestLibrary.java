@@ -86,4 +86,38 @@ public class TestLibrary {
 
         assertEquals("That is not a valid book to return", library.returnABook("2 states"));
     }
+
+    @Test
+    public void shouldDisplayAllMovies() {
+        ArrayList<String> menu = new ArrayList<>();
+
+        ArrayList<Book> books = new ArrayList<>();
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+
+        Library library = new Library(books, movies);
+        library.displayMovie();
+
+        assertEquals(String.format("%-40s%-25s%-25s%-25s", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
+    }
+
+    @Test
+    public void shouldCheckOutAMovieFromTheLibrary() {
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+
+        Library library = new Library(new ArrayList<Book>(), movies);
+
+        assertEquals("Thank you! Enjoy the movie", library.checkoutAMovie("The Boy in the Striped pyjamas"));
+    }
+
+    @Test
+    public void shouldNotCheckOutAMovieFromTheLibrary() {
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+
+        Library library = new Library(new ArrayList<Book>(), movies);
+
+        assertEquals("That movie is not available", library.checkoutAMovie("V for Vendatta"));
+    }
 }

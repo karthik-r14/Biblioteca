@@ -284,4 +284,59 @@ public class TestBibliotecaApplication {
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.List Movies\nEnter choice :\n" + "------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n------------------------------------------------------------------------------------" + "\n" + String.format("%-40S%-25S%-25S%-25S", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
     }
 
+    @Test
+    public void shouldCheckoutAMovie() {
+        String BookChoice = "The boy in the striped pyjamas";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(BookChoice.getBytes());
+        System.setIn(inContent);
+
+        ArrayList<String> menu = new ArrayList<>();
+
+        MainMenu mainMenu = new MainMenu(menu);
+        mainMenu.addOptions("1.List Book");
+        mainMenu.addOptions("6.Checkout a Movie");
+        mainMenu.addOptions("3.Exit");
+
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
+        Library library = new Library(new ArrayList<Book>(), movies);
+        ReadInput input = mock(ReadInput.class);
+        when(input.read()).thenReturn("6");
+
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
+        biblioteca.start();
+        biblioteca.run();
+
+        assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n6.Checkout a Movie\n3.Exit\nEnter choice :\nENTER MOVIE NAME:\nThank you! Enjoy the movie\n", outputContent.toString());
+    }
+
+    @Test
+    public void shouldNotifyWhenMovieIsNotAvailable() {
+        String BookChoice = "V for Vendatta";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(BookChoice.getBytes());
+        System.setIn(inContent);
+
+        ArrayList<String> menu = new ArrayList<>();
+
+        MainMenu mainMenu = new MainMenu(menu);
+        mainMenu.addOptions("1.List Book");
+        mainMenu.addOptions("6.Checkout a Movie");
+        mainMenu.addOptions("3.Exit");
+
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
+        Library library = new Library(new ArrayList<Book>(), movies);
+        ReadInput input = mock(ReadInput.class);
+        when(input.read()).thenReturn("6");
+
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
+        biblioteca.start();
+        biblioteca.run();
+
+        assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n6.Checkout a Movie\n3.Exit\nEnter choice :\nENTER MOVIE NAME:\nThat movie is not available\n", outputContent.toString());
+    }
 }

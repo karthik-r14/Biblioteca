@@ -42,6 +42,11 @@ public class ExecuteMenuItem {
                 library.displayMovie();
                 break;
 
+            case "6":
+                display("ENTER MOVIE NAME:");
+                display(library.checkoutAMovie(input.read()));
+                break;
+
             default:
                 display("SELECT A VALID OPTION");
         }
