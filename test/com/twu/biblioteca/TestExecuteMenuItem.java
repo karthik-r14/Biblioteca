@@ -60,7 +60,7 @@ public class TestExecuteMenuItem {
 
     @Test
     public void shouldValidateQuit() {
-        ExecuteMenuItem executeMenu = new ExecuteMenuItem("4");
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("E");
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
@@ -149,25 +149,25 @@ public class TestExecuteMenuItem {
     }
 
     @Test
-    public void shouldDisplayAllMoviesWhenInputIsFive() {
+    public void shouldDisplayAllMoviesWhenInputIsFour() {
 
-        ExecuteMenuItem executeMenu = new ExecuteMenuItem("5");
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("4");
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
 
         Library library = new Library(new ArrayList<Book>(), movies);
         executeMenu.execute(library);
 
-        assertEquals("------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8) + "\n", outputContent.toString());
+        assertEquals("---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8) + "\n", outputContent.toString());
     }
 
     @Test
-    public void shouldCheckoutAMovieWhenInputIsSix() {
+    public void shouldCheckoutAMovieWhenInputIsFIVE() {
         String bookName = "The Boy in the striped pyjamas";
         final ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
         System.setIn(inContent);
 
-        ExecuteMenuItem executeMenu = new ExecuteMenuItem("6");
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("5");
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
 

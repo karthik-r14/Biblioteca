@@ -12,8 +12,9 @@ public class BibliotecaDemo {
         menu.addOptions("1.List Books");
         menu.addOptions("2.Checkout a Book");
         menu.addOptions("3.Return a Book");
-        menu.addOptions("4.Exit");
-        menu.addOptions("5.List Movies");
+        menu.addOptions("4.List Movies");
+        menu.addOptions("5.Checkout a Movie");
+        menu.addOptions("E.Exit");
 
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("The Bicentennial Man", "Issac Asimov", 1976));

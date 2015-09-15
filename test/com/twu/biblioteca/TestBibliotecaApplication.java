@@ -131,7 +131,7 @@ public class TestBibliotecaApplication {
 
     @Test
     public void shouldExitTheApplicationWhenUserSelectsExitOption() {
-        String userChoice = "4";
+        String userChoice = "E";
         final ByteArrayInputStream inContent = new ByteArrayInputStream(userChoice.getBytes());
         System.setIn(inContent);
 
@@ -261,8 +261,8 @@ public class TestBibliotecaApplication {
     }
 
     @Test
-    public void shouldDisplayTheListOfMoviesWhenUserInputsFive() {
-        String userChoice = "5";
+    public void shouldDisplayTheListOfMoviesWhenUserInputsFour() {
+        String userChoice = "4";
         final ByteArrayInputStream inContent = new ByteArrayInputStream(userChoice.getBytes());
         System.setIn(inContent);
 
@@ -281,7 +281,7 @@ public class TestBibliotecaApplication {
         biblioteca.start();
         biblioteca.run();
 
-        assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.List Movies\nEnter choice :\n" + "------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n------------------------------------------------------------------------------------" + "\n" + String.format("%-40S%-25S%-25S%-25S", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
+        assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.List Movies\nEnter choice :\n" + "---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------" + "\n" + String.format("%-40S%-25S%-25S%-25S", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
     }
 
     @Test
@@ -303,7 +303,7 @@ public class TestBibliotecaApplication {
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library(new ArrayList<Book>(), movies);
         ReadInput input = mock(ReadInput.class);
-        when(input.read()).thenReturn("6");
+        when(input.read()).thenReturn("5");
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
@@ -331,7 +331,7 @@ public class TestBibliotecaApplication {
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library(new ArrayList<Book>(), movies);
         ReadInput input = mock(ReadInput.class);
-        when(input.read()).thenReturn("6");
+        when(input.read()).thenReturn("5");
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();

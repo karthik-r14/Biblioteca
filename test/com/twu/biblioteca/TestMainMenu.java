@@ -82,9 +82,9 @@ public class TestMainMenu {
         Library library = new Library(books, new ArrayList<Movie>());
         mainMenu.addOptions("List Books");
         mainMenu.addOptions("Checkout a Book");
-        mainMenu.addOptions("Quit");
+        mainMenu.addOptions("EXIT");
         exit.expectSystemExit();
-        mainMenu.executeOption("4", library);
+        mainMenu.executeOption("E", library);
     }
 
     @Test
@@ -104,7 +104,7 @@ public class TestMainMenu {
         Library library = new Library(books, new ArrayList<Movie>());
         mainMenu.addOptions("List Books");
         mainMenu.addOptions("Checkout a Book");
-        mainMenu.addOptions("Quit");
+        mainMenu.addOptions("EXIT");
         mainMenu.executeOption("2", library);
 
         assertEquals("ENTER BOOKNAME:\nThank you! Enjoy the book\n", outputContent.toString());
@@ -161,7 +161,7 @@ public class TestMainMenu {
     }
 
     @Test
-    public void shouldDisplayAllMoviesWhenUserInputsFive() {
+    public void shouldDisplayAllMoviesWhenUserInputsFour() {
         ArrayList<String> menu = new ArrayList<>();
         MainMenu mainMenu = new MainMenu(menu);
 
@@ -171,8 +171,8 @@ public class TestMainMenu {
 
         Library library = new Library(books, movies);
 
-        mainMenu.executeOption("5", library);
-        assertEquals("------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40s%-25s%-25s%-25s", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
+        mainMenu.executeOption("4", library);
+        assertEquals("---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------\n" + String.format("%-40s%-25s%-25s%-25s", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
     }
 
     @Test
@@ -191,7 +191,7 @@ public class TestMainMenu {
         mainMenu.addOptions("List Books");
         mainMenu.addOptions("Checkout a movie");
         mainMenu.addOptions("Quit");
-        mainMenu.executeOption("6", library);
+        mainMenu.executeOption("5", library);
 
         assertEquals("ENTER MOVIE NAME:\nThank you! Enjoy the movie\n", outputContent.toString());
     }

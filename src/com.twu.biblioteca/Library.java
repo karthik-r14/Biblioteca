@@ -28,7 +28,7 @@ public class Library {
 
     public String checkoutAMovie(String movieName) {
         for (Movie movie : listOfMovies) {
-            if (movie.compareWithBookName(movieName)) {
+            if (movie.compareWithMovieName(movieName)) {
                 listOfMovies.remove(movie);
                 return "Thank you! Enjoy the movie";
             }
