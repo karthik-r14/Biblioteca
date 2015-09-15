@@ -159,4 +159,19 @@ public class TestMainMenu {
 
         assertEquals("ENTER BOOK TO BE RETURNED:\nThat is not a valid book to return\n", outputContent.toString());
     }
+
+    @Test
+    public void shouldDisplayAllMoviesWhenUserInputsFive() {
+        ArrayList<String> menu = new ArrayList<>();
+        MainMenu mainMenu = new MainMenu(menu);
+
+        ArrayList<Book> books = new ArrayList<>();
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+
+        Library library = new Library(books, movies);
+
+        mainMenu.executeOption("5", library);
+        assertEquals("------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40s%-25s%-25s%-25s", "The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8) + "\n", outputContent.toString());
+    }
 }
