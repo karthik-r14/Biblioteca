@@ -43,6 +43,6 @@ public class TestMovie {
     public void shouldReturnFalseWhenMovieNameDontMatch() {
         Movie movie = new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f);
 
-        assertEquals(false, movie.compareWithMovieName("V For Vendatta"));
+        assertEquals(false, movie.compareWithMovieName("V For Vendetta"));
     }
 }
