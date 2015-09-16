@@ -22,21 +22,22 @@ public class ExecuteUserMenuItem {
                 break;
 
             case "2":
+                display("ENTER BOOKNAME:");
+                display(library.checkoutABook(input.read()));
+                break;
+
+            case "3":
+                display("ENTER BOOK TO BE RETURNED:");
+                display(library.returnABook(input.read()));
+                break;
+
+            case "4":
                 display("---------------------------------------------------------------------------------------------------");
                 display(String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING"));
                 display("---------------------------------------------------------------------------------------------------");
                 library.displayMovie();
                 break;
 
-            case "3":
-                display("ENTER BOOKNAME:");
-                display(library.checkoutABook(input.read()));
-                break;
-
-            case "4":
-                display("ENTER BOOK TO BE RETURNED:");
-                display(library.returnABook(input.read()));
-                break;
 
 
             default:

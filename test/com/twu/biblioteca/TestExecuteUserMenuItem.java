@@ -39,25 +39,12 @@ public class TestExecuteUserMenuItem {
     }
 
     @Test
-    public void shouldDisplayAllMoviesWhenInputsNumericTwo() {
-
-        ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("2");
-        ArrayList<Movie> movies = new ArrayList<>();
-        movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
-
-        Library library = new Library(new ArrayList<Book>(), movies);
-        executeMenu.execute(library);
-
-        assertEquals("---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8) + "\n", outputContent.toString());
-    }
-
-    @Test
     public void shouldValidateCheckoutBooks() {
         String bookName = "Revolution 2020";
         final ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
         System.setIn(inContent);
 
-        ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("3");
+        ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("2");
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
@@ -75,7 +62,7 @@ public class TestExecuteUserMenuItem {
         final ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
         System.setIn(inContent);
 
-        ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("3");
+        ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("2");
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
@@ -93,7 +80,7 @@ public class TestExecuteUserMenuItem {
         final ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
         System.setIn(inContent);
 
-        ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("4");
+        ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("3");
 
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
@@ -113,7 +100,7 @@ public class TestExecuteUserMenuItem {
         final ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
         System.setIn(inContent);
 
-        ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("4");
+        ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("3");
 
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
@@ -126,4 +113,18 @@ public class TestExecuteUserMenuItem {
 
         assertEquals("ENTER BOOK TO BE RETURNED:\nThat is not a valid book to return\n", outputContent.toString());
     }
+
+    @Test
+    public void shouldDisplayAllMoviesWhenInputsNumericTwo() {
+
+        ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("4");
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+
+        Library library = new Library(new ArrayList<Book>(), movies);
+        executeMenu.execute(library);
+
+        assertEquals("---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8) + "\n", outputContent.toString());
+    }
+
 }
