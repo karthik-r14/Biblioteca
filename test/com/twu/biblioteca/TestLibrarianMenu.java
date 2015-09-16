@@ -78,7 +78,6 @@ public class TestLibrarianMenu {
 
         ArrayList<String> menu = new ArrayList<>();
         LibrarianMenu librarianMenu = new LibrarianMenu(new UserMenu(menu));
-        librarianMenu.addOptions("List Books");
 
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
@@ -93,6 +92,53 @@ public class TestLibrarianMenu {
         assertEquals("ENTER BOOKNAME:\nThank you! Enjoy the book\n", outputContent.toString());
     }
 
-    
+    @Test
+    public void shouldSuccessfullyReturnABookBack() {
+        String bookName = "Five Point Someone";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
+        System.setIn(inContent);
 
+        ArrayList<String> menu = new ArrayList<>();
+        LibrarianMenu librarianMenu = new LibrarianMenu(new UserMenu(menu));
+
+
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+
+        Library library = new Library(books, new ArrayList<Movie>());
+        library.checkoutABook("Five Point Someone");
+        librarianMenu.addOptions("List Books");
+        librarianMenu.addOptions("Checkout a Book");
+        librarianMenu.addOptions("Return a Book");
+
+        librarianMenu.executeOption("3", library, new UserAccount("124-1234", "abc-defg", "user"));
+
+        assertEquals("ENTER BOOK TO BE RETURNED:\nThank you for returning the book\n", outputContent.toString());
+    }
+
+    @Test
+    public void shouldNotifyOnUnsuccessfulReturnOfBook() {
+        String bookName = "2 States";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
+        System.setIn(inContent);
+
+        ArrayList<String> menu = new ArrayList<>();
+        LibrarianMenu librarianMenu = new LibrarianMenu(new UserMenu(menu));
+
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+
+        Library library = new Library(books, new ArrayList<Movie>());
+        library.checkoutABook("Five Point Someone");
+        librarianMenu.addOptions("List Books");
+        librarianMenu.addOptions("Checkout a Book");
+        librarianMenu.addOptions("Return a Book");
+        librarianMenu.executeOption("3", library, new UserAccount("124-1234", "abc-defg", "user"));
+
+        assertEquals("ENTER BOOK TO BE RETURNED:\nThat is not a valid book to return\n", outputContent.toString());
+    }
 }
