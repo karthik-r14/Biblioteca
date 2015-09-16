@@ -196,4 +196,12 @@ public class TestLibrarianMenu {
 
         assertEquals("ENTER MOVIE NAME:\nThat movie is not available\n", outputContent.toString());
     }
+
+    @Test
+    public void shouldDisplayUserDetails() {
+        LibrarianMenu librarianMenu = new LibrarianMenu(new UserMenu(new ArrayList<String>()));
+        librarianMenu.executeOption("6", new Library(new ArrayList<Book>(), new ArrayList<Movie>()), new UserAccount("124-1234", "abc-defg", "user"));
+
+        assertEquals("USER NAME :124-1234\nROLE :USER\n", outputContent.toString());
+    }
 }
