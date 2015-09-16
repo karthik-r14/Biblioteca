@@ -1,4 +1,4 @@
-//Usermenu has a menu which can be displayed, new options can be added to it.
+//Usermenu has a menu which can be displayed, executed, new options can be added to it.
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class UserMenu {
 
     private ArrayList<String> menu;
+    private ExecuteUserMenuItem item;
+
 
     public UserMenu(ArrayList<String> menu) {
         this.menu = menu;
@@ -19,5 +21,10 @@ public class UserMenu {
         for (String option : menu) {
             System.out.println(option);
         }
+    }
+
+    public void executeOption(String choice, Library library, UserAccount userAccount) {
+        item = new ExecuteUserMenuItem(choice);
+        item.execute(library, userAccount);
     }
 }
