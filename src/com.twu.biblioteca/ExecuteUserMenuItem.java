@@ -10,7 +10,7 @@ public class ExecuteUserMenuItem {
         this.choice = choice;
     }
 
-    public void execute(Library library) {
+    public void execute(Library library, UserAccount userAccount) {
         ReadInput input = new ReadInput(new Scanner(System.in));
 
         switch (choice) {
@@ -41,6 +41,10 @@ public class ExecuteUserMenuItem {
             case "5":
                 display("ENTER MOVIE NAME:");
                 display(library.checkoutAMovie(input.read()));
+                break;
+
+            case "6":
+                userAccount.displayInfo();
                 break;
 
             default:
