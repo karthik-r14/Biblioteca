@@ -156,4 +156,24 @@ public class TestLibrarianMenu {
         librarianMenu.executeOption("4", library, new UserAccount("124-1234", "abc-defg", "user"));
         assertEquals("---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------\n" + String.format("%-40s%-25s%-25s%-25s", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
     }
+
+    @Test
+    public void shouldValidateCheckOutMovie() {
+        String movieChoice = "The Boy in the striped pyjamas";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(movieChoice.getBytes());
+        System.setIn(inContent);
+
+        ArrayList<String> menu = new ArrayList<>();
+        LibrarianMenu librarianMenu = new LibrarianMenu(new UserMenu(menu));
+
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+
+        Library library = new Library(new ArrayList<Book>(), movies);
+        librarianMenu.addOptions("List Books");
+        librarianMenu.addOptions("Checkout a movie");
+        librarianMenu.executeOption("5", library, new UserAccount("124-1234", "abc-defg", "user") );
+
+        assertEquals("ENTER MOVIE NAME:\nThank you! Enjoy the movie\n", outputContent.toString());
+    }
 }
