@@ -43,12 +43,26 @@ public class TestAuthenticator {
         when(input.read()).thenReturn("kar-thik", "abcdef");
 
         ArrayList<UserAccount> users = new ArrayList<>();
-        users.add(new UserAccount("kar-thik", "abcdef"));
-        users.add(new UserAccount("car-tick", "ghijk"));
+        users.add(new UserAccount("kar-thik", "abcdef", "user"));
+        users.add(new UserAccount("car-tick", "ghijk", "user"));
         Authenticator authenticator = new Authenticator(input, users);
         authenticator.takeCredentials();
 
-        assertEquals(true, authenticator.validate());
+        assertEquals("USER", authenticator.validate());
     }
 
+    @Test
+    public void shouldReturnAccessDeniedOnInValidUserCredentials() {
+
+        ReadInput input = mock(ReadInput.class);
+        when(input.read()).thenReturn("Car-t", "abcdef");
+
+        ArrayList<UserAccount> users = new ArrayList<>();
+        users.add(new UserAccount("kar-thik", "abcdef", "user"));
+        users.add(new UserAccount("car-tick", "ghijk", "user"));
+        Authenticator authenticator = new Authenticator(input, users);
+        authenticator.takeCredentials();
+
+        assertEquals("ACCESS DENIED", authenticator.validate());
+    }
 }

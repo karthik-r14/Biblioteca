@@ -26,12 +26,14 @@ public class Authenticator {
         System.out.println(message);
     }
 
-    public boolean validate() {
+    public String validate() {
 
+        String returnString;
         for(UserAccount user : userAccounts) {
-            if(user.compareUser(userId, password))
-                return true;
+            returnString = user.compareUser(userId, password);
+                if(!("ACCESS DENIED".equals(returnString)))
+                    return returnString;
         }
-        return false;
+        return "ACCESS DENIED";
     }
 }

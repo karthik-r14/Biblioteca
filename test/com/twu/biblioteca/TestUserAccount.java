@@ -27,23 +27,23 @@ public class TestUserAccount {
     @Test
     public void shouldDisplayUserInfo() {
 
-        UserAccount user = new UserAccount("karthik_r14", "abc-defg");
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user");
         user.displayInfo();
 
-        assertEquals("USER NAME :" + "karthik_r14\n", outputContent.toString());
+        assertEquals("USER NAME :" + "karthik_r14\n" + "ROLE :" + "USER\n", outputContent.toString());
     }
 
     @Test
     public void shouldReturnTrueOnSameCredentials() {
 
-        UserAccount user = new UserAccount("karthik_r14", "abc-defg");
-        assertEquals(true, user.compareUser("karthik_r14", "abc-defg"));
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user");
+        assertEquals("USER", user.compareUser("karthik_r14", "abc-defg"));
     }
 
     @Test
     public void shouldReturnFalseOnDifferentCredentials() {
 
-        UserAccount user = new UserAccount("karthik_r14", "abc-defg");
-        assertEquals(false, user.compareUser("karthik1408", "cdefgk"));
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user");
+        assertEquals("ACCESS DENIED", user.compareUser("karthik1408", "cdefgk"));
     }
 }
