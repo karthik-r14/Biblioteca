@@ -48,7 +48,6 @@ public class ExecuteMenuItem {
             case "E":
                 System.exit(0);
 
-
             default:
                 display("SELECT A VALID OPTION");
         }
