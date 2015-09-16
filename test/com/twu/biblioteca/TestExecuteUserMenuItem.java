@@ -36,4 +36,17 @@ public class TestExecuteUserMenuItem {
 
         assertEquals("------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "FIVE POINT SOMEONE", "CHETAN BHAGAT", 2004) + "\n" + String.format("%-40S%-40S%-40S", "REVOLUTION 2020", "CHETAN BHAGAT", 2011) + "\n", outputContent.toString());
     }
+
+    @Test
+    public void shouldDisplayAllMoviesWhenInputsNumericTwo() {
+
+        ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("2");
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+
+        Library library = new Library(new ArrayList<Book>(), movies);
+        executeMenu.execute(library);
+
+        assertEquals("---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8) + "\n", outputContent.toString());
+    }
 }
