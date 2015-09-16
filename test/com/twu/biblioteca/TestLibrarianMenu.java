@@ -176,4 +176,24 @@ public class TestLibrarianMenu {
 
         assertEquals("ENTER MOVIE NAME:\nThank you! Enjoy the movie\n", outputContent.toString());
     }
+
+    @Test
+    public void shouldnotifyWhenMovieIsNotAvailable() {
+        String bookName = "Happy Feet";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
+        System.setIn(inContent);
+
+        ArrayList<String> menu = new ArrayList<>();
+        LibrarianMenu librarianMenu = new LibrarianMenu(new UserMenu(menu));
+
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+
+        Library library = new Library(new ArrayList<Book>(), movies);
+        librarianMenu.addOptions("List Books");
+        librarianMenu.addOptions("Checkout a movie");
+        librarianMenu.executeOption("5", library, new UserAccount("karthik_r14", "abc-defg", "user"));
+
+        assertEquals("ENTER MOVIE NAME:\nThat movie is not available\n", outputContent.toString());
+    }
 }
