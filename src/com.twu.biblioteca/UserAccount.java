@@ -18,9 +18,9 @@ public class UserAccount {
     }
 
     public String compareUser(String thatuserName, String thatPassword) {
-         if(userName.equals(thatuserName) && password.equals(thatPassword))
-             return role;
-         else
-             return "ACCESS DENIED";
+        if (userName.equals(thatuserName) && password.equals(thatPassword))
+            return role;
+        else
+            return "ACCESS DENIED";
     }
 }

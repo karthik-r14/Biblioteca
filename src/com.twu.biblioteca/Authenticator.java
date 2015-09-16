@@ -10,7 +10,7 @@ public class Authenticator {
     private String password;
     private ArrayList<UserAccount> userAccounts;
 
-    public Authenticator(ReadInput input,  ArrayList<UserAccount> userAccounts) {
+    public Authenticator(ReadInput input, ArrayList<UserAccount> userAccounts) {
         this.input = input;
         this.userAccounts = userAccounts;
     }
@@ -29,10 +29,10 @@ public class Authenticator {
     public String validate() {
 
         String returnString;
-        for(UserAccount user : userAccounts) {
+        for (UserAccount user : userAccounts) {
             returnString = user.compareUser(userId, password);
-                if(!("ACCESS DENIED".equals(returnString)))
-                    return returnString;
+            if (!("ACCESS DENIED".equals(returnString)))
+                return returnString;
         }
         return "ACCESS DENIED";
     }
