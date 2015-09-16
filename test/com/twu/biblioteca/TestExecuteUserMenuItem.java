@@ -115,7 +115,7 @@ public class TestExecuteUserMenuItem {
     }
 
     @Test
-    public void shouldDisplayAllMoviesWhenInputsNumericTwo() {
+    public void shouldDisplayAllMoviesWhenInputsNumericFour() {
 
         ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("4");
         ArrayList<Movie> movies = new ArrayList<>();
@@ -127,4 +127,35 @@ public class TestExecuteUserMenuItem {
         assertEquals("---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8) + "\n", outputContent.toString());
     }
 
+    @Test
+    public void shouldCheckoutAMovieWhenInputIsFIVE() {
+        String bookName = "The Boy in the striped pyjamas";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
+        System.setIn(inContent);
+
+        ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("5");
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+
+        Library library = new Library(new ArrayList<Book>(), movies);
+        executeMenu.execute(library);
+
+        assertEquals("ENTER MOVIE NAME:\nThank you! Enjoy the movie\n", outputContent.toString());
+    }
+
+    @Test
+    public void shouldnotifyWhenMovieIsNotAvailable() {
+        String bookName = "Happy Feet";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
+        System.setIn(inContent);
+
+        ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("5");
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
+
+        Library library = new Library(new ArrayList<Book>(), movies);
+        executeMenu.execute(library);
+
+        assertEquals("ENTER MOVIE NAME:\nThat movie is not available\n", outputContent.toString());
+    }
 }
