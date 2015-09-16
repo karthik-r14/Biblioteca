@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
 public class LibrarianMenu {
-    UserMenu userMenu;
+    private UserMenu userMenu;
 
     LibrarianMenu(UserMenu userMenu) {
         this.userMenu = userMenu;
@@ -13,5 +13,9 @@ public class LibrarianMenu {
 
     public void displayMenu() {
         userMenu.displayMenu();
+    }
+
+    public void executeOption(String choice, Library library, UserAccount userAccount) {
+        userMenu.executeOption(choice, library, userAccount);
     }
 }
