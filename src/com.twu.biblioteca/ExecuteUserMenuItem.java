@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.Scanner;
+
 public class ExecuteUserMenuItem {
 
     private String choice;
@@ -9,6 +11,7 @@ public class ExecuteUserMenuItem {
     }
 
     public void execute(Library library) {
+        ReadInput input = new ReadInput(new Scanner(System.in));
 
         switch (choice) {
             case "1":
@@ -25,6 +28,10 @@ public class ExecuteUserMenuItem {
                 library.displayMovie();
                 break;
 
+            case "3":
+                display("ENTER BOOKNAME:");
+                display(library.checkoutABook(input.read()));
+                break;
 
             default:
                 display("SELECT A VALID OPTION");
