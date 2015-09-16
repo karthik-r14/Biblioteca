@@ -33,6 +33,12 @@ public class ExecuteUserMenuItem {
                 display(library.checkoutABook(input.read()));
                 break;
 
+            case "4":
+                display("ENTER BOOK TO BE RETURNED:");
+                display(library.returnABook(input.read()));
+                break;
+
+
             default:
                 display("SELECT A VALID OPTION");
         }
