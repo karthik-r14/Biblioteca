@@ -153,4 +153,23 @@ public class TestLibrary {
 
         assertEquals("DEFAULT", library.login().getRole());
     }
+
+    @Test
+    public void shouldDisplayCheckedOutBookDetails() {
+
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+
+        ArrayList<UserAccount> userAccounts = new ArrayList<>();
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
+        userAccounts.add(new UserAccount("124-546", "abcdef", "user"));
+
+        Library library = new Library(books, new ArrayList<Movie>(), userAccounts);
+        library.checkoutABook("Revolution 2020", userAccounts.get(0));
+        library.displayCheckedOutBookDetails();
+
+        assertEquals("USER NAME :123-456\nROLE :USER\n------------------------------------------------------------------------------------\n" + String.format("%-40s%-40s%-40s", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "REVOLUTION 2020", "CHETAN BHAGAT", "2011")+ "\n", outputContent.toString());
+    }
 }
