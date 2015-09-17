@@ -100,5 +100,41 @@ public class TestExecuteMenuItem {
 
         assertEquals("ENTER MOVIE NAME:\nThank you! Enjoy the movie\n", outputContent.toString());
     }
+
+    @Test
+    public void shouldReturnUserMenuonSuccessfulLogin() {
+
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("4");
+
+        ArrayList<UserAccount> userAccounts = new ArrayList<>();
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
+        userAccounts.add(new UserAccount("124-546", "abcdef", "user"));
+
+        Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
+
+        String userInput = "123-456\nabcdef";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(inContent);
+
+        assertEquals("USERMENU",executeMenu.execute(library));
+    }
+
+    @Test
+    public void shouldReturnMainMenuonUnsuccessfulLogin() {
+
+        ExecuteMenuItem executeMenu = new ExecuteMenuItem("4");
+
+        ArrayList<UserAccount> userAccounts = new ArrayList<>();
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
+        userAccounts.add(new UserAccount("124-546", "abcdef", "user"));
+
+        Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
+
+        String userInput = "123-456\nabcf";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(inContent);
+
+        assertEquals("MAINMENU",executeMenu.execute(library));
+    }
 }
 
