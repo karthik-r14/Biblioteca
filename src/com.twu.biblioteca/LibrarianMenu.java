@@ -15,7 +15,7 @@ public class LibrarianMenu {
         userMenu.displayMenu();
     }
 
-    public void executeOption(String choice, Library library, UserAccount userAccount) {
-        userMenu.executeOption(choice, library, userAccount);
+    public String executeOption(String choice, Library library, UserAccount userAccount) {
+        return userMenu.executeOption(choice, library, userAccount);
     }
 }

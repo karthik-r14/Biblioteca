@@ -23,8 +23,8 @@ public class UserMenu {
         }
     }
 
-    public void executeOption(String choice, Library library, UserAccount userAccount) {
+    public String executeOption(String choice, Library library, UserAccount userAccount) {
         item = new ExecuteUserMenuItem(choice);
-        item.execute(library, userAccount);
+        return item.execute(library, userAccount);
     }
 }
