@@ -45,7 +45,7 @@ public class ExecuteUserMenuItem {
                 break;
 
             case "6":
-                userAccount.displayInfo();
+                userAccount.displayInfo(1);
                 break;
 
             case "7":

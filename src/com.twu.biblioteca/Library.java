@@ -59,7 +59,7 @@ public class Library {
         for(Book book : bookUserMap.keySet()) {
             UserAccount userAccount = bookUserMap.get(book);
             book.displayBook();
-            userAccount.displayInfo();
+            userAccount.displayInfo(2);
             System.out.println("\n");
         }
     }

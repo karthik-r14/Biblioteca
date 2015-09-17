@@ -27,9 +27,9 @@ public class TestUserAccount {
     public void shouldDisplayUserInfo() {
 
         UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user", "karthik", "kar@gmail.com ", "9880443410");
-        user.displayInfo();
+        user.displayInfo(1);
 
-        assertEquals("USER NAME :" + "karthik_r14\n" + "ROLE :" + "USER\n", outputContent.toString());
+        assertEquals("USER NAME :" + "karthik_r14\nNAME :KARTHIK\nEMAIL ADDRESS :kar@gmail.com \nPHONE NUMBER :9880443410" + "\nROLE :" + "USER\n", outputContent.toString());
     }
 
     @Test

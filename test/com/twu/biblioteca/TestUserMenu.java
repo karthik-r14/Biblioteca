@@ -198,6 +198,6 @@ public class TestUserMenu {
         UserMenu userMenu = new UserMenu(new ArrayList<String>());
         userMenu.executeOption("6", new Library(new ArrayList<Book>(), new ArrayList<Movie>(), new ArrayList<UserAccount>()), new UserAccount("124-1234", "abc-defg", "user", "karu", "karu@gmail.com", "9880443410"));
 
-        assertEquals("USER NAME :124-1234\nROLE :USER\n", outputContent.toString());
+        assertEquals("USER NAME :124-1234\nNAME :KARU" + "\nEMAIL ADDRESS :karu@gmail.com" + "\nPHONE NUMBER :9880443410\nROLE :USER\n", outputContent.toString());
     }
 }

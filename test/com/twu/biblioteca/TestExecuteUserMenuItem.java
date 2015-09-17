@@ -165,7 +165,7 @@ public class TestExecuteUserMenuItem {
         ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("6");
         executeMenu.execute(new Library(new ArrayList<Book>(), new ArrayList<Movie>(), new ArrayList<UserAccount>()), new UserAccount("124-1234", "abc-defg", "user", "kar", "kau@gmail.com", "9088444301"));
 
-        assertEquals("USER NAME :124-1234\nROLE :USER\n", outputContent.toString());
+        assertEquals("USER NAME :124-1234\nNAME :KAR\n" + "EMAIL ADDRESS :kau@gmail.com\n" + "PHONE NUMBER :9088444301\nROLE :USER\n", outputContent.toString());
     }
 
     @Test

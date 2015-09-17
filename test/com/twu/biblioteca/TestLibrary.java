@@ -170,6 +170,6 @@ public class TestLibrary {
         library.checkoutABook("Revolution 2020", userAccounts.get(0));
         library.displayCheckedOutBookDetails();
 
-        assertEquals(String.format("%-40S%-40S%-40S", "REVOLUTION 2020", "CHETAN BHAGAT", "2011") + "\n" + "USER NAME :123-456\nROLE :USER\n\n\n", outputContent.toString());
+        assertEquals(String.format("%-40S%-40S%-40S", "REVOLUTION 2020", "CHETAN BHAGAT", "2011") + "\n" + "USER NAME :123-456\nNAME :KAR\nROLE :USER\n\n\n", outputContent.toString());
     }
 }

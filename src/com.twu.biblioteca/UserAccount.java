@@ -14,14 +14,30 @@ public class UserAccount {
         this.userName = userName;
         this.password = password;
         this.role = role.toUpperCase();
-        this.name = name;
+        this.name = name.toUpperCase();
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
     }
 
-    public void displayInfo() {
-        System.out.println("USER NAME :" + userName);
-        System.out.println("ROLE :" + role);
+    public void displayInfo(int displayType) {
+
+        switch (displayType) {
+
+
+            case 1:
+                System.out.println("USER NAME :" + userName);
+                System.out.println("NAME :" + name);
+                System.out.println("EMAIL ADDRESS :" + emailAddress);
+                System.out.println("PHONE NUMBER :" + phoneNumber);
+                System.out.println("ROLE :" + role);
+                break;
+
+            case 2:
+                System.out.println("USER NAME :" + userName);
+                System.out.println("NAME :" + name);
+                System.out.println("ROLE :" + role);
+        }
+
     }
 
     public boolean compareUser(String thatuserName, String thatPassword) {
