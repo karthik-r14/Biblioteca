@@ -26,6 +26,10 @@ public class BibliotecaDemo {
         ArrayList<Movie> movie = new ArrayList<>();
         movie.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
         movie.add(new Movie("V for Vendetta", "James Mcteigue", 2006, 8.2f));
+        movie.add(new Movie("Koi Mil Gaya", "Rakesh Roshan", 2003, 7.1f));
+        movie.add(new Movie("Kaho Naa Pyaar hai", "Rakesh Roshan", 2000, 6.9f));
+        movie.add(new Movie("Inception", "Christopher Nolan", 2010, 8.8f));
+        movie.add(new Movie("Interstellar", "Christopher Nolan", 2014, 8.7f));
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
         userAccounts.add(new UserAccount("100-1001", "abcdef", "USER", "Karu", "kar@gmail.com", "9871595922"));

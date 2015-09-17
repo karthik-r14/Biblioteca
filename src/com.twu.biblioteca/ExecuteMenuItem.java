@@ -1,7 +1,6 @@
 //ExecuteMenuItem executes the desired menu item based on choice
 package com.twu.biblioteca;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.Scanner;
 
 public class ExecuteMenuItem {
