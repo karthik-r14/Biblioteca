@@ -204,4 +204,31 @@ public class TestLibrarianMenu {
 
         assertEquals("USER NAME :124-1234\nROLE :USER\n", outputContent.toString());
     }
+
+    @Test
+    public void shouldValidateCheckedOutBookDetails() {
+
+        ArrayList<String> menu = new ArrayList<>();
+        LibrarianMenu librarianMenu = new LibrarianMenu(new UserMenu(menu));
+
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
+        books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
+        books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
+
+        ArrayList<UserAccount> userAccounts = new ArrayList<>();
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
+        userAccounts.add(new UserAccount("124-546", "abcdef", "user"));
+
+        Library library = new Library(books, new ArrayList<Movie>(), userAccounts);
+        library.checkoutABook("Revolution 2020", new UserAccount("123-1234", "abc-defg", "Librarian"));
+
+        librarianMenu.addOptions("List Books");
+        librarianMenu.addOptions("Book Details");
+        librarianMenu.executeOption("8", library, new UserAccount("karthik_r14", "abc-defg", "Librarian"));
+
+        assertEquals("USER NAME :123-1234\nROLE :LIBRARIAN\n------------------------------------------------------------------------------------\n" + String.format("%-40s%-40s%-40s", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "REVOLUTION 2020", "CHETAN BHAGAT", "2011")+ "\n", outputContent.toString());
+
+    }
+
 }

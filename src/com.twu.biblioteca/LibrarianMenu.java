@@ -8,7 +8,7 @@ public class LibrarianMenu {
     }
 
     public void addOptions(String option) {
-         userMenu.addOptions(option);
+        userMenu.addOptions(option);
     }
 
     public void displayMenu() {
@@ -17,6 +17,13 @@ public class LibrarianMenu {
 
     public UserAccount executeOption(String choice, Library library, UserAccount userAccount) {
 
-        return userMenu.executeOption(choice, library, userAccount);
+        switch (choice) {
+            case "8":
+                library.displayCheckedOutBookDetails();
+                return userAccount;
+
+            default:
+                return userMenu.executeOption(choice, library, userAccount);
+        }
     }
 }
