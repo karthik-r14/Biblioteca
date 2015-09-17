@@ -48,11 +48,11 @@ public class TestAuthenticator {
         Authenticator authenticator = new Authenticator(input, users);
         authenticator.takeCredentials();
 
-        assertEquals(true, authenticator.validate() instanceof UserAccount );
+        assertEquals("USER", authenticator.validate().getRole());
     }
 
     @Test
-    public void shouldReturnAccessDeniedOnInValidUserCredentials() {
+    public void shouldReturnDefaultUserOnInValidUserCredentials() {
 
         ReadInput input = mock(ReadInput.class);
         when(input.read()).thenReturn("Car-t", "abcdef");
@@ -63,6 +63,6 @@ public class TestAuthenticator {
         Authenticator authenticator = new Authenticator(input, users);
         authenticator.takeCredentials();
 
-        assertEquals(null, authenticator.validate());
+        assertEquals("DEFAULT", authenticator.validate().getRole());
     }
 }

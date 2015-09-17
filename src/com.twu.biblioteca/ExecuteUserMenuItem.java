@@ -10,7 +10,7 @@ public class ExecuteUserMenuItem {
         this.choice = choice;
     }
 
-    public String execute(Library library, UserAccount userAccount) {
+    public UserAccount execute(Library library, UserAccount userAccount) {
         ReadInput input = new ReadInput(new Scanner(System.in));
 
         switch (choice) {
@@ -48,12 +48,12 @@ public class ExecuteUserMenuItem {
                 break;
 
             case "7":
-                return "MAINMENU";
+                return new UserAccount(" ", " ", "DEFAULT");
 
             default:
                 display("SELECT A VALID OPTION");
         }
-        return "USERMENU";
+        return userAccount;
     }
 
     private void display(String message) {

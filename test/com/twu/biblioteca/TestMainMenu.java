@@ -126,7 +126,7 @@ public class TestMainMenu {
     }
 
     @Test
-    public void shouldReturnUserMenuOnSuccesfulLogin() {
+    public void shouldReturnUseruOnSuccesfulLogin() {
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
         userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
@@ -143,11 +143,11 @@ public class TestMainMenu {
         mainMenu.addOptions("Checkout a movie");
         mainMenu.addOptions("Login");
 
-        assertEquals("USERMENU", mainMenu.executeOption("4", library));
+        assertEquals("USER", mainMenu.executeOption("4", library).getRole());
     }
 
     @Test
-    public void shouldReturnMainMenuOnUnsuccesfulLogin() {
+    public void shouldReturnDefaultUserOnUnsuccesfulLogin() {
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
         userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
@@ -164,6 +164,6 @@ public class TestMainMenu {
         mainMenu.addOptions("Checkout a movie");
         mainMenu.addOptions("Login");
 
-        assertEquals("MAINMENU", mainMenu.executeOption("4", library));
+        assertEquals("DEFAULT", mainMenu.executeOption("4", library).getRole());
     }
 }

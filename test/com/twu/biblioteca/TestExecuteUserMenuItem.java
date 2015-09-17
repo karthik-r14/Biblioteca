@@ -171,8 +171,8 @@ public class TestExecuteUserMenuItem {
     @Test
     public void shouldValidateLogOut() {
         ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("7");
-        String menuType = executeMenu.execute(new Library(new ArrayList<Book>(), new ArrayList<Movie>(), new ArrayList<UserAccount>()), new UserAccount("124-1234", "abc-defg", "user"));
+        UserAccount userAccount = executeMenu.execute(new Library(new ArrayList<Book>(), new ArrayList<Movie>(), new ArrayList<UserAccount>()), new UserAccount("124-1234", "abc-defg", "user"));
 
-        assertEquals("MAINMENU", menuType);
+        assertEquals("DEFAULT", userAccount.getRole());
     }
 }

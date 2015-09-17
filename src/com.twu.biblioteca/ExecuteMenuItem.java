@@ -12,7 +12,7 @@ public class ExecuteMenuItem {
         this.choice = choice;
     }
 
-    public String execute(Library library) {
+    public UserAccount execute(Library library) {
         ReadInput input = new ReadInput(new Scanner(System.in));
 
         switch (choice) {
@@ -36,13 +36,7 @@ public class ExecuteMenuItem {
                 break;
 
             case "4":
-                UserAccount user = library.login();
-                if(user == null)
-                    break;
-                if(user.getRole().equals("USER"))
-                    return  "USERMENU";
-                else
-                    return "LIBRARIANMENU";
+                return library.login();
 
             case "e":
             case "E":
@@ -51,7 +45,7 @@ public class ExecuteMenuItem {
             default:
                 display("SELECT A VALID OPTION");
         }
-        return "MAINMENU";
+        return new UserAccount(" ", " ", "DEFAULT");
     }
 
     public void display(String message) {

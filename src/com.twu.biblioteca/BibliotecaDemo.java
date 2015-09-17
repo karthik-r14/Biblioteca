@@ -29,12 +29,14 @@ public class BibliotecaDemo {
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
         Library library = new Library(books, movie, userAccounts );
 
-        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(menu, library, new WelcomeMessage("WELCOME TO BIBLIOTECA"), new ReadInput(new Scanner(System.in)));
+        UserMenu userMenu = new UserMenu(new ArrayList<String>());
+
+        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(menu, library, new WelcomeMessage("WELCOME TO BIBLIOTECA"), new ReadInput(new Scanner(System.in)), userMenu);
 
         bibliotecaApplication.start();
-        String menuType = "MAINMENU";
+        UserAccount userAccount = new UserAccount(" ", " ", "DEFAULT");
         while (true) {
-          menuType=bibliotecaApplication.run(menuType);
+         userAccount = bibliotecaApplication.run(userAccount);
         }
     }
 }

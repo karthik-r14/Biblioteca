@@ -22,7 +22,7 @@ public class MainMenu {
         }
     }
 
-    public String executeOption(String choice, Library library) {
+    public UserAccount executeOption(String choice, Library library) {
         item = new ExecuteMenuItem(choice);
         return item.execute(library);
     }

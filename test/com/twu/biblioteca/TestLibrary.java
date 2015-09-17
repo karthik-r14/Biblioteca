@@ -135,7 +135,7 @@ public class TestLibrary {
 
         Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
 
-        assertEquals(true, library.login() instanceof UserAccount);
+        assertEquals("USER", library.login().getRole());
     }
 
     @Test
@@ -151,6 +151,6 @@ public class TestLibrary {
 
         Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
 
-        assertEquals(null, library.login());
+        assertEquals("DEFAULT", library.login().getRole());
     }
 }

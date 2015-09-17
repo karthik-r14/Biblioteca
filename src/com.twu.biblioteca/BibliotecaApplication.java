@@ -5,31 +5,35 @@ public class BibliotecaApplication {
 
     private WelcomeMessage welcomeMessage;
     private MainMenu menu;
+    private UserMenu userMenu;
     private Library library;
     private ReadInput userInput;
 
-    public BibliotecaApplication(MainMenu menu, Library library, WelcomeMessage welcomeMessage, ReadInput input) {
+    public BibliotecaApplication(MainMenu menu, Library library, WelcomeMessage welcomeMessage, ReadInput input, UserMenu userMenu) {
         this.welcomeMessage = welcomeMessage;
         this.menu = menu;
+        this.userMenu = userMenu;
         this.library = library;
         userInput = input;
     }
 
-    public String run(String menuType) {
-        switch (menuType) {
+    public UserAccount run(UserAccount userAccount) {
+        switch (userAccount.getRole()) {
 
-            case "MAINMENU":
+            case "DEFAULT":
                 menu.displayMenu();
                 display("Enter choice :");
                 return menu.executeOption(userInput.read(), library);
 
-            case "USER MENU":
-                return "USERMENU";
+            case "USER":
+                userMenu.displayMenu();
+                display("Enter choice");
+                return userMenu.executeOption(userInput.read(), library, userAccount);
 
             case "LIBRARIAN":
-                return "LIBRARIANMENU";
+
         }
-        return "MAINMENU";
+        return new UserAccount(" "," ","DEFAULT");
     }
 
     public void start() {

@@ -23,7 +23,7 @@ public class UserMenu {
         }
     }
 
-    public String executeOption(String choice, Library library, UserAccount userAccount) {
+    public UserAccount executeOption(String choice, Library library, UserAccount userAccount) {
         item = new ExecuteUserMenuItem(choice);
         return item.execute(library, userAccount);
     }

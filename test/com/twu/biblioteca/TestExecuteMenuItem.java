@@ -102,7 +102,7 @@ public class TestExecuteMenuItem {
     }
 
     @Test
-    public void shouldReturnUserMenuonSuccessfulLogin() {
+    public void shouldReturnUseronSuccessfulLogin() {
 
         ExecuteMenuItem executeMenu = new ExecuteMenuItem("4");
 
@@ -116,11 +116,11 @@ public class TestExecuteMenuItem {
         final ByteArrayInputStream inContent = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(inContent);
 
-        assertEquals("USERMENU",executeMenu.execute(library));
+        assertEquals("USER", executeMenu.execute(library).getRole());
     }
 
     @Test
-    public void shouldReturnMainMenuonUnsuccessfulLogin() {
+    public void shouldReturnDefaultUsernUnsuccessfulLogin() {
 
         ExecuteMenuItem executeMenu = new ExecuteMenuItem("4");
 
@@ -134,6 +134,6 @@ public class TestExecuteMenuItem {
         final ByteArrayInputStream inContent = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(inContent);
 
-        assertEquals("MAINMENU",executeMenu.execute(library));
+        assertEquals("DEFAULT", executeMenu.execute(library).getRole());
     }
 }

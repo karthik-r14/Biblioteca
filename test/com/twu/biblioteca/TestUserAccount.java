@@ -45,4 +45,25 @@ public class TestUserAccount {
         UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user");
         assertEquals(false, user.compareUser("karthik1408", "cdefgk"));
     }
+
+    @Test
+    public void shouldReturnRoleOfUserAccountAsUser() {
+
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user");
+        assertEquals("USER", user.getRole());
+    }
+
+    @Test
+    public void shouldReturnRoleOfUserAccountAsLibrarian() {
+
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "librarian");
+        assertEquals("LIBRARIAN", user.getRole());
+    }
+
+    @Test
+    public void shouldReturnRoleOfUserAccountAsDefault() {
+
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "DEFAULT");
+        assertEquals("DEFAULT", user.getRole());
+    }
 }
