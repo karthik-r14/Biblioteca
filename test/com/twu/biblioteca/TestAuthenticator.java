@@ -48,7 +48,7 @@ public class TestAuthenticator {
         Authenticator authenticator = new Authenticator(input, users);
         authenticator.takeCredentials();
 
-        assertEquals("USER", authenticator.validate());
+        assertEquals(true, authenticator.validate() instanceof UserAccount );
     }
 
     @Test
@@ -63,6 +63,6 @@ public class TestAuthenticator {
         Authenticator authenticator = new Authenticator(input, users);
         authenticator.takeCredentials();
 
-        assertEquals("ACCESS DENIED", authenticator.validate());
+        assertEquals(null, authenticator.validate());
     }
 }

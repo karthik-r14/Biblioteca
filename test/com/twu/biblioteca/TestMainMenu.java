@@ -12,6 +12,8 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 
 public class TestMainMenu {
@@ -46,7 +48,7 @@ public class TestMainMenu {
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
 
-        Library library = new Library(books, new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         mainMenu.executeOption("1", library);
 
         assertEquals("------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "FIVE POINT SOMEONE", "CHETAN BHAGAT", 2004) + "\n", outputContent.toString());
@@ -62,7 +64,7 @@ public class TestMainMenu {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books, new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         mainMenu.executeOption("-1", library);
         assertEquals("SELECT A VALID OPTION\n", outputContent.toString());
     }
@@ -79,7 +81,7 @@ public class TestMainMenu {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books, new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         mainMenu.addOptions("List Books");
         mainMenu.addOptions("Checkout a Book");
         mainMenu.addOptions("EXIT");
@@ -96,7 +98,7 @@ public class TestMainMenu {
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
 
-        Library library = new Library(books, movies);
+        Library library = new Library(books, movies, new ArrayList<UserAccount>());
 
         mainMenu.executeOption("2", library);
         assertEquals("---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------\n" + String.format("%-40s%-25s%-25s%-25s", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
@@ -114,12 +116,54 @@ public class TestMainMenu {
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
 
-        Library library = new Library(new ArrayList<Book>(), movies);
+        Library library = new Library(new ArrayList<Book>(), movies, new ArrayList<UserAccount>());
         mainMenu.addOptions("List Books");
         mainMenu.addOptions("Checkout a movie");
         mainMenu.addOptions("Quit");
         mainMenu.executeOption("3", library);
 
         assertEquals("ENTER MOVIE NAME:\nThank you! Enjoy the movie\n", outputContent.toString());
+    }
+
+    @Test
+    public void shouldReturnUserMenuOnSuccesfulLogin() {
+
+        ArrayList<UserAccount> userAccounts = new ArrayList<>();
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
+        userAccounts.add(new UserAccount("123-457", "asdfgh", "user"));
+
+        MainMenu mainMenu = new MainMenu(new ArrayList<String>());
+        Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
+
+        String userInput = "123-456\nabcdef";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(inContent);
+
+        mainMenu.addOptions("List Books");
+        mainMenu.addOptions("Checkout a movie");
+        mainMenu.addOptions("Login");
+
+        assertEquals("USERMENU", mainMenu.executeOption("4", library));
+    }
+
+    @Test
+    public void shouldReturnMainMenuOnUnsuccesfulLogin() {
+
+        ArrayList<UserAccount> userAccounts = new ArrayList<>();
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
+        userAccounts.add(new UserAccount("123-457", "asdfgh", "user"));
+
+        MainMenu mainMenu = new MainMenu(new ArrayList<String>());
+        Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
+
+        String userInput = "123-456\nabcf";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(inContent);
+
+        mainMenu.addOptions("List Books");
+        mainMenu.addOptions("Checkout a movie");
+        mainMenu.addOptions("Login");
+
+        assertEquals("MAINMENU", mainMenu.executeOption("4", library));
     }
 }

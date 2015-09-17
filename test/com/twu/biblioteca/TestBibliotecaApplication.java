@@ -46,11 +46,11 @@ public class TestBibliotecaApplication {
         books.add(new Book("Da Vinci code", "DAN BROWN", 2003));
         books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
-        Library library = new Library(books, new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
-        biblioteca.run();
+        biblioteca.run("MAINMENU");
 
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Exit\nEnter choice :\n" + "------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "DA VINCI CODE", "DAN BROWN", 2003) + "\n" + String.format("%-40S%-40S%-40S", "ADVENTURES OF SHERLOCK HOLMES", "ARTHUR CONAN DOYLE", 1892) + "\n", outputContent.toString());
     }
@@ -68,7 +68,7 @@ public class TestBibliotecaApplication {
         books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library(books, new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
 
@@ -93,10 +93,10 @@ public class TestBibliotecaApplication {
         books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library(books, new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
-        biblioteca.run();
+        biblioteca.run("MAINMENU");
 
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Exit\nEnter choice :\nSELECT A VALID OPTION\n", outputContent.toString());
     }
@@ -118,10 +118,10 @@ public class TestBibliotecaApplication {
         books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library(books, new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
-        biblioteca.run();
+        biblioteca.run("MAINMENU");
 
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.Exit\nEnter choice :\nSELECT A VALID OPTION\n", outputContent.toString());
     }
@@ -147,13 +147,13 @@ public class TestBibliotecaApplication {
         books.add(new Book("Adventures of Sherlock Holmes", "Arthur Conan Doyle", 1892));
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library(books, new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
 
         exit.expectSystemExitWithStatus(0);
         biblioteca.start();
-        biblioteca.run();
+        biblioteca.run("MAINMENU");
     }
 
     @Test
@@ -162,7 +162,7 @@ public class TestBibliotecaApplication {
         ArrayList<String> menu = new ArrayList<>();
         MainMenu mainMenu = new MainMenu(menu);
         ArrayList<Book> books = new ArrayList<>();
-        Library library = new Library(books, new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(mainMenu, library, welcomeMessage, new ReadInput(new Scanner(System.in)));
 
@@ -186,11 +186,11 @@ public class TestBibliotecaApplication {
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
 
-        Library library = new Library(new ArrayList<Book>(), movies);
+        Library library = new Library(new ArrayList<Book>(), movies, new ArrayList<UserAccount>());
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
-        biblioteca.run();
+        biblioteca.run("MAINMENU");
 
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n2.List Movies\nEnter choice :\n" + "---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------" + "\n" + String.format("%-40S%-25S%-25S%-25S", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
     }
@@ -212,13 +212,13 @@ public class TestBibliotecaApplication {
         movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library(new ArrayList<Book>(), movies);
+        Library library = new Library(new ArrayList<Book>(), movies, new ArrayList<UserAccount>());
         ReadInput input = mock(ReadInput.class);
         when(input.read()).thenReturn("3");
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
-        biblioteca.run();
+        biblioteca.run("MAINMENU");
 
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n3.Checkout a Movie\nE.Exit\nEnter choice :\nENTER MOVIE NAME:\nThank you! Enjoy the movie\n", outputContent.toString());
     }
@@ -240,13 +240,13 @@ public class TestBibliotecaApplication {
         movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        Library library = new Library(new ArrayList<Book>(), movies);
+        Library library = new Library(new ArrayList<Book>(), movies, new ArrayList<UserAccount>());
         ReadInput input = mock(ReadInput.class);
         when(input.read()).thenReturn("3");
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input);
         biblioteca.start();
-        biblioteca.run();
+        biblioteca.run("MAINMENU");
 
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n5.Checkout a Movie\nE.Exit\nEnter choice :\nENTER MOVIE NAME:\nThat movie is not available\n", outputContent.toString());
     }

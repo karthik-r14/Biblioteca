@@ -2,16 +2,19 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Library {
 
     private ArrayList<Book> listOfBooks;
     private ArrayList<Book> checkedOutBooks;
     private ArrayList<Movie> listOfMovies;
+    private ArrayList<UserAccount> userAccounts;
 
-    public Library(ArrayList<Book> listOfBooks, ArrayList<Movie> listOfMovies) {
+    public Library(ArrayList<Book> listOfBooks, ArrayList<Movie> listOfMovies, ArrayList<UserAccount> userAccounts) {
         this.listOfBooks = listOfBooks;
         this.listOfMovies = listOfMovies;
+        this.userAccounts = userAccounts;
         checkedOutBooks = new ArrayList<>();
     }
 
@@ -57,5 +60,11 @@ public class Library {
             }
         }
         return "That is not a valid book to return";
+    }
+
+    public UserAccount login() {
+        Authenticator authenticator = new Authenticator(new ReadInput(new Scanner(System.in)), userAccounts);
+        authenticator.takeCredentials();
+        return authenticator.validate();
     }
 }

@@ -1,6 +1,7 @@
 //ExecuteMenuItem executes the desired menu item based on choice
 package com.twu.biblioteca;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.Scanner;
 
 public class ExecuteMenuItem {
@@ -11,7 +12,7 @@ public class ExecuteMenuItem {
         this.choice = choice;
     }
 
-    public void execute(Library library) {
+    public String execute(Library library) {
         ReadInput input = new ReadInput(new Scanner(System.in));
 
         switch (choice) {
@@ -34,6 +35,15 @@ public class ExecuteMenuItem {
                 display(library.checkoutAMovie(input.read()));
                 break;
 
+            case "4":
+                UserAccount user = library.login();
+                if(user == null)
+                    break;
+                if(user.getRole().equals("USER"))
+                    return  "USERMENU";
+                else
+                    return "LIBRARIANMENU";
+
             case "e":
             case "E":
                 System.exit(0);
@@ -41,6 +51,7 @@ public class ExecuteMenuItem {
             default:
                 display("SELECT A VALID OPTION");
         }
+        return "MAINMENU";
     }
 
     public void display(String message) {

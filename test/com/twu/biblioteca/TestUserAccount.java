@@ -36,13 +36,13 @@ public class TestUserAccount {
     public void shouldReturnTrueOnSameCredentials() {
 
         UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user");
-        assertEquals("USER", user.compareUser("karthik_r14", "abc-defg"));
+        assertEquals(true, user.compareUser("karthik_r14", "abc-defg"));
     }
 
     @Test
     public void shouldReturnFalseOnDifferentCredentials() {
 
         UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user");
-        assertEquals("ACCESS DENIED", user.compareUser("karthik1408", "cdefgk"));
+        assertEquals(false, user.compareUser("karthik1408", "cdefgk"));
     }
 }

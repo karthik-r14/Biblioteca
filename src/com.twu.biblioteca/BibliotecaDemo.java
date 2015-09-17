@@ -25,13 +25,16 @@ public class BibliotecaDemo {
         ArrayList<Movie> movie = new ArrayList<>();
         movie.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
         movie.add(new Movie("V for Vendetta", "James Mcteigue", 2006, 8.2f));
-        Library library = new Library(books, movie);
+
+        ArrayList<UserAccount> userAccounts = new ArrayList<>();
+        Library library = new Library(books, movie, userAccounts );
 
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(menu, library, new WelcomeMessage("WELCOME TO BIBLIOTECA"), new ReadInput(new Scanner(System.in)));
 
         bibliotecaApplication.start();
+        String menuType = "MAINMENU";
         while (true) {
-            bibliotecaApplication.run();
+          menuType=bibliotecaApplication.run(menuType);
         }
     }
 }

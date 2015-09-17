@@ -17,10 +17,14 @@ public class UserAccount {
         System.out.println("ROLE :" + role);
     }
 
-    public String compareUser(String thatuserName, String thatPassword) {
+    public boolean compareUser(String thatuserName, String thatPassword) {
         if (userName.equals(thatuserName) && password.equals(thatPassword))
-            return role;
+            return true;
         else
-            return "ACCESS DENIED";
+            return false;
+    }
+
+    public String getRole() {
+        return role;
     }
 }

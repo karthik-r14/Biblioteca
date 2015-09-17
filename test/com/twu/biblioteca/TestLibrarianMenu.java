@@ -48,7 +48,7 @@ public class TestLibrarianMenu {
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
 
-        Library library = new Library(books, new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         librarianMenu.executeOption("1", library, new UserAccount("124-1234", "abc-defg", "user"));
 
         assertEquals("------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "FIVE POINT SOMEONE", "CHETAN BHAGAT", 2004) + "\n", outputContent.toString());
@@ -65,7 +65,7 @@ public class TestLibrarianMenu {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books, new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         librarianMenu.executeOption("-1", library, new UserAccount("124-1234", "abc-defg", "user"));
         assertEquals("SELECT A VALID OPTION\n", outputContent.toString());
     }
@@ -84,7 +84,7 @@ public class TestLibrarianMenu {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books, new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         librarianMenu.addOptions("List Books");
         librarianMenu.addOptions("Checkout a Book");
         librarianMenu.executeOption("2", library, new UserAccount("124-1234", "abc-defg", "user"));
@@ -107,7 +107,7 @@ public class TestLibrarianMenu {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books, new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         library.checkoutABook("Five Point Someone");
         librarianMenu.addOptions("List Books");
         librarianMenu.addOptions("Checkout a Book");
@@ -132,7 +132,7 @@ public class TestLibrarianMenu {
         books.add(new Book("One Night At the Call Center", "Chetan Bhagat", 2005));
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
-        Library library = new Library(books, new ArrayList<Movie>());
+        Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         library.checkoutABook("Five Point Someone");
         librarianMenu.addOptions("List Books");
         librarianMenu.addOptions("Checkout a Book");
@@ -151,7 +151,7 @@ public class TestLibrarianMenu {
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
 
-        Library library = new Library(books, movies);
+        Library library = new Library(books, movies, new ArrayList<UserAccount>());
 
         librarianMenu.executeOption("4", library, new UserAccount("124-1234", "abc-defg", "user"));
         assertEquals("---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------\n" + String.format("%-40s%-25s%-25s%-25s", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
@@ -169,7 +169,7 @@ public class TestLibrarianMenu {
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
 
-        Library library = new Library(new ArrayList<Book>(), movies);
+        Library library = new Library(new ArrayList<Book>(), movies, new ArrayList<UserAccount>());
         librarianMenu.addOptions("List Books");
         librarianMenu.addOptions("Checkout a movie");
         librarianMenu.executeOption("5", library, new UserAccount("124-1234", "abc-defg", "user") );
@@ -189,7 +189,7 @@ public class TestLibrarianMenu {
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("The Boy in the Striped pyjamas", "Mark Herman", 2008, 7.8f));
 
-        Library library = new Library(new ArrayList<Book>(), movies);
+        Library library = new Library(new ArrayList<Book>(), movies, new ArrayList<UserAccount>());
         librarianMenu.addOptions("List Books");
         librarianMenu.addOptions("Checkout a movie");
         librarianMenu.executeOption("5", library, new UserAccount("karthik_r14", "abc-defg", "user"));
@@ -200,7 +200,7 @@ public class TestLibrarianMenu {
     @Test
     public void shouldDisplayUserDetails() {
         LibrarianMenu librarianMenu = new LibrarianMenu(new UserMenu(new ArrayList<String>()));
-        librarianMenu.executeOption("6", new Library(new ArrayList<Book>(), new ArrayList<Movie>()), new UserAccount("124-1234", "abc-defg", "user"));
+        librarianMenu.executeOption("6", new Library(new ArrayList<Book>(), new ArrayList<Movie>(), new ArrayList<UserAccount>()), new UserAccount("124-1234", "abc-defg", "user"));
 
         assertEquals("USER NAME :124-1234\nROLE :USER\n", outputContent.toString());
     }

@@ -15,10 +15,21 @@ public class BibliotecaApplication {
         userInput = input;
     }
 
-    public void run() {
-        menu.displayMenu();
-        display("Enter choice :");
-        menu.executeOption(userInput.read(), library);
+    public String run(String menuType) {
+        switch (menuType) {
+
+            case "MAINMENU":
+                menu.displayMenu();
+                display("Enter choice :");
+                return menu.executeOption(userInput.read(), library);
+
+            case "USER MENU":
+                return "USERMENU";
+
+            case "LIBRARIAN":
+                return "LIBRARIANMENU";
+        }
+        return "MAINMENU";
     }
 
     public void start() {

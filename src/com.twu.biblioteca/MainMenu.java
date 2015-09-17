@@ -22,8 +22,8 @@ public class MainMenu {
         }
     }
 
-    public void executeOption(String choice, Library library) {
+    public String executeOption(String choice, Library library) {
         item = new ExecuteMenuItem(choice);
-        item.execute(library);
+        return item.execute(library);
     }
 }
