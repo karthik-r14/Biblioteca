@@ -58,11 +58,8 @@ public class Library {
     public void displayCheckedOutBookDetails() {
         for(Book book : bookUserMap.keySet()) {
             UserAccount userAccount = bookUserMap.get(book);
-            userAccount.displayInfo();
-            System.out.println("------------------------------------------------------------------------------------");
-            System.out.println(String.format("%-40S%-40S%-40S", "TITLE", "AUTHOR", "YEAR"));
-            System.out.println("------------------------------------------------------------------------------------");
             book.displayBook();
+            userAccount.displayInfo();
         }
     }
 
