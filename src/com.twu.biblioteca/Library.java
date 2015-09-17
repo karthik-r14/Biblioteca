@@ -56,7 +56,7 @@ public class Library {
     }
 
     public void displayCheckedOutBookDetails() {
-        for(Book book : bookUserMap.keySet()) {
+        for (Book book : bookUserMap.keySet()) {
             UserAccount userAccount = bookUserMap.get(book);
             book.displayBook();
             userAccount.displayInfo(2);

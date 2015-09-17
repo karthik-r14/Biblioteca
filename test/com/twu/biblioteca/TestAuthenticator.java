@@ -59,7 +59,7 @@ public class TestAuthenticator {
 
         ArrayList<UserAccount> users = new ArrayList<>();
         users.add(new UserAccount("kar-thik", "abcdef", "user", "karu", "karu@gmail.com", "9880443410"));
-        users.add(new UserAccount("car-tick", "ghijk", "user", "kar", "kau@gmail.com", "9088444301" ));
+        users.add(new UserAccount("car-tick", "ghijk", "user", "kar", "kau@gmail.com", "9088444301"));
         Authenticator authenticator = new Authenticator(input, users);
         authenticator.takeCredentials();
 

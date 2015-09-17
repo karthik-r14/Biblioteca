@@ -108,7 +108,7 @@ public class TestExecuteMenuItem {
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
         userAccounts.add(new UserAccount("123-456", "abcdef", "user", "Sachin", "sachin@gmail.com", "9901089765"));
-        userAccounts.add(new UserAccount("124-546", "abcdef", "user","Kaushal","kaushal@gmail.com", "7760989810" ));
+        userAccounts.add(new UserAccount("124-546", "abcdef", "user", "Kaushal", "kaushal@gmail.com", "7760989810"));
 
         Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
 

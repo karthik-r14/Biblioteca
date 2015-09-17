@@ -23,7 +23,6 @@ public class UserAccount {
 
         switch (displayType) {
 
-
             case 1:
                 System.out.println("USER NAME :" + userName);
                 System.out.println("NAME :" + name);

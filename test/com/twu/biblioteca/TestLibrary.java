@@ -142,7 +142,7 @@ public class TestLibrary {
     public void shouldReturnNullOnUnsuccessfulLogin() {
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
-        userAccounts.add(new UserAccount("123-456", "abcdef", "user","kar", "kau@gmail.com", "9088444301"));
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user", "kar", "kau@gmail.com", "9088444301"));
         userAccounts.add(new UserAccount("124-546", "abcdef", "user", "kar", "kau@gmail.com", "9088444301"));
 
         String userInput = "123-456\nabcd";
