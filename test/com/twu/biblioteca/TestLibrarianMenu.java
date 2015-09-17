@@ -227,8 +227,6 @@ public class TestLibrarianMenu {
         librarianMenu.addOptions("Book Details");
         librarianMenu.executeOption("8", library, new UserAccount("karthik_r14", "abc-defg", "Librarian"));
 
-        assertEquals("USER NAME :123-1234\nROLE :LIBRARIAN\n------------------------------------------------------------------------------------\n" + String.format("%-40s%-40s%-40s", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "REVOLUTION 2020", "CHETAN BHAGAT", "2011")+ "\n", outputContent.toString());
-
+        assertEquals("USER NAME :123-1234\nROLE :LIBRARIAN\n------------------------------------------------------------------------------------\n" + String.format("%-40s%-40s%-40s", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "REVOLUTION 2020", "CHETAN BHAGAT", "2011") + "\n", outputContent.toString());
     }
-
 }

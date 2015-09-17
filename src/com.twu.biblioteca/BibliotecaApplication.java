@@ -33,6 +33,9 @@ public class BibliotecaApplication {
                 return userMenu.executeOption(userInput.read(), library, userAccount);
 
             case "LIBRARIAN":
+                librarianMenu.displayMenu();
+                display("Enter choice :");
+                return librarianMenu.executeOption(userInput.read(), library, userAccount);
         }
         return new UserAccount(" ", " ", "DEFAULT");
     }
