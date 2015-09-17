@@ -172,7 +172,7 @@ public class TestBibliotecaApplication {
     }
 
     @Test
-    public void shouldDisplayTheListOfMoviesWhenUserInputsFour() {
+    public void shouldDisplayTheListOfMoviesWhenUserInputsTwo() {
         String userChoice = "2";
         final ByteArrayInputStream inContent = new ByteArrayInputStream(userChoice.getBytes());
         System.setIn(inContent);
@@ -249,5 +249,60 @@ public class TestBibliotecaApplication {
         biblioteca.run(new UserAccount("", " ", "DEFAULT"));
 
         assertEquals("WELCOME TO BIBLIOTECA\n1.List Book\n5.Checkout a Movie\nE.Exit\nEnter choice :\nENTER MOVIE NAME:\nThat movie is not available\n", outputContent.toString());
+    }
+
+    @Test
+    public void shouldReturnUserOnSuccesfulLogin() {
+
+        ArrayList<UserAccount> userAccounts = new ArrayList<>();
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
+        userAccounts.add(new UserAccount("123-457", "asdfgh", "user"));
+
+        MainMenu mainMenu = new MainMenu(new ArrayList<String>());
+        Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
+
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
+        ReadInput input = mock(ReadInput.class);
+        when(input.read()).thenReturn("4");
+
+        String userInput = "123-456\nabcdef";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(inContent);
+
+        mainMenu.addOptions("List Books");
+        mainMenu.addOptions("Checkout a movie");
+        mainMenu.addOptions("Login");
+
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()));
+        biblioteca.start();
+        assertEquals("USER", biblioteca.run(new UserAccount("", " ", "DEFAULT")).getRole());
+    }
+
+    @Test
+    public void shouldReturnDefaultUserOnUnsuccesfulLogin() {
+
+        ArrayList<UserAccount> userAccounts = new ArrayList<>();
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
+        userAccounts.add(new UserAccount("123-457", "asdfgh", "user"));
+
+        MainMenu mainMenu = new MainMenu(new ArrayList<String>());
+        Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
+
+        String userInput = "123-456\nabcf";
+        final ByteArrayInputStream inContent = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(inContent);
+
+        WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
+        ReadInput input = mock(ReadInput.class);
+        when(input.read()).thenReturn("4");
+
+        mainMenu.addOptions("List Books");
+        mainMenu.addOptions("Checkout a movie");
+        mainMenu.addOptions("Login");
+
+        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()));
+        biblioteca.start();
+
+        assertEquals("DEFAULT", biblioteca.run(new UserAccount("", " ", "DEFAULT")).getRole());
     }
 }

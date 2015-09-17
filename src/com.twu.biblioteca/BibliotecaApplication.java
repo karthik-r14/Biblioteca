@@ -27,11 +27,10 @@ public class BibliotecaApplication {
 
             case "USER":
                 userMenu.displayMenu();
-                display("Enter choice");
+                display("Enter choice :");
                 return userMenu.executeOption(userInput.read(), library, userAccount);
 
             case "LIBRARIAN":
-
         }
         return new UserAccount(" ", " ", "DEFAULT");
     }
