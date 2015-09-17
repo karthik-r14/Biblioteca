@@ -35,7 +35,7 @@ public class TestUserMenu {
         userMenu.addOptions("Checkout movie");
         userMenu.displayMenu();
 
-        assertEquals("List Books\nCheckout movie\n", outputContent.toString());
+        assertEquals("\n\n\nList Books\nCheckout movie\n", outputContent.toString());
     }
 
     @Test

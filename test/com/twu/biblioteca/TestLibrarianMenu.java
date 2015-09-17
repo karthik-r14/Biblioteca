@@ -35,7 +35,7 @@ public class TestLibrarianMenu {
         librarianMenu.addOptions("List Movie");
         librarianMenu.displayMenu();
 
-        assertEquals("List Books\nList Movie\n", outputContent.toString());
+        assertEquals("\n\n\nList Books\nList Movie\n", outputContent.toString());
     }
 
     @Test
@@ -227,6 +227,6 @@ public class TestLibrarianMenu {
         librarianMenu.addOptions("Book Details");
         librarianMenu.executeOption("8", library, new UserAccount("karthik_r14", "abc-defg", "Librarian"));
 
-        assertEquals("------------------------------------------------------------------------------------\n" + String.format("%-40s%-40s%-40s", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "REVOLUTION 2020", "CHETAN BHAGAT", "2011") + "\n" + "USER NAME :123-1234\nROLE :LIBRARIAN\n" , outputContent.toString());
+        assertEquals("------------------------------------------------------------------------------------\n" + String.format("%-40s%-40s%-40s", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "REVOLUTION 2020", "CHETAN BHAGAT", "2011") + "\n" + "USER NAME :123-1234\nROLE :LIBRARIAN\n\n\n" , outputContent.toString());
     }
 }

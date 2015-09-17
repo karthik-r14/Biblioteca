@@ -56,7 +56,7 @@ public class BibliotecaDemo {
         librarianMenu.addOptions("5.Checkout a Movie");
         librarianMenu.addOptions("6.User Details");
         librarianMenu.addOptions("7.Logout");
-        librarianMenu.addOptions("8.Book ");
+        librarianMenu.addOptions("8.Book Details");
 
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(menu, library, new WelcomeMessage("WELCOME TO BIBLIOTECA"), new ReadInput(new Scanner(System.in)), menu1, librarianMenu);
 

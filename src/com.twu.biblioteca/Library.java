@@ -60,6 +60,7 @@ public class Library {
             UserAccount userAccount = bookUserMap.get(book);
             book.displayBook();
             userAccount.displayInfo();
+            System.out.println("\n");
         }
     }
 
