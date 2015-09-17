@@ -10,10 +10,8 @@ public class BibliotecaDemo {
 
         MainMenu menu = new MainMenu(new ArrayList<String>());
         menu.addOptions("1.List Books");
-        menu.addOptions("2.Checkout a Book");
-        menu.addOptions("3.Return a Book");
-        menu.addOptions("4.List Movies");
-        menu.addOptions("5.Checkout a Movie");
+        menu.addOptions("2.List Movies");
+        menu.addOptions("3.Checkout a Movie");
         menu.addOptions("E.Exit");
 
         ArrayList<Book> books = new ArrayList<>();
