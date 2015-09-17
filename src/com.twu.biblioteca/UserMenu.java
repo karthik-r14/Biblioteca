@@ -17,8 +17,8 @@ public class UserMenu {
         menu.add(option);
     }
 
-    public void displayMenu() {
-        System.out.println("\n\n");
+    public void displayMenu(String menuType) {
+        System.out.println("\n\n" + menuType);
         for (String option : menu) {
             System.out.println(option);
         }

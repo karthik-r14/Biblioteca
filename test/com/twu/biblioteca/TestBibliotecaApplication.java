@@ -52,7 +52,7 @@ public class TestBibliotecaApplication {
         biblioteca.start();
         biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
-        assertEquals("WELCOME TO BIBLIOTECA\n\n\n\n1.List Book\n2.Exit\nEnter choice :\n" + "------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "DA VINCI CODE", "DAN BROWN", 2003) + "\n" + String.format("%-40S%-40S%-40S", "ADVENTURES OF SHERLOCK HOLMES", "ARTHUR CONAN DOYLE", 1892) + "\n", outputContent.toString());
+        assertEquals("WELCOME TO BIBLIOTECA\n\n\nMAIN MENU\n1.List Book\n2.Exit\nEnter choice :\n" + "------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "DA VINCI CODE", "DAN BROWN", 2003) + "\n" + String.format("%-40S%-40S%-40S", "ADVENTURES OF SHERLOCK HOLMES", "ARTHUR CONAN DOYLE", 1892) + "\n", outputContent.toString());
     }
 
     @Test
@@ -98,7 +98,7 @@ public class TestBibliotecaApplication {
         biblioteca.start();
         biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
-        assertEquals("WELCOME TO BIBLIOTECA\n\n\n\n1.List Book\n2.Exit\nEnter choice :\nSELECT A VALID OPTION\n", outputContent.toString());
+        assertEquals("WELCOME TO BIBLIOTECA\n\n\nMAIN MENU\n1.List Book\n2.Exit\nEnter choice :\nSELECT A VALID OPTION\n", outputContent.toString());
     }
 
     @Test
@@ -123,7 +123,7 @@ public class TestBibliotecaApplication {
         biblioteca.start();
         biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
-        assertEquals("WELCOME TO BIBLIOTECA\n\n\n\n1.List Book\n2.Exit\nEnter choice :\nSELECT A VALID OPTION\n", outputContent.toString());
+        assertEquals("WELCOME TO BIBLIOTECA\n\n\nMAIN MENU\n1.List Book\n2.Exit\nEnter choice :\nSELECT A VALID OPTION\n", outputContent.toString());
     }
 
     @Rule
@@ -192,7 +192,7 @@ public class TestBibliotecaApplication {
         biblioteca.start();
         biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
-        assertEquals("WELCOME TO BIBLIOTECA\n\n\n\n1.List Book\n2.List Movies\nEnter choice :\n" + "---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------" + "\n" + String.format("%-40S%-25S%-25S%-25S", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
+        assertEquals("WELCOME TO BIBLIOTECA\n\n\nMAIN MENU\n1.List Book\n2.List Movies\nEnter choice :\n" + "---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------" + "\n" + String.format("%-40S%-25S%-25S%-25S", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
     }
 
     @Test
@@ -220,7 +220,7 @@ public class TestBibliotecaApplication {
         biblioteca.start();
         biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
-        assertEquals("WELCOME TO BIBLIOTECA\n\n\n\n1.List Book\n3.Checkout a Movie\nE.Exit\nEnter choice :\nENTER MOVIE NAME:\nThank you! Enjoy the movie\n", outputContent.toString());
+        assertEquals("WELCOME TO BIBLIOTECA\n\n\nMAIN MENU\n1.List Book\n3.Checkout a Movie\nE.Exit\nEnter choice :\nENTER MOVIE NAME:\nThank you! Enjoy the movie\n", outputContent.toString());
     }
 
     @Test
@@ -248,7 +248,7 @@ public class TestBibliotecaApplication {
         biblioteca.start();
         biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
-        assertEquals("WELCOME TO BIBLIOTECA\n\n\n\n1.List Book\n5.Checkout a Movie\nE.Exit\nEnter choice :\nENTER MOVIE NAME:\nThat movie is not available\n", outputContent.toString());
+        assertEquals("WELCOME TO BIBLIOTECA\n\n\nMAIN MENU\n1.List Book\n5.Checkout a Movie\nE.Exit\nEnter choice :\nENTER MOVIE NAME:\nThat movie is not available\n", outputContent.toString());
     }
 
     @Test

@@ -33,7 +33,7 @@ public class TestLibrarianMenu {
         LibrarianMenu librarianMenu = new LibrarianMenu(new UserMenu(menu));
         librarianMenu.addOptions("List Books");
         librarianMenu.addOptions("List Movie");
-        librarianMenu.displayMenu();
+        librarianMenu.displayMenu("");
 
         assertEquals("\n\n\nList Books\nList Movie\n", outputContent.toString());
     }

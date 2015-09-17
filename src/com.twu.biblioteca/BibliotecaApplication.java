@@ -28,12 +28,12 @@ public class BibliotecaApplication {
                 return menu.executeOption(userInput.read(), library);
 
             case "USER":
-                userMenu.displayMenu();
+                userMenu.displayMenu("USER MENU");
                 display("Enter choice :");
                 return userMenu.executeOption(userInput.read(), library, userAccount);
 
             case "LIBRARIAN":
-                librarianMenu.displayMenu();
+                librarianMenu.displayMenu("LIBRARIAN MENU");
                 display("Enter choice :");
                 return librarianMenu.executeOption(userInput.read(), library, userAccount);
         }

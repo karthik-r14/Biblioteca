@@ -12,8 +12,8 @@ public class LibrarianMenu {
         userMenu.addOptions(option);
     }
 
-    public void displayMenu() {
-        userMenu.displayMenu();
+    public void displayMenu(String menu) {
+        userMenu.displayMenu(menu);
     }
 
     public UserAccount executeOption(String choice, Library library, UserAccount userAccount) {

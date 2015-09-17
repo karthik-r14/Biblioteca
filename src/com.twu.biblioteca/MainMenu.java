@@ -17,7 +17,7 @@ public class MainMenu {
     }
 
     public void displayMenu() {
-        System.out.println("\n\n");
+        System.out.println("\n\nMAIN MENU");
         for (String option : menu) {
             System.out.println(option);
         }
