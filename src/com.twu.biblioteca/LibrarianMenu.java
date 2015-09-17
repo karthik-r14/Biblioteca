@@ -21,7 +21,7 @@ public class LibrarianMenu {
         switch (choice) {
             case "8":
                 System.out.println("------------------------------------------------------------------------------------");
-                System.out.println(String.format("%-40S%-40S%-40S", "TITLE", "AUTHOR", "YEAR"));
+                System.out.println(String.format("%-40S%-40S%-40S", "BOOK ISSUE DETAILS", "AUTHOR", "YEAR"));
                 System.out.println("------------------------------------------------------------------------------------");
                 library.displayCheckedOutBookDetails();
                 return userAccount;
