@@ -45,7 +45,7 @@ public class ExecuteMenuItem {
             default:
                 display("SELECT A VALID OPTION");
         }
-        return new UserAccount(" ", " ", "DEFAULT");
+        return new UserAccount(" ", " ", "DEFAULT", " ", " ", " ");
     }
 
     public void display(String message) {

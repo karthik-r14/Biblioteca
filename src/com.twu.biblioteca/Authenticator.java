@@ -31,6 +31,6 @@ public class Authenticator {
             if (user.compareUser(userId, password))
                 return user;
         }
-        return new UserAccount(" ", " ", "DEFAULT");
+        return new UserAccount(" ", " ", "DEFAULT", " ", " ", " ");
     }
 }

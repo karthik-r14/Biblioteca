@@ -43,8 +43,8 @@ public class TestAuthenticator {
         when(input.read()).thenReturn("kar-thik", "abcdef");
 
         ArrayList<UserAccount> users = new ArrayList<>();
-        users.add(new UserAccount("kar-thik", "abcdef", "user"));
-        users.add(new UserAccount("car-tick", "ghijk", "user"));
+        users.add(new UserAccount("kar-thik", "abcdef", "user", "karu", "karu@gmail.com", "9880443410"));
+        users.add(new UserAccount("car-tick", "ghijk", "user", "kar", "kau@gmail.com", "9088444301"));
         Authenticator authenticator = new Authenticator(input, users);
         authenticator.takeCredentials();
 
@@ -58,8 +58,8 @@ public class TestAuthenticator {
         when(input.read()).thenReturn("Car-t", "abcdef");
 
         ArrayList<UserAccount> users = new ArrayList<>();
-        users.add(new UserAccount("kar-thik", "abcdef", "user"));
-        users.add(new UserAccount("car-tick", "ghijk", "user"));
+        users.add(new UserAccount("kar-thik", "abcdef", "user", "karu", "karu@gmail.com", "9880443410"));
+        users.add(new UserAccount("car-tick", "ghijk", "user", "kar", "kau@gmail.com", "9088444301" ));
         Authenticator authenticator = new Authenticator(input, users);
         authenticator.takeCredentials();
 

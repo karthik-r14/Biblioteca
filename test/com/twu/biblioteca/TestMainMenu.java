@@ -129,8 +129,8 @@ public class TestMainMenu {
     public void shouldReturnUseruOnSuccesfulLogin() {
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
-        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
-        userAccounts.add(new UserAccount("123-457", "asdfgh", "user"));
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user", "karu", "karu@gmail.com", "9880431234"));
+        userAccounts.add(new UserAccount("123-457", "asdfgh", "user", "kar", "kau@gmail.com", "9088444301"));
 
         MainMenu mainMenu = new MainMenu(new ArrayList<String>());
         Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
@@ -150,8 +150,8 @@ public class TestMainMenu {
     public void shouldReturnDefaultUserOnUnsuccesfulLogin() {
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
-        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
-        userAccounts.add(new UserAccount("123-457", "asdfgh", "user"));
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user", "karu", "karu@gmail.com", "9880431234"));
+        userAccounts.add(new UserAccount("123-457", "asdfgh", "user", "kar", "kau@gmail.com", "9088444301"));
 
         MainMenu mainMenu = new MainMenu(new ArrayList<String>());
         Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);

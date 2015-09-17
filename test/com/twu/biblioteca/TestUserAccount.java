@@ -26,7 +26,7 @@ public class TestUserAccount {
     @Test
     public void shouldDisplayUserInfo() {
 
-        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user");
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user", "karthik", "kar@gmail.com ", "9880443410");
         user.displayInfo();
 
         assertEquals("USER NAME :" + "karthik_r14\n" + "ROLE :" + "USER\n", outputContent.toString());
@@ -35,35 +35,35 @@ public class TestUserAccount {
     @Test
     public void shouldReturnTrueOnSameCredentials() {
 
-        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user");
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user", "karthik", "kar@gmail.com ", "9880443410");
         assertEquals(true, user.compareUser("karthik_r14", "abc-defg"));
     }
 
     @Test
     public void shouldReturnFalseOnDifferentCredentials() {
 
-        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user");
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user", "karthik", "kar@gmail.com ", "9880443410");
         assertEquals(false, user.compareUser("karthik1408", "cdefgk"));
     }
 
     @Test
     public void shouldReturnRoleOfUserAccountAsUser() {
 
-        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user");
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "user", "karthik", "kar@gmail.com ", "9880443410");
         assertEquals("USER", user.getRole());
     }
 
     @Test
     public void shouldReturnRoleOfUserAccountAsLibrarian() {
 
-        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "librarian");
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "librarian", "karthik", "kar@gmail.com ", "9880443410");
         assertEquals("LIBRARIAN", user.getRole());
     }
 
     @Test
     public void shouldReturnRoleOfUserAccountAsDefault() {
 
-        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "DEFAULT");
+        UserAccount user = new UserAccount("karthik_r14", "abc-defg", "DEFAULT", "karthik", "kar@gmail.com ", "9880443410");
         assertEquals("DEFAULT", user.getRole());
     }
 }

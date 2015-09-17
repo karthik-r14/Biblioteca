@@ -50,7 +50,7 @@ public class TestBibliotecaApplication {
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
-        biblioteca.run(new UserAccount("", " ", "DEFAULT"));
+        biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
         assertEquals("WELCOME TO BIBLIOTECA\n\n\n\n1.List Book\n2.Exit\nEnter choice :\n" + "------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "DA VINCI CODE", "DAN BROWN", 2003) + "\n" + String.format("%-40S%-40S%-40S", "ADVENTURES OF SHERLOCK HOLMES", "ARTHUR CONAN DOYLE", 1892) + "\n", outputContent.toString());
     }
@@ -96,7 +96,7 @@ public class TestBibliotecaApplication {
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
-        biblioteca.run(new UserAccount("", " ", "DEFAULT"));
+        biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
         assertEquals("WELCOME TO BIBLIOTECA\n\n\n\n1.List Book\n2.Exit\nEnter choice :\nSELECT A VALID OPTION\n", outputContent.toString());
     }
@@ -121,7 +121,7 @@ public class TestBibliotecaApplication {
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
-        biblioteca.run(new UserAccount("", " ", "DEFAULT"));
+        biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
         assertEquals("WELCOME TO BIBLIOTECA\n\n\n\n1.List Book\n2.Exit\nEnter choice :\nSELECT A VALID OPTION\n", outputContent.toString());
     }
@@ -153,7 +153,7 @@ public class TestBibliotecaApplication {
 
         exit.expectSystemExitWithStatus(0);
         biblioteca.start();
-        biblioteca.run(new UserAccount("", " ", "DEFAULT"));
+        biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
     }
 
     @Test
@@ -190,7 +190,7 @@ public class TestBibliotecaApplication {
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
-        biblioteca.run(new UserAccount("", " ", "DEFAULT"));
+        biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
         assertEquals("WELCOME TO BIBLIOTECA\n\n\n\n1.List Book\n2.List Movies\nEnter choice :\n" + "---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------" + "\n" + String.format("%-40S%-25S%-25S%-25S", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
     }
@@ -218,7 +218,7 @@ public class TestBibliotecaApplication {
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
-        biblioteca.run(new UserAccount("", " ", "DEFAULT"));
+        biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
         assertEquals("WELCOME TO BIBLIOTECA\n\n\n\n1.List Book\n3.Checkout a Movie\nE.Exit\nEnter choice :\nENTER MOVIE NAME:\nThank you! Enjoy the movie\n", outputContent.toString());
     }
@@ -246,7 +246,7 @@ public class TestBibliotecaApplication {
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
-        biblioteca.run(new UserAccount("", " ", "DEFAULT"));
+        biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
         assertEquals("WELCOME TO BIBLIOTECA\n\n\n\n1.List Book\n5.Checkout a Movie\nE.Exit\nEnter choice :\nENTER MOVIE NAME:\nThat movie is not available\n", outputContent.toString());
     }
@@ -255,8 +255,8 @@ public class TestBibliotecaApplication {
     public void shouldReturnUserOnSuccesfulLogin() {
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
-        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
-        userAccounts.add(new UserAccount("123-457", "asdfgh", "user"));
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user", "Sachin", "sachin@gmail.com", "9901089765"));
+        userAccounts.add(new UserAccount("123-457", "asdfgh", "user", "Kaushal", "kaushal@gmail.com", "7760108980"));
 
         MainMenu mainMenu = new MainMenu(new ArrayList<String>());
         Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
@@ -275,15 +275,15 @@ public class TestBibliotecaApplication {
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
-        assertEquals("USER", biblioteca.run(new UserAccount("", " ", "DEFAULT")).getRole());
+        assertEquals("USER", biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " ")).getRole());
     }
 
     @Test
     public void shouldReturnDefaultUserOnUnsuccesfulLogin() {
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
-        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
-        userAccounts.add(new UserAccount("123-457", "asdfgh", "user"));
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user", "Sachin", "sachin@gmail.com", "9901089765"));
+        userAccounts.add(new UserAccount("123-457", "asdfgh", "user", "Kaushal", "kaushal@gmail.com", "7760108980"));
 
         MainMenu mainMenu = new MainMenu(new ArrayList<String>());
         Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
@@ -303,15 +303,15 @@ public class TestBibliotecaApplication {
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
 
-        assertEquals("DEFAULT", biblioteca.run(new UserAccount("", " ", "DEFAULT")).getRole());
+        assertEquals("DEFAULT", biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " ")).getRole());
     }
 
     @Test
     public void shouldReturnLibrarianOnSuccesfulLogin() {
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
-        userAccounts.add(new UserAccount("123-456", "abcdef", "LIBRARIAN"));
-        userAccounts.add(new UserAccount("123-457", "asdfgh", "user"));
+        userAccounts.add(new UserAccount("123-456", "abcdef", "LIBRARIAN", "Sachin", "sachin@gmail.com", "9901089765"));
+        userAccounts.add(new UserAccount("123-457", "asdfgh", "user", "Kaushal", "kaushal@gmail.com", "7760108980"));
 
         MainMenu mainMenu = new MainMenu(new ArrayList<String>());
         Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
@@ -330,6 +330,6 @@ public class TestBibliotecaApplication {
 
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
-        assertEquals("LIBRARIAN", biblioteca.run(new UserAccount("", " ", "DEFAULT")).getRole());
+        assertEquals("LIBRARIAN", biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " ")).getRole());
     }
 }

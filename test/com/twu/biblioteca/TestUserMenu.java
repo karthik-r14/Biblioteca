@@ -47,7 +47,7 @@ public class TestUserMenu {
         books.add(new Book("Five Point Someone", "Chetan Bhagat", 2004));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        userMenu.executeOption("1", library, new UserAccount("124-1234", "abc-defg", "user"));
+        userMenu.executeOption("1", library, new UserAccount("124-1234", "abc-defg", "user", "karu", "kar@gmail.com", "9880443410"));
 
         assertEquals("------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "TITLE", "AUTHOR", "YEAR") + "\n------------------------------------------------------------------------------------\n" + String.format("%-40S%-40S%-40S", "FIVE POINT SOMEONE", "CHETAN BHAGAT", 2004) + "\n", outputContent.toString());
     }
@@ -63,7 +63,7 @@ public class TestUserMenu {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        userMenu.executeOption("-1", library, new UserAccount("124-1234", "abc-defg", "user"));
+        userMenu.executeOption("-1", library, new UserAccount("124-1234", "abc-defg", "user", "karu", "karu@gmail.com", "9880443410"));
         assertEquals("SELECT A VALID OPTION\n", outputContent.toString());
     }
 
@@ -84,7 +84,7 @@ public class TestUserMenu {
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         userMenu.addOptions("List Books");
         userMenu.addOptions("Checkout a Book");
-        userMenu.executeOption("2", library, new UserAccount("124-1234", "abc-defg", "user"));
+        userMenu.executeOption("2", library, new UserAccount("124-1234", "abc-defg", "user", "karu", "karu@gmail.com", "9880443410"));
 
         assertEquals("ENTER BOOKNAME:\nThank you! Enjoy the book\n", outputContent.toString());
     }
@@ -104,12 +104,12 @@ public class TestUserMenu {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER"));
+        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER", "karu", "karu@gmail.com", "9880443410"));
         userMenu.addOptions("List Books");
         userMenu.addOptions("Checkout a Book");
         userMenu.addOptions("Return a Book");
 
-        userMenu.executeOption("3", library, new UserAccount("124-1234", "abc-defg", "user"));
+        userMenu.executeOption("3", library, new UserAccount("124-1234", "abc-defg", "user", "karu", "karu@gmail.com", "9880443410"));
 
         assertEquals("ENTER BOOK TO BE RETURNED:\nThank you for returning the book\n", outputContent.toString());
     }
@@ -129,11 +129,11 @@ public class TestUserMenu {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER"));
+        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER", "karu", "karu@gmail.com", "9880443410"));
         userMenu.addOptions("List Books");
         userMenu.addOptions("Checkout a Book");
         userMenu.addOptions("Return a Book");
-        userMenu.executeOption("3", library, new UserAccount("124-1234", "abc-defg", "user"));
+        userMenu.executeOption("3", library, new UserAccount("124-1234", "abc-defg", "user", "karu", "karu@gmail.com", "9880443410"));
 
         assertEquals("ENTER BOOK TO BE RETURNED:\nThat is not a valid book to return\n", outputContent.toString());
     }
@@ -149,7 +149,7 @@ public class TestUserMenu {
 
         Library library = new Library(books, movies, new ArrayList<UserAccount>());
 
-        userMenu.executeOption("4", library, new UserAccount("124-1234", "abc-defg", "user"));
+        userMenu.executeOption("4", library, new UserAccount("124-1234", "abc-defg", "user", "karu", "karu@gmail.com", "9880443410"));
         assertEquals("---------------------------------------------------------------------------------------------------\n" + String.format("%-40S%-25S%-25S%-25S", "MOVIE", "DIRECTOR", "YEAR", "RATING") + "\n---------------------------------------------------------------------------------------------------\n" + String.format("%-40s%-25s%-25s%-25s", "THE BOY IN THE STRIPED PYJAMAS", "MARK HERMAN", 2008, 7.8) + "\n", outputContent.toString());
     }
 
@@ -168,7 +168,7 @@ public class TestUserMenu {
         Library library = new Library(new ArrayList<Book>(), movies, new ArrayList<UserAccount>());
         userMenu.addOptions("List Books");
         userMenu.addOptions("Checkout a movie");
-        userMenu.executeOption("5", library, new UserAccount("124-1234", "abc-defg", "user"));
+        userMenu.executeOption("5", library, new UserAccount("124-1234", "abc-defg", "user", "karu", "karu@gmail.com", "9880443410"));
 
         assertEquals("ENTER MOVIE NAME:\nThank you! Enjoy the movie\n", outputContent.toString());
     }
@@ -188,7 +188,7 @@ public class TestUserMenu {
         Library library = new Library(new ArrayList<Book>(), movies, new ArrayList<UserAccount>());
         userMenu.addOptions("List Books");
         userMenu.addOptions("Checkout a movie");
-        userMenu.executeOption("5", library, new UserAccount("karthik_r14", "abc-defg", "user"));
+        userMenu.executeOption("5", library, new UserAccount("karthik_r14", "abc-defg", "user", "karu", "karu@gmail.com", "9880443410"));
 
         assertEquals("ENTER MOVIE NAME:\nThat movie is not available\n", outputContent.toString());
     }
@@ -196,7 +196,7 @@ public class TestUserMenu {
     @Test
     public void shouldDisplayUserDetails() {
         UserMenu userMenu = new UserMenu(new ArrayList<String>());
-        userMenu.executeOption("6", new Library(new ArrayList<Book>(), new ArrayList<Movie>(), new ArrayList<UserAccount>()), new UserAccount("124-1234", "abc-defg", "user"));
+        userMenu.executeOption("6", new Library(new ArrayList<Book>(), new ArrayList<Movie>(), new ArrayList<UserAccount>()), new UserAccount("124-1234", "abc-defg", "user", "karu", "karu@gmail.com", "9880443410"));
 
         assertEquals("USER NAME :124-1234\nROLE :USER\n", outputContent.toString());
     }

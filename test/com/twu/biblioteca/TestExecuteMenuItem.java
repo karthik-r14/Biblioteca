@@ -107,8 +107,8 @@ public class TestExecuteMenuItem {
         ExecuteMenuItem executeMenu = new ExecuteMenuItem("4");
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
-        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
-        userAccounts.add(new UserAccount("124-546", "abcdef", "user"));
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user", "Sachin", "sachin@gmail.com", "9901089765"));
+        userAccounts.add(new UserAccount("124-546", "abcdef", "user","Kaushal","kaushal@gmail.com", "7760989810" ));
 
         Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
 
@@ -125,8 +125,8 @@ public class TestExecuteMenuItem {
         ExecuteMenuItem executeMenu = new ExecuteMenuItem("4");
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
-        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
-        userAccounts.add(new UserAccount("124-546", "abcdef", "user"));
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user", "karthik", "kar@gmail.com ", "9880443410"));
+        userAccounts.add(new UserAccount("124-546", "abcdef", "user", "Dheeraj", "dheeru@gmail.com ", "9880443410"));
 
         Library library = new Library(new ArrayList<Book>(), new ArrayList<Movie>(), userAccounts);
 

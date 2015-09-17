@@ -49,7 +49,7 @@ public class ExecuteUserMenuItem {
                 break;
 
             case "7":
-                return new UserAccount(" ", " ", "DEFAULT");
+                return new UserAccount(" ", " ", "DEFAULT", " ", " ", " ");
 
             default:
                 display("SELECT A VALID OPTION");

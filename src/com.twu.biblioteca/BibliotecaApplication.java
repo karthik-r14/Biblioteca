@@ -37,7 +37,7 @@ public class BibliotecaApplication {
                 display("Enter choice :");
                 return librarianMenu.executeOption(userInput.read(), library, userAccount);
         }
-        return new UserAccount(" ", " ", "DEFAULT");
+        return new UserAccount(" ", " ", "DEFAULT", " ", " ", " ");
     }
 
     public void start() {

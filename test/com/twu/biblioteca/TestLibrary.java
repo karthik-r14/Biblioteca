@@ -47,7 +47,7 @@ public class TestLibrary {
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
 
-        assertEquals("Thank you! Enjoy the book", library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER")));
+        assertEquals("Thank you! Enjoy the book", library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER", "kar", "kau@gmail.com", "9088444301")));
     }
 
     @Test
@@ -59,7 +59,7 @@ public class TestLibrary {
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
 
-        assertEquals("That book is not available", library.checkoutABook("2 States", new UserAccount("123-4567", "qwerty", "USER")));
+        assertEquals("That book is not available", library.checkoutABook("2 States", new UserAccount("123-4567", "qwerty", "USER", "kar", "kau@gmail.com", "9088444301")));
     }
 
     @Test
@@ -70,7 +70,7 @@ public class TestLibrary {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER"));
+        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER", "kar", "kau@gmail.com", "9088444301"));
 
         assertEquals("Thank you for returning the book", library.returnABook("Five Point Someone"));
     }
@@ -83,7 +83,7 @@ public class TestLibrary {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER"));
+        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER", "kar", "kau@gmail.com", "9088444301"));
 
         assertEquals("That is not a valid book to return", library.returnABook("2 states"));
     }
@@ -126,8 +126,8 @@ public class TestLibrary {
     public void shouldReturnUserAccountOnSuccessfulLogin() {
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
-        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
-        userAccounts.add(new UserAccount("124-546", "abcdef", "user"));
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user", "kar", "kau@gmail.com", "9088444301"));
+        userAccounts.add(new UserAccount("124-546", "abcdef", "user", "kar", "kau@gmail.com", "9088444301"));
 
         String userInput = "123-456\nabcdef";
         final ByteArrayInputStream inContent = new ByteArrayInputStream(userInput.getBytes());
@@ -142,8 +142,8 @@ public class TestLibrary {
     public void shouldReturnNullOnUnsuccessfulLogin() {
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
-        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
-        userAccounts.add(new UserAccount("124-546", "abcdef", "user"));
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user","kar", "kau@gmail.com", "9088444301"));
+        userAccounts.add(new UserAccount("124-546", "abcdef", "user", "kar", "kau@gmail.com", "9088444301"));
 
         String userInput = "123-456\nabcd";
         final ByteArrayInputStream inContent = new ByteArrayInputStream(userInput.getBytes());
@@ -163,8 +163,8 @@ public class TestLibrary {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
-        userAccounts.add(new UserAccount("123-456", "abcdef", "user"));
-        userAccounts.add(new UserAccount("124-546", "abcdef", "user"));
+        userAccounts.add(new UserAccount("123-456", "abcdef", "user", "kar", "kau@gmail.com", "9088444301"));
+        userAccounts.add(new UserAccount("124-546", "abcdef", "user", "kar", "kau@gmail.com", "9088444301"));
 
         Library library = new Library(books, new ArrayList<Movie>(), userAccounts);
         library.checkoutABook("Revolution 2020", userAccounts.get(0));
