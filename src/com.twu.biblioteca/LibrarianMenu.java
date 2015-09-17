@@ -1,3 +1,4 @@
+//LibrarianMenu has a userMenu which can be displayed, executed, new options can be added to it.
 package com.twu.biblioteca;
 
 public class LibrarianMenu {
