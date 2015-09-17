@@ -28,27 +28,37 @@ public class BibliotecaDemo {
         movie.add(new Movie("V for Vendetta", "James Mcteigue", 2006, 8.2f));
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
-        userAccounts.add(new UserAccount("123-4567", "abcdef", "USER"));
-        userAccounts.add(new UserAccount("123-1234","qwerty","USER"));
-        userAccounts.add(new UserAccount("123-4567","zxcvb","USER"));
-        userAccounts.add(new UserAccount("123-9876","asdff","USER"));
+        userAccounts.add(new UserAccount("100-1001", "abcdef", "USER"));
+        userAccounts.add(new UserAccount("100-1002", "qwerty", "USER"));
+        userAccounts.add(new UserAccount("100-1003", "zxcvb", "USER"));
+        userAccounts.add(new UserAccount("100-1004", "asdff", "USER"));
+        userAccounts.add(new UserAccount("100-1005", "wiper", "LIBRARIAN"));
 
 
         Library library = new Library(books, movie, userAccounts);
 
-        UserMenu userMenu = new UserMenu(new ArrayList<String>());
-        userMenu.addOptions("1.List Books");
-        userMenu.addOptions("2.Checkout a Book");
-        userMenu.addOptions("3.Return a Book");
-        userMenu.addOptions("4.List Movies");
-        userMenu.addOptions("5.Checkout a Movie");
-        userMenu.addOptions("6.User Details");
-        userMenu.addOptions("7.Logout");
+        UserMenu menu1 = new UserMenu(new ArrayList<String>());
+        menu1.addOptions("1.List Books");
+        menu1.addOptions("2.Checkout a Book");
+        menu1.addOptions("3.Return a Book");
+        menu1.addOptions("4.List Movies");
+        menu1.addOptions("5.Checkout a Movie");
+        menu1.addOptions("6.User Details");
+        menu1.addOptions("7.Logout");
 
-        LibrarianMenu librarianMenu = new LibrarianMenu(userMenu);
-        librarianMenu.addOptions("8.Book Details");
+        UserMenu menu2 = new UserMenu(new ArrayList<String>());
 
-        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(menu, library, new WelcomeMessage("WELCOME TO BIBLIOTECA"), new ReadInput(new Scanner(System.in)), userMenu, librarianMenu);
+        LibrarianMenu librarianMenu = new LibrarianMenu(menu2);
+        librarianMenu.addOptions("1.List Books");
+        librarianMenu.addOptions("2.Checkout a Book");
+        librarianMenu.addOptions("3.Return a Book");
+        librarianMenu.addOptions("4.List Movies");
+        librarianMenu.addOptions("5.Checkout a Movie");
+        librarianMenu.addOptions("6.User Details");
+        librarianMenu.addOptions("7.Logout");
+        librarianMenu.addOptions("8.Book ");
+
+        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(menu, library, new WelcomeMessage("WELCOME TO BIBLIOTECA"), new ReadInput(new Scanner(System.in)), menu1, librarianMenu);
 
         bibliotecaApplication.start();
         UserAccount userAccount = new UserAccount(" ", " ", "DEFAULT");
