@@ -6,14 +6,16 @@ public class BibliotecaApplication {
     private WelcomeMessage welcomeMessage;
     private MainMenu menu;
     private UserMenu userMenu;
+    private LibrarianMenu librarianMenu;
     private Library library;
     private ReadInput userInput;
 
-    public BibliotecaApplication(MainMenu menu, Library library, WelcomeMessage welcomeMessage, ReadInput input, UserMenu userMenu) {
+    public BibliotecaApplication(MainMenu menu, Library library, WelcomeMessage welcomeMessage, ReadInput input, UserMenu userMenu, LibrarianMenu librarianMenu) {
         this.welcomeMessage = welcomeMessage;
         this.menu = menu;
         this.userMenu = userMenu;
         this.library = library;
+        this.librarianMenu = librarianMenu;
         userInput = input;
     }
 

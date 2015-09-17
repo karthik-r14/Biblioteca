@@ -45,7 +45,10 @@ public class BibliotecaDemo {
         userMenu.addOptions("6.User Details");
         userMenu.addOptions("7.Logout");
 
-        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(menu, library, new WelcomeMessage("WELCOME TO BIBLIOTECA"), new ReadInput(new Scanner(System.in)), userMenu);
+        LibrarianMenu librarianMenu = new LibrarianMenu(userMenu);
+        librarianMenu.addOptions("8.Book Details");
+
+        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(menu, library, new WelcomeMessage("WELCOME TO BIBLIOTECA"), new ReadInput(new Scanner(System.in)), userMenu, librarianMenu);
 
         bibliotecaApplication.start();
         UserAccount userAccount = new UserAccount(" ", " ", "DEFAULT");
