@@ -104,7 +104,7 @@ public class TestUserMenu {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone");
+        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER"));
         userMenu.addOptions("List Books");
         userMenu.addOptions("Checkout a Book");
         userMenu.addOptions("Return a Book");
@@ -129,7 +129,7 @@ public class TestUserMenu {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone");
+        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER"));
         userMenu.addOptions("List Books");
         userMenu.addOptions("Checkout a Book");
         userMenu.addOptions("Return a Book");
@@ -168,7 +168,7 @@ public class TestUserMenu {
         Library library = new Library(new ArrayList<Book>(), movies, new ArrayList<UserAccount>());
         userMenu.addOptions("List Books");
         userMenu.addOptions("Checkout a movie");
-        userMenu.executeOption("5", library, new UserAccount("124-1234", "abc-defg", "user") );
+        userMenu.executeOption("5", library, new UserAccount("124-1234", "abc-defg", "user"));
 
         assertEquals("ENTER MOVIE NAME:\nThank you! Enjoy the movie\n", outputContent.toString());
     }

@@ -72,8 +72,8 @@ public class TestBibliotecaApplication {
         BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()));
         biblioteca.start();
 
-        assertEquals("WELCOME TO BIBLIOTECA\n", outputContent.toString());
 
+        assertEquals("WELCOME TO BIBLIOTECA\n", outputContent.toString());
     }
 
     @Test

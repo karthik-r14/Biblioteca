@@ -28,7 +28,7 @@ public class Authenticator {
 
     public UserAccount validate() {
         for (UserAccount user : userAccounts) {
-            if(user.compareUser(userId, password))
+            if (user.compareUser(userId, password))
                 return user;
         }
         return new UserAccount(" ", " ", "DEFAULT");

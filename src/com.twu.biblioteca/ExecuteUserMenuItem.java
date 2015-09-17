@@ -23,7 +23,7 @@ public class ExecuteUserMenuItem {
 
             case "2":
                 display("ENTER BOOKNAME:");
-                display(library.checkoutABook(input.read()));
+                display(library.checkoutABook(input.read(), userAccount));
                 break;
 
             case "3":

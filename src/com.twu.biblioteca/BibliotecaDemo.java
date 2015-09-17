@@ -12,6 +12,7 @@ public class BibliotecaDemo {
         menu.addOptions("1.List Books");
         menu.addOptions("2.List Movies");
         menu.addOptions("3.Checkout a Movie");
+        menu.addOptions("4.Login");
         menu.addOptions("E.Exit");
 
         ArrayList<Book> books = new ArrayList<>();
@@ -27,16 +28,29 @@ public class BibliotecaDemo {
         movie.add(new Movie("V for Vendetta", "James Mcteigue", 2006, 8.2f));
 
         ArrayList<UserAccount> userAccounts = new ArrayList<>();
-        Library library = new Library(books, movie, userAccounts );
+        userAccounts.add(new UserAccount("123-4567", "abcdef", "USER"));
+        userAccounts.add(new UserAccount("123-1234","qwerty","USER"));
+        userAccounts.add(new UserAccount("123-4567","zxcvb","USER"));
+        userAccounts.add(new UserAccount("123-9876","asdff","USER"));
+
+
+        Library library = new Library(books, movie, userAccounts);
 
         UserMenu userMenu = new UserMenu(new ArrayList<String>());
+        userMenu.addOptions("1.List Books");
+        userMenu.addOptions("2.Checkout a Book");
+        userMenu.addOptions("3.Return a Book");
+        userMenu.addOptions("4.List Movies");
+        userMenu.addOptions("5.Checkout a Movie");
+        userMenu.addOptions("6.User Details");
+        userMenu.addOptions("7.Logout");
 
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(menu, library, new WelcomeMessage("WELCOME TO BIBLIOTECA"), new ReadInput(new Scanner(System.in)), userMenu);
 
         bibliotecaApplication.start();
         UserAccount userAccount = new UserAccount(" ", " ", "DEFAULT");
         while (true) {
-         userAccount = bibliotecaApplication.run(userAccount);
+            userAccount = bibliotecaApplication.run(userAccount);
         }
     }
 }

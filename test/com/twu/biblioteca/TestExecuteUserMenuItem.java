@@ -41,7 +41,7 @@ public class TestExecuteUserMenuItem {
     @Test
     public void shouldValidateCheckoutBooks() {
         String bookName = "Revolution 2020";
-        final ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
+        ByteArrayInputStream inContent = new ByteArrayInputStream(bookName.getBytes());
         System.setIn(inContent);
 
         ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("2");
@@ -88,7 +88,7 @@ public class TestExecuteUserMenuItem {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone");
+        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER"));
         executeMenu.execute(library, new UserAccount("karthik_r14", "abc-defg", "user"));
 
         assertEquals("ENTER BOOK TO BE RETURNED:\nThank you for returning the book\n", outputContent.toString());
@@ -108,7 +108,7 @@ public class TestExecuteUserMenuItem {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone");
+        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER"));
         executeMenu.execute(library, new UserAccount("karthik_r14", "abc-defg", "user"));
 
         assertEquals("ENTER BOOK TO BE RETURNED:\nThat is not a valid book to return\n", outputContent.toString());

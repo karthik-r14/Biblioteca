@@ -2,6 +2,7 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Library {
@@ -9,6 +10,7 @@ public class Library {
     private ArrayList<Book> listOfBooks;
     private ArrayList<Book> checkedOutBooks;
     private ArrayList<Movie> listOfMovies;
+    private HashMap<Book, UserAccount> bookUserMap;
     private ArrayList<UserAccount> userAccounts;
 
     public Library(ArrayList<Book> listOfBooks, ArrayList<Movie> listOfMovies, ArrayList<UserAccount> userAccounts) {
@@ -16,13 +18,15 @@ public class Library {
         this.listOfMovies = listOfMovies;
         this.userAccounts = userAccounts;
         checkedOutBooks = new ArrayList<>();
+        bookUserMap = new HashMap<>();
     }
 
-    public String checkoutABook(String bookName) {
+    public String checkoutABook(String bookName, UserAccount userAccount) {
         for (Book book : listOfBooks) {
             if (book.compareWithBookName(bookName)) {
                 checkedOutBooks.add(book);
                 listOfBooks.remove(book);
+                bookUserMap.put(book, userAccount);
                 return "Thank you! Enjoy the book";
             }
         }
@@ -56,6 +60,7 @@ public class Library {
             if (book.compareWithBookName(bookName)) {
                 listOfBooks.add(book);
                 checkedOutBooks.remove(book);
+                bookUserMap.remove(book);
                 return "Thank you for returning the book";
             }
         }
