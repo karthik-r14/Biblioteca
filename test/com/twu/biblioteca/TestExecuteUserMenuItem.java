@@ -167,4 +167,12 @@ public class TestExecuteUserMenuItem {
 
         assertEquals("USER NAME :124-1234\nROLE :USER\n", outputContent.toString());
     }
+
+    @Test
+    public void shouldValidateLogOut() {
+        ExecuteUserMenuItem executeMenu = new ExecuteUserMenuItem("7");
+        String menuType = executeMenu.execute(new Library(new ArrayList<Book>(), new ArrayList<Movie>(), new ArrayList<UserAccount>()), new UserAccount("124-1234", "abc-defg", "user"));
+
+        assertEquals("MAINMENU", menuType);
+    }
 }
