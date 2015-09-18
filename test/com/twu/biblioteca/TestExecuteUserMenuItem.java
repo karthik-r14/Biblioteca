@@ -88,8 +88,9 @@ public class TestExecuteUserMenuItem {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER", "Sujith", "sujith032@gmail.com", "9535883552"));
-        executeMenu.execute(library, new UserAccount("karthik_r14", "abc-defg", "user", "karthik", "kar@gmail.com ", "9880443410"));
+        UserAccount userAccount = new UserAccount("123-4567", "qwerty", "USER", "Sujith", "sujith032@gmail.com", "9535883552");
+        library.checkoutABook("Five Point Someone", userAccount);
+        executeMenu.execute(library, userAccount);
 
         assertEquals("ENTER BOOK TO BE RETURNED:\nThank you for returning the book\n", outputContent.toString());
     }
@@ -108,8 +109,9 @@ public class TestExecuteUserMenuItem {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER", "sujith", "sujith032@gmail.com", "9535883552"));
-        executeMenu.execute(library, new UserAccount("karthik_r14", "abc-defg", "user", "karthik", "kar@gmail.com ", "9880443410"));
+        UserAccount userAccount = new UserAccount("123-4567", "qwerty", "USER", "sujith", "sujith032@gmail.com", "9535883552");
+        library.checkoutABook("Five Point Someone", userAccount);
+        executeMenu.execute(library, userAccount);
 
         assertEquals("ENTER BOOK TO BE RETURNED:\nThat is not a valid book to return\n", outputContent.toString());
     }

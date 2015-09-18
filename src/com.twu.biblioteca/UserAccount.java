@@ -1,6 +1,8 @@
 //A user account has name,password and role.
 package com.twu.biblioteca;
 
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+
 public class UserAccount {
     private String userName;
     private String password;

@@ -29,7 +29,7 @@ public class ExecuteUserMenuItem {
 
             case "3":
                 display("ENTER BOOK TO BE RETURNED:");
-                display(library.returnABook(input.read()));
+                display(library.returnABook(input.read(), userAccount));
                 break;
 
             case "4":

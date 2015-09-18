@@ -70,9 +70,10 @@ public class TestLibrary {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER", "kar", "kau@gmail.com", "9088444301"));
+        UserAccount userAccount = new UserAccount("123-4567", "qwerty", "USER", "kar", "kau@gmail.com", "9088444301");
+        library.checkoutABook("Five Point Someone", userAccount );
 
-        assertEquals("Thank you for returning the book", library.returnABook("Five Point Someone"));
+        assertEquals("Thank you for returning the book", library.returnABook("Five Point Someone", userAccount));
     }
 
     @Test
@@ -83,9 +84,10 @@ public class TestLibrary {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER", "kar", "kau@gmail.com", "9088444301"));
+        UserAccount userAccount = new UserAccount("123-4567", "qwerty", "USER", "kar", "kau@gmail.com", "9088444301");
+        library.checkoutABook("Five Point Someone", userAccount);
 
-        assertEquals("That is not a valid book to return", library.returnABook("2 states"));
+        assertEquals("That is not a valid book to return", library.returnABook("2 states", userAccount));
     }
 
     @Test

@@ -104,12 +104,13 @@ public class TestUserMenu {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER", "karu", "karu@gmail.com", "9880443410"));
+        UserAccount userAccount = new UserAccount("123-4567", "qwerty", "USER", "karu", "karu@gmail.com", "9880443410");
+        library.checkoutABook("Five Point Someone", userAccount);
         userMenu.addOptions("List Books");
         userMenu.addOptions("Checkout a Book");
         userMenu.addOptions("Return a Book");
 
-        userMenu.executeOption("3", library, new UserAccount("124-1234", "abc-defg", "user", "karu", "karu@gmail.com", "9880443410"));
+        userMenu.executeOption("3", library, userAccount);
 
         assertEquals("ENTER BOOK TO BE RETURNED:\nThank you for returning the book\n", outputContent.toString());
     }

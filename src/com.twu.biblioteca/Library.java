@@ -64,13 +64,15 @@ public class Library {
         }
     }
 
-    public String returnABook(String bookName) {
+    public String returnABook(String bookName, UserAccount userAccount) {
         for (Book book : checkedOutBooks) {
             if (book.compareWithBookName(bookName)) {
-                listOfBooks.add(book);
-                checkedOutBooks.remove(book);
-                bookUserMap.remove(book);
-                return "Thank you for returning the book";
+                if(bookUserMap.get(book).equals(userAccount)) {
+                    listOfBooks.add(book);
+                    checkedOutBooks.remove(book);
+                    bookUserMap.remove(book);
+                    return "Thank you for returning the book";
+                }
             }
         }
         return "That is not a valid book to return";

@@ -108,12 +108,13 @@ public class TestLibrarianMenu {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER", "kar", "kau@gmail.com", "9088444301"));
+        UserAccount userAccount = new UserAccount("123-4567", "qwerty", "USER", "kar", "kau@gmail.com", "9088444301");
+        library.checkoutABook("Five Point Someone", userAccount);
         librarianMenu.addOptions("List Books");
         librarianMenu.addOptions("Checkout a Book");
         librarianMenu.addOptions("Return a Book");
 
-        librarianMenu.executeOption("3", library, new UserAccount("124-1234", "abc-defg", "user", "kar", "kau@gmail.com", "9088444301"));
+        librarianMenu.executeOption("3", library, userAccount);
 
         assertEquals("ENTER BOOK TO BE RETURNED:\nThank you for returning the book\n", outputContent.toString());
     }
@@ -133,11 +134,12 @@ public class TestLibrarianMenu {
         books.add(new Book("Revolution 2020", "Chetan Bhagat", 2011));
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        library.checkoutABook("Five Point Someone", new UserAccount("123-4567", "qwerty", "USER", "kar", "kau@gmail.com", "9088444301"));
+        UserAccount userAccount = new UserAccount("123-4567", "qwerty", "USER", "kar", "kau@gmail.com", "9088444301");
+        library.checkoutABook("Five Point Someone", userAccount);
         librarianMenu.addOptions("List Books");
         librarianMenu.addOptions("Checkout a Book");
         librarianMenu.addOptions("Return a Book");
-        librarianMenu.executeOption("3", library, new UserAccount("124-1234", "abc-defg", "user", "kar", "kau@gmail.com", "9088444301"));
+        librarianMenu.executeOption("3", library, userAccount);
         ;
 
         assertEquals("ENTER BOOK TO BE RETURNED:\nThat is not a valid book to return\n", outputContent.toString());
