@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class TestBibliotecaApplication {
+public class BibliotecaControllerTest {
 
     private final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
 
@@ -48,7 +48,7 @@ public class TestBibliotecaApplication {
 
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
+        BibliotecaController biblioteca = new BibliotecaController(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
         biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
@@ -69,7 +69,7 @@ public class TestBibliotecaApplication {
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
+        BibliotecaController biblioteca = new BibliotecaController(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
 
 
@@ -94,7 +94,7 @@ public class TestBibliotecaApplication {
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
+        BibliotecaController biblioteca = new BibliotecaController(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
         biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
@@ -119,7 +119,7 @@ public class TestBibliotecaApplication {
 
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
+        BibliotecaController biblioteca = new BibliotecaController(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
         biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
@@ -149,7 +149,7 @@ public class TestBibliotecaApplication {
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
 
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
+        BibliotecaController biblioteca = new BibliotecaController(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
 
         exit.expectSystemExitWithStatus(0);
         biblioteca.start();
@@ -164,9 +164,9 @@ public class TestBibliotecaApplication {
         ArrayList<Book> books = new ArrayList<>();
         Library library = new Library(books, new ArrayList<Movie>(), new ArrayList<UserAccount>());
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(mainMenu, library, welcomeMessage, new ReadInput(new Scanner(System.in)), new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
+        BibliotecaController bibliotecaController = new BibliotecaController(mainMenu, library, welcomeMessage, new ReadInput(new Scanner(System.in)), new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
 
-        bibliotecaApplication.display("Enter choice :");
+        bibliotecaController.display("Enter choice :");
 
         assertEquals("Enter choice :\n", outputContent.toString());
     }
@@ -188,7 +188,7 @@ public class TestBibliotecaApplication {
 
         Library library = new Library(new ArrayList<Book>(), movies, new ArrayList<UserAccount>());
         WelcomeMessage welcomeMessage = new WelcomeMessage("WELCOME TO BIBLIOTECA");
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
+        BibliotecaController biblioteca = new BibliotecaController(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
         biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
@@ -216,7 +216,7 @@ public class TestBibliotecaApplication {
         ReadInput input = mock(ReadInput.class);
         when(input.read()).thenReturn("3");
 
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
+        BibliotecaController biblioteca = new BibliotecaController(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
         biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
@@ -244,7 +244,7 @@ public class TestBibliotecaApplication {
         ReadInput input = mock(ReadInput.class);
         when(input.read()).thenReturn("3");
 
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
+        BibliotecaController biblioteca = new BibliotecaController(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
         biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " "));
 
@@ -273,7 +273,7 @@ public class TestBibliotecaApplication {
         mainMenu.addOptions("Checkout a movie");
         mainMenu.addOptions("Login");
 
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
+        BibliotecaController biblioteca = new BibliotecaController(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
         assertEquals("USER", biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " ")).getRole());
     }
@@ -300,7 +300,7 @@ public class TestBibliotecaApplication {
         mainMenu.addOptions("Checkout a movie");
         mainMenu.addOptions("Login");
 
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
+        BibliotecaController biblioteca = new BibliotecaController(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
 
         assertEquals("DEFAULT", biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " ")).getRole());
@@ -328,7 +328,7 @@ public class TestBibliotecaApplication {
         mainMenu.addOptions("Checkout a movie");
         mainMenu.addOptions("Login");
 
-        BibliotecaApplication biblioteca = new BibliotecaApplication(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
+        BibliotecaController biblioteca = new BibliotecaController(mainMenu, library, welcomeMessage, input, new UserMenu(new ArrayList<String>()), new LibrarianMenu(new UserMenu(new ArrayList<String>())));
         biblioteca.start();
         assertEquals("LIBRARIAN", biblioteca.run(new UserAccount("", " ", "DEFAULT", " ", " ", " ")).getRole());
     }

@@ -16,7 +16,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 
-public class TestMainMenu {
+public class MainMenuTest {
 
     private final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
 

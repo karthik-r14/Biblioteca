@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestLibrary {
+public class LibraryTest {
 
     private final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
 

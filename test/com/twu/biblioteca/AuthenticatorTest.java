@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class TestAuthenticator {
+public class AuthenticatorTest {
 
     private final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
 
