@@ -1,35 +1,41 @@
-<project name="TWU_Biblioteca-master" default="runTest" basedir=".">
+<project name="TWU_Biblioteca-master" default="report" basedir="." xmlns:jacoco="antlib:org.jacoco.ant">
 
     <property name="project.name" value="TWU_Biblioteca-master"></property>
     <property name="package.name" value="com.twu.biblioteca"/>
 
-    <target name = "init">
-        <mkdir dir="out" />
+    <target name="init">
+        <mkdir dir="out"/>
     </target>
+
+    <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+        <classpath path="lib/jacocoant.jar"/>
+    </taskdef>
 
     <target name="compile" depends="clean,init">
         <javac destdir="out">
             <src path="src:test"/>
-            <classpath location = "lib/junit-4.11.jar"/>
-            <classpath location = "lib/system-rules-1.12.0.jar"/>
-            <classpath location = "lib/mockito-all-1.9.5.jar"/>
+            <classpath location="lib/junit-4.11.jar"/>
+            <classpath location="lib/system-rules-1.12.0.jar"/>
+            <classpath location="lib/mockito-all-1.9.5.jar"/>
         </javac>
     </target>
 
     <target name="runTest" depends="compile">
-        <junit printsummary="true" haltonfailure="true" outputtoformatters="true">
-            <classpath>
-                <pathelement location="lib/junit-4.11.jar"/>
-                <pathelement location="lib/system-rules-1.12.0.jar"/>
-                <pathelement location="out"/>
-                <pathelement location = "lib/mockito-all-1.9.5.jar"/>
-            </classpath>
+        <jacoco:coverage destfile="./out/jacoco.exec">
+            <junit printsummary="true" haltonfailure="true" outputtoformatters="true" fork="true" forkmode="once">
+                <classpath>
+                    <pathelement location="lib/junit-4.11.jar"/>
+                    <pathelement location="lib/system-rules-1.12.0.jar"/>
+                    <pathelement location="out"/>
+                    <pathelement location="lib/mockito-all-1.9.5.jar"/>
+                </classpath>
 
-            <batchtest fork="yes" haltonfailure="true">
-                <fileset dir="out" includes="**/*Test*.class"/>
-            </batchtest>
-            <formatter type="brief" usefile="false"/>
-        </junit>
+                <batchtest fork="yes" haltonfailure="true">
+                    <fileset dir="out" includes="**/*Test*.class"/>
+                </batchtest>
+                <formatter type="brief" usefile="false"/>
+            </junit>
+        </jacoco:coverage>
     </target>
 
     <target name="clean">
@@ -52,5 +58,22 @@
                 <path location="lib/${project.name}.jar"/>
             </classpath>
         </java>
+    </target>
+
+    <target name="report" depends="runTest">
+        <jacoco:report>
+            <executiondata>
+                <file file="out/jacoco.exec"/>
+            </executiondata>
+            <structure name="TWU_Biblioteca-master">
+                <classfiles>
+                    <fileset dir="out"/>
+                </classfiles>
+                <sourcefiles encoding="UTF-8">
+                    <fileset dir="src"/>
+                </sourcefiles>
+            </structure>
+            <html destdir="out"/>
+        </jacoco:report>
     </target>
 </project>
